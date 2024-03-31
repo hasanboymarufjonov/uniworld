@@ -61,7 +61,6 @@ function UniversityOverview({ slug }) {
           <h2 className="text-lg font-semibold mb-2">Address</h2>
           <p>{universityData.address}</p>
         </div>
-        {/* Add more university details here */}
       </div>
     </div>
   );
