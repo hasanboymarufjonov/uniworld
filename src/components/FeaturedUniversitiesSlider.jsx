@@ -25,20 +25,20 @@ function FeaturedUniversitiesSlider() {
   }, []);
 
   return (
-    <div className="overflow-hidden w-full px-20 py-10 bg-gradient-to-tl from-white via-blue-50 to-white">
+    <div className="overflow-hidden w-full px-20 py-10 bg-gradient-to-b from-white via-blue-50 to-blue-50">
       <h2 className="text-4xl">Featured Universities</h2>
-      <div className="grid grid-cols-1 gap-2 w-full mt-10">
+      <div className="grid grid-cols-5 gap-2 w-full mt-10">
         {featuredUniversities.map((university) => (
           <Link
             key={university.id}
             to={university.slug}
-            className="flex-none w-full lg:w-1/4 shadow-md border border-gray-100 bg-white"
+            className="flex-none  shadow-md border border-gray-100 bg-white"
           >
             <div className=" overflow-hidden ">
               <img
                 src={university.logo}
                 alt={university.name}
-                className="w-full h-full object-cover"
+                className="w-full h-48 object-cover"
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold mb-2">

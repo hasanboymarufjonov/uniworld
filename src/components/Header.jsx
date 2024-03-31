@@ -8,6 +8,7 @@ import {
   Collapse,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 import logoImg from "../assets/logo.png";
 
@@ -73,6 +74,9 @@ export default function Header() {
         <a href="#" className="flex items-center">
           Check your eligibility
         </a>
+      </Typography>
+      <Typography>
+        <LanguageSwitcher />
       </Typography>
     </ul>
   );
