@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../config";
 
@@ -14,6 +14,24 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
     gender: "",
     region: null,
   });
+
+  const [regions, setRegions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchRegions = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/common/regions/`);
+        setRegions(response.data.results);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching regions:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchRegions();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -124,9 +142,25 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               <option value="Female">Female</option>
             </select>
           </div>
+          <div className="mb-4">
+            <select
+              name="region"
+              value={formData.region}
+              onChange={handleChange}
+              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              required
+            >
+              <option value="">Select Region</option>
+              {regions.map((region) => (
+                <option key={region.id} value={region.name}>
+                  {region.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
+            className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-indigo-600"
           >
             Submit Application
           </button>

@@ -6,7 +6,13 @@ const Footer = () => {
       <footer class="w-full py-4 px-4 sm:px-6 lg:px-8 mx-auto border-t border-gray-200 bottom-0">
         <div class="text-center">
           <div class="mt-3">
-            <p class="text-gray-900">© UniWorld. 2024 All rights reserved.</p>
+            <p class="text-gray-900">
+              ©{" "}
+              <span className="font-bold">
+                Uni<span className="text-blue-700">W</span>orld
+              </span>
+              . 2024 All rights reserved.
+            </p>
           </div>
 
           <div class="mt-3 space-x-2">
