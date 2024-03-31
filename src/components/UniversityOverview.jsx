@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../config";
+import HtmlContentRenderer from "./HtmlContentRenderer";
 
 function UniversityOverview({ slug }) {
   const [universityData, setUniversityData] = useState(null);
@@ -42,7 +43,7 @@ function UniversityOverview({ slug }) {
         />
         <p className="text-gray-600">{universityData.country.name}</p>
       </div>
-      <p className="mb-4">{universityData.about}</p>
+      <HtmlContentRenderer htmlContent={universityData.about} />
       <div className="grid grid-cols-2 gap-4">
         <div>
           <h2 className="text-lg font-semibold mb-2">Establishment Year</h2>
