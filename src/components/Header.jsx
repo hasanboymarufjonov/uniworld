@@ -7,6 +7,7 @@ import {
   Card,
   Collapse,
 } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 import logoImg from "../assets/logo.png";
 
@@ -82,7 +83,7 @@ export default function Header() {
         <div className="flex items-center justify-between text-blue-gray-900">
           <Typography
             as="a"
-            href="#"
+            href="/"
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
             <img src={logoImg} className="w-20" alt="" />
