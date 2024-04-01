@@ -25,9 +25,9 @@ function FeaturedUniversitiesSlider() {
   }, []);
 
   return (
-    <div className="overflow-hidden w-full px-20 py-10 bg-gradient-to-b from-white via-blue-50 to-blue-50">
+    <div className="overflow-hidden w-full lg:px-20 px-10 py-10 bg-gradient-to-b from-white via-blue-50 to-blue-50">
       <h2 className="text-4xl">Featured Universities</h2>
-      <div className="grid grid-cols-5 gap-2 w-full mt-10">
+      <div className="grid lg:grid-cols-5 grid-cols-1 gap-2 w-full mt-10">
         {featuredUniversities.map((university) => (
           <Link
             key={university.id}

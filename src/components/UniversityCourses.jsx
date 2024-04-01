@@ -4,6 +4,7 @@ import BASE_URL from "../config";
 import ApplyModal from "./ApplyModal";
 
 function UniversityCourses({ slug }) {
+  const [universityData, setUniversityData] = useState(null);
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCourse, setSelectedCourse] = useState(null);
@@ -31,6 +32,24 @@ function UniversityCourses({ slug }) {
   }, [slug]);
 
   useEffect(() => {
+    const fetchUniversityData = async () => {
+      try {
+        const response = await axios.get(
+          `${BASE_URL}/universities/${slug}/detail/`
+        );
+        setUniversityData(response.data);
+        console.log(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching university data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchUniversityData();
+  }, [slug]);
+
+  useEffect(() => {
     const fetchFilters = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/universities/filters/`, {
@@ -38,7 +57,6 @@ function UniversityCourses({ slug }) {
             university: 2,
           },
         });
-        console.log(response.data);
         setQualifications(response.data.qualification_levels);
         setSubjects(response.data.specialties);
       } catch (error) {
@@ -78,6 +96,14 @@ function UniversityCourses({ slug }) {
   return (
     <>
       <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex items-center justify-between mb-4">
+            <h1 className="text-3xl font-semibold mb-4">
+              {/* {universityData.name} */}
+            </h1>
+            {/* <p className="text-gray-600">{universityData.country.name}</p> */}
+          </div>
+        </div>
         <h2 className="text-2xl font-semibold mb-4">Courses Offered</h2>
         <div className="flex justify-between mb-4">
           <div>
@@ -125,7 +151,7 @@ function UniversityCourses({ slug }) {
               filteredCourses.map((course) => (
                 <li
                   key={course.id}
-                  className="border-2 border-gray-100 rounded-md bg-white p-4"
+                  className="border-2 border-gray-100 rounded-md bg-white p-4 mb-4"
                 >
                   <h3 className="text-lg font-semibold">{course.name}</h3>
                   <p>Duration: {course.duration}</p>
