@@ -16,7 +16,7 @@ const UniversityPage = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-220px)] bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 -mt-4 py-10">
+    <div className="min-h-[calc(100vh-220px)] bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 -mt-4 py-10 px-4">
       <div className="flex justify-center my-4">
         <button
           className={`mx-2 px-4 py-2 rounded ${

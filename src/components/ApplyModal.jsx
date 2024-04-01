@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../config";
+import toast, { Toaster } from "react-hot-toast";
 
 function ApplyModal({ isOpen, onClose, universityId, courseId }) {
   const [formData, setFormData] = useState({
@@ -16,14 +17,13 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
   });
 
   const [regions, setRegions] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchRegions = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/common/regions/`);
         setRegions(response.data.results);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching regions:", error);
         setLoading(false);
@@ -43,9 +43,29 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      await axios.post(`${BASE_URL}/applications/create/`, formData);
-      onClose(); // Close the modal after successful submission
+      const updatedFormData = {
+        ...formData,
+        university: universityId,
+        course: courseId,
+      };
+      await axios.post(`${BASE_URL}/applications/create/`, updatedFormData);
+      setLoading(false);
+      setFormData({
+        university: "",
+        course: "",
+        first_name: "",
+        last_name: "",
+        age: "",
+        phone_number: "",
+        email: "",
+        gender: "",
+        region: null,
+      });
+
+      onClose();
+      toast.success("Application submitted!");
     } catch (error) {
       console.error("Error submitting application:", error);
     }
@@ -57,6 +77,8 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
         isOpen ? "block" : "hidden"
       }`}
     >
+      <Toaster position="top-center" />
+
       <div className="absolute w-full h-full bg-gray-900 opacity-50"></div>
       <div className="bg-white w-96 mx-auto p-4 rounded-lg shadow-lg z-50 relative">
         <button className="absolute top-4 right-4" onClick={onClose}>
@@ -81,7 +103,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               value={formData.first_name}
               onChange={handleChange}
               placeholder="First Name"
-              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
           </div>
@@ -92,7 +114,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               value={formData.last_name}
               onChange={handleChange}
               placeholder="Last Name"
-              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
           </div>
@@ -103,7 +125,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               value={formData.age}
               onChange={handleChange}
               placeholder="Age"
-              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
           </div>
@@ -114,7 +136,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               value={formData.phone_number}
               onChange={handleChange}
               placeholder="Phone Number"
-              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
           </div>
@@ -125,7 +147,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email"
-              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
           </div>
@@ -134,12 +156,12 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               name="gender"
               value={formData.gender}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             >
               <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
             </select>
           </div>
           <div className="mb-4">
@@ -147,12 +169,12 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               name="region"
               value={formData.region}
               onChange={handleChange}
-              className="w-full px-3 py-2 rounded border border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             >
               <option value="">Select Region</option>
               {regions.map((region) => (
-                <option key={region.id} value={region.name}>
+                <option key={region.id} value={region.id}>
                   {region.name}
                 </option>
               ))}
@@ -160,9 +182,9 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-indigo-600"
+            className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 focus:outline-none focus:bg-indigo-600"
           >
-            Submit Application
+            {loading ? "Submitting..." : "Submit Application"}
           </button>
         </form>
       </div>

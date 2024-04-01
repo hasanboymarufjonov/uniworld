@@ -14,7 +14,7 @@ function LanguageSwitcher() {
     <select
       onChange={handleLanguageChange}
       defaultValue={i18n.language}
-      className="rounded w-12 h-10 p-2"
+      className="rounded w-14 h-10 p-2 text-gray-900 border border-gray-900"
     >
       <option value="en">{t("En")}</option>
       <option value="uz">{t("Uz")}</option>
