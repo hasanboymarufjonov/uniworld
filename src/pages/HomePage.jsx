@@ -6,13 +6,13 @@ import FullScholarshipUniversitiesSlider from "../components/FullScholarshipUniv
 
 const HomePage = () => {
   return (
-    <>
+    <div className="">
       <Hero />
       {/* <Countries /> */}
       <AssistanceCards />
       <FeaturedUniversitiesSlider />
       <FullScholarshipUniversitiesSlider />
-    </>
+    </div>
   );
 };
 

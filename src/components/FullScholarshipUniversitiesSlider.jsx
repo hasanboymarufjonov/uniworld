@@ -31,12 +31,12 @@ function FullScholarshipUniversitiesSlider() {
         {featuredUniversities.map((university) => (
           <Link
             key={university.id}
-            to={university.slug}
+            to={`universities/${university.slug}`}
             className="flex-none  shadow-md border border-gray-100 bg-white w-1/2 lg:w-1/5"
           >
             <div className=" overflow-hidden ">
               <img
-                src={university.logo}
+                src={university.image}
                 alt={university.name}
                 className="w-full h-48 object-cover"
               />

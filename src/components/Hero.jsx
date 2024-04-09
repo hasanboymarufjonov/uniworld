@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div>
+    <div className="">
       <div class="relative overflow-hidden">
         <div
           aria-hidden="true"

@@ -96,7 +96,7 @@ function UniversityCourses({ slug }) {
 
   return (
     <>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto ">
         <UniversityTitle
           slug={slug}
           onUniversityIdChange={updateUniversityId}
@@ -180,7 +180,7 @@ function UniversityCourses({ slug }) {
                     </div>
                   </div>
                   <button
-                    className="bg-blue-600 hover:bg-blue-800 text-white py-2 px-8 rounded-lg mt-2"
+                    className="bg-secondary hover:bg-blue-800 text-white py-2 px-8 rounded-lg mt-2"
                     onClick={() => handleApply(course.id)}
                   >
                     Apply Now

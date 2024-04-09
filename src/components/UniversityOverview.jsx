@@ -102,7 +102,7 @@ function UniversityOverview({ slug }) {
               key={index}
               className={`mr-2 mb-2 p-2 rounded-lg  ${
                 universityData.intake_months.includes(month)
-                  ? "bg-blue-500 text-white"
+                  ? "bg-secondary text-white"
                   : "bg-white text-black border border-gray-900"
               }`}
             >

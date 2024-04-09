@@ -36,7 +36,7 @@ function FeaturedUniversitiesSlider() {
           >
             <div className=" overflow-hidden ">
               <img
-                src={university.logo}
+                src={university.image}
                 alt={university.name}
                 className="w-full h-48 object-cover"
               />

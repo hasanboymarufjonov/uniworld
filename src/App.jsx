@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 
 import HomePage from "./pages/HomePage";
 import UniversityPage from "./pages/UniversityPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           path="/universities/:universityName"
           element={<UniversityPage />}
         />
+        <Route path="/universities" element={<SearchPage />} />
       </Routes>
       <Footer />
     </>
