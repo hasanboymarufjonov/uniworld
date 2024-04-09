@@ -28,7 +28,7 @@ const QualificationLevels = () => {
         <p>Loading...</p>
       ) : (
         <div className="max-w-[85rem] px-4  sm:px-6 lg:px-8  mx-auto">
-          <div className="grid grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-3 gap-1">
             {qualificationLevels.map((level, index) => (
               <div
                 key={index}

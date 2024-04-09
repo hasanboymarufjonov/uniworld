@@ -31,7 +31,7 @@ const Countries = () => {
         <p>Loading...</p>
       ) : (
         <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8  py-2 mx-auto">
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1">
             {countries.map((country) => (
               <div
                 key={country.id}
