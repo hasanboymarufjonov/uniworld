@@ -2,33 +2,33 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="">
+    <div className="bg-primary">
       <div class="relative overflow-hidden">
         <div
           aria-hidden="true"
           class="flex absolute -top-96 start-1/2 transform -translate-x-1/2"
         >
-          <div class="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] "></div>
-          <div class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] "></div>
+          {/* <div class="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] "></div>
+          <div class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] "></div> */}
         </div>
 
         <div class="relative z-10">
           <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
-            <div class="max-w-2xl text-center mx-auto">
+            <div class="max-w-7xl text-center mx-auto">
               {/* <p class="inline-block text-sm font-medium bg-clip-text bg-gradient-to-l from-blue-600 to-violet-500  ">
                 Uniworld v1
               </p> */}
 
-              <div class="mt-5 max-w-2xl">
-                <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl ">
+              <div class="mt-5 max-w-9xl">
+                <h2 class="block   text-4xl md:text-5xl lg:text-[88px] ">
                   Find The
-                </h1>
-                <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl mt-4">
+                </h2>
+                <h2 class="block font-semibold  text-4xl md:text-5xl lg:text-[88px] mt-8">
                   Right 🎓 University{" "}
-                </h1>
-                <h1 class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl mt-4">
+                </h2>
+                <h2 class="block   text-4xl md:text-5xl lg:text-[88px] mt-8 ">
                   For You 🌎 in the World
-                </h1>
+                </h2>
               </div>
 
               {/* <div class="mt-5 max-w-3xl">
@@ -100,7 +100,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div class="mt-10 relative max-w-5xl mx-auto mb-10 px-4">
+        {/* <div class="mt-10 relative max-w-5xl mx-auto mb-10 px-4">
           <div class="w-full object-cover h-96 sm:h-[480px] bg-[url('https://images.unsplash.com/photo-1606868306217-dbf5046868d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1981&q=80')] bg-no-repeat bg-center bg-cover rounded-xl"></div>
 
           <div class="absolute inset-0 size-full">
@@ -135,7 +135,7 @@ const Hero = () => {
           <div class="absolute -top-12 -end-20 -z-[1] size-48 bg-gradient-to-t from-blue-600 to-cyan-400 p-px rounded-full">
             <div class="bg-white size-48 rounded-full dark:bg-slate-900"></div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

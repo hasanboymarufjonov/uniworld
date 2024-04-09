@@ -25,7 +25,7 @@ function FeaturedUniversitiesSlider() {
   }, []);
 
   return (
-    <div className="w-full lg:px-20 px-4 py-10 bg-gradient-to-b from-white via-blue-50 to-blue-50">
+    <div className="w-full lg:px-20 px-4 py-10 bg-primary">
       <h2 className="text-4xl">Featured Universities</h2>
       <div className="flex flex-no-wrap gap-2 w-full mt-10 overflow-x-auto pb-4">
         {featuredUniversities.map((university) => (

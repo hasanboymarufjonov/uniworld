@@ -4,16 +4,16 @@ import matchImg from "../assets/operator.jpg";
 
 const AssistanceCards = () => {
   return (
-    <div>
+    <div className="bg-primary">
       <div className="text-center">
-        <h2 className="text-4xl">How UniWorld Can Help You</h2>
+        <h2 className="text-4xl pt-10">How UniWorld Can Help You</h2>
         <p className="text-base mt-1">
           Our team of advisors is ready to support you at every step of your
           study abroad journey.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-10 md:mx-32 my-10">
+      <div className="grid md:grid-cols-3 gap-10 md:mx-32  py-10">
         <a class="flex flex-col" href="#">
           <img
             class="w-full h-[300px] object-cover"
