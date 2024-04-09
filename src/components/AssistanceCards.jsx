@@ -62,6 +62,12 @@ const AssistanceCards = () => {
           </div>
         </a>
       </div>
+      <div className="text-center">
+        <p>Our consultation are 100% free for students like you.</p>
+        <button className="bg-secondary py-2 px-10 rounded-lg text-white mt-4">
+          Speak to Advisor
+        </button>
+      </div>
     </div>
   );
 };
