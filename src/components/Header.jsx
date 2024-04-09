@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-import logoImg from "../assets/logo.png";
+import logoImg from "../assets/logo3.png";
 
 export default function Header() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -71,7 +71,7 @@ export default function Header() {
             href="/"
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
-            <img src={logoImg} className="w-20" alt="" />
+            <img src={logoImg} className="w-32 my-2" alt="" />
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
