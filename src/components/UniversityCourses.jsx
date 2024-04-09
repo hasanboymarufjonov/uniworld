@@ -102,15 +102,16 @@ function UniversityCourses({ slug }) {
           onUniversityIdChange={updateUniversityId}
         />
         <h2 className="text-2xl font-semibold mb-4">Courses Offered</h2>
-        <div className="flex justify-between mb-4 items-center">
+        <div className="flex justify-end mb-4 items-center">
+          <p className="mr-2">Filter by</p>
           <div className="pr-2">
-            <label className="block text-sm font-medium text-gray-700">
+            {/* <label className="block text-sm font-medium text-gray-700">
               Qualification:
-            </label>
+            </label> */}
             <select
               value={selectedQualification}
               onChange={handleQualificationChange}
-              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-2xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="">All</option>
               {qualifications.map((qualification) => (
@@ -121,13 +122,13 @@ function UniversityCourses({ slug }) {
             </select>
           </div>
           <div className="pl-2">
-            <label className="block text-sm font-medium text-gray-700">
+            {/* <label className="block text-sm font-medium text-gray-700">
               Subject:
-            </label>
+            </label> */}
             <select
               value={selectedSubject}
               onChange={handleSubjectChange}
-              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-2xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="">All</option>
               {subjects.map((subject) => (
@@ -148,7 +149,7 @@ function UniversityCourses({ slug }) {
               filteredCourses.map((course) => (
                 <li
                   key={course.id}
-                  className="border-2 border-gray-100 rounded-lg bg-white p-4 mb-4"
+                  className="border-2 border-gray-100 rounded-xl bg-white p-4 mb-4"
                 >
                   <h3 className="text-lg font-semibold">{course.name}</h3>
                   <div className="flex justify-between mt-2">

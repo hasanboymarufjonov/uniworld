@@ -35,7 +35,7 @@ const Countries = () => {
             {countries.map((country) => (
               <div
                 key={country.id}
-                className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center"
+                className="bg-white border shadow-sm rounded-xl p-4 "
               >
                 <p className="text-center"> {country.name}</p>
               </div>
