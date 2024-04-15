@@ -19,7 +19,7 @@ const Filters = ({
       <div className="border-t border-gray-200 mt-4 pt-4">
         <FilterOptions
           paramName="specialties"
-          labelText="Filter by Specialties:"
+          labelText="Specialties:"
           onChange={handleSpecialtyChange}
           selectedOption={selectedSpecialty}
         />
@@ -27,7 +27,7 @@ const Filters = ({
       <div className="border-t border-gray-200 mt-4 pt-4">
         <FilterOptions
           paramName="qualification_levels"
-          labelText="Filter by Qualification Levels:"
+          labelText="Qualification Levels:"
           onChange={handleQualificationChange}
           selectedOption={selectedQualification}
         />

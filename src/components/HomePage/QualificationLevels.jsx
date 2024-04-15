@@ -29,14 +29,23 @@ const QualificationLevels = () => {
       ) : (
         <div className="max-w-[85rem] px-4  sm:px-6 lg:px-8  mx-auto">
           <div className="grid grid-cols-3 gap-1">
-            {qualificationLevels.map((level, index) => (
+            {/* {qualificationLevels.map((level, index) => (
               <div
                 key={index}
                 className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center"
               >
                 <p className="text-center">{level}</p>
               </div>
-            ))}
+            ))} */}
+            <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
+              <p className="text-center">Diploma</p>
+            </div>
+            <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
+              <p className="text-center">Bachelor’s Degree</p>
+            </div>
+            <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
+              <p className="text-center">Master's Degree</p>
+            </div>
           </div>
         </div>
       )}

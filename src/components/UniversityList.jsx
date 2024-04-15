@@ -17,7 +17,7 @@ const UniversityList = () => {
     queryParams.get("specialty") || ""
   );
   const [selectedQualification, setSelectedQualification] = useState(
-    queryParams.get("qualification") || ""
+    queryParams.get("qualification_level") || ""
   );
   const [searchTerm, setSearchTerm] = useState(queryParams.get("search") || "");
   const [loading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ const UniversityList = () => {
       if (selectedCountry) params.append("country", selectedCountry);
       if (selectedSpecialty) params.append("specialty", selectedSpecialty);
       if (selectedQualification)
-        params.append("qualification", selectedQualification);
+        params.append("qualification_level", selectedQualification);
       if (searchTerm) params.append("search", searchTerm);
       const response = await fetch(
         `${BASE_URL}/universities/list/?${params.toString()}`
@@ -48,21 +48,21 @@ const UniversityList = () => {
   const handleCountryChange = (countryId) => {
     setSelectedCountry(countryId);
     navigate(
-      `?country=${countryId}&specialty=${selectedSpecialty}&qualification=${selectedQualification}`
+      `?country=${countryId}&specialty=${selectedSpecialty}&qualification_level=${selectedQualification}`
     );
   };
 
   const handleSpecialtyChange = (specialtyId) => {
     setSelectedSpecialty(specialtyId);
     navigate(
-      `?country=${selectedCountry}&specialty=${specialtyId}&qualification=${selectedQualification}`
+      `?country=${selectedCountry}&specialty=${specialtyId}&qualification_level=${selectedQualification}`
     );
   };
 
   const handleQualificationChange = (qualification) => {
     setSelectedQualification(qualification);
     navigate(
-      `?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification=${qualification}`
+      `?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification_level=${qualification}`
     );
   };
 
@@ -70,7 +70,7 @@ const UniversityList = () => {
     const value = event.target.value;
     setSearchTerm(value);
     navigate(
-      `?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification=${selectedQualification}&search=${value}`
+      `?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification_level=${selectedQualification}&search=${value}`
     );
   };
 

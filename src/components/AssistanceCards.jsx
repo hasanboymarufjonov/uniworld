@@ -1,6 +1,6 @@
 import visaImg from "../assets/Visa&Travel Advice.png";
 import applicationImg from "../assets/Applicaiton guidance.png";
-import matchImg from "../assets/operator.jpg";
+import matchImg from "../assets/operator.png";
 
 const AssistanceCards = () => {
   return (
