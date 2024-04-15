@@ -1,6 +1,27 @@
 import React, { useState, useEffect } from "react";
 import BASE_URL from "../../config";
 
+const formatQualificationLevel = (level) => {
+  switch (level) {
+    case "foundation":
+      return "Foundation degree";
+    case "certificate":
+      return "Certificate";
+    case "bachelor":
+      return "Bachelor's degree";
+    case "diploma":
+      return "Diploma";
+    case "master":
+      return "Master's degree";
+    case "undergraduate":
+      return "Undergraduate";
+    case "postgraduate":
+      return "Postgraduate";
+    default:
+      return level;
+  }
+};
+
 const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,7 +90,9 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
                   onChange={() => onChange(option.id || option)}
                   className="form-radio h-4 w-4 text-primary"
                 />
-                <span className="ml-2">{option.name || option}</span>
+                <span className="ml-2">
+                  {formatQualificationLevel(option.name || option)}
+                </span>
               </label>
             ))}
           </div>

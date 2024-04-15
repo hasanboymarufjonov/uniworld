@@ -47,7 +47,7 @@ const Hero = () => {
                 </div>
 
                 <h2 class="block font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                  in Malaysia
+                  in World
                 </h2>
               </div>
             </div>

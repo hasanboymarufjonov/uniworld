@@ -1,5 +1,6 @@
 import Hero from "../components/Hero";
 import Countries from "../components/Countries";
+import AdvisorApplication from "../components/HomePage/AdvisorApplication";
 import QualificationLevels from "../components/HomePage/QualificationLevels";
 import AssistanceCards from "../components/AssistanceCards";
 import FeaturedUniversitiesSlider from "../components/FeaturedUniversitiesSlider";
@@ -14,6 +15,7 @@ const HomePage = () => {
         <QualificationLevels />
       </div>
       <AssistanceCards />
+      <AdvisorApplication />
       <FeaturedUniversitiesSlider />
       <FullScholarshipUniversitiesSlider />
     </div>

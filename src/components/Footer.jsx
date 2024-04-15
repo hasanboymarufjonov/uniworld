@@ -1,4 +1,5 @@
 import { FaInstagram, FaYoutube, FaTelegram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -39,14 +40,14 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="mt-3 flex justify-between">
-            <div className="flex gap-8 underline">
-              <p>Terms & Conditions</p>
-              <p>Disclaimer</p>
+          <div className="mt-3  md:flex justify-between">
+            <div className=" gap-8 underline flex">
+              <Link to="/terms-and-condition">Terms & Conditions</Link>
+              <Link to="/privacy-policy">Privacy Policy</Link>
               <p>Contact us</p>
-              <p>About us</p>
+              <Link to="/about-us">About us</Link>
             </div>
-            <div> © 2024 All rights reserved.</div>
+            <div className="mt-4 md:mt-0"> © 2024 All rights reserved.</div>
           </div>
         </div>
       </footer>

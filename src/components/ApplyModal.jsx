@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../config";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 function ApplyModal({ isOpen, onClose, universityId, courseId }) {
   const [formData, setFormData] = useState({
@@ -180,9 +181,24 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               ))}
             </select>
           </div>
+          <div className="py-2">
+            <p>
+              By clicking the Submit Application button, you agree to out{" "}
+              <Link
+                to="/terms-and-conditions"
+                className="underline text-secondary"
+              >
+                Terms & Conditions
+              </Link>{" "}
+              and{" "}
+              <Link to="/privacy-policy" className="underline text-secondary">
+                Privacy Policy
+              </Link>
+            </p>
+          </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 focus:outline-none focus:bg-indigo-600"
+            className="w-full bg-secondary text-white px-4 py-2 rounded hover:bg-blue-800 focus:outline-none focus:bg-indigo-600"
           >
             {loading ? "Submitting..." : "Submit Application"}
           </button>

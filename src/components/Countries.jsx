@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../config";
+import { Link } from "react-router-dom";
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
@@ -31,14 +32,15 @@ const Countries = () => {
         <p>Loading...</p>
       ) : (
         <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8  py-2 mx-auto">
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-1">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-1">
             {countries.map((country) => (
-              <div
+              <Link
                 key={country.id}
+                to={`/universities?country=${country.id}&specialty=&qualification_level=`}
                 className="bg-white border shadow-sm rounded-xl p-4 "
               >
                 <p className="text-center"> {country.name}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

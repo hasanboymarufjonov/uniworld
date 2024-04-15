@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../../config";
+import { Link } from "react-router-dom";
 
 const QualificationLevels = () => {
   const [qualificationLevels, setQualificationLevels] = useState([]);
@@ -38,13 +39,28 @@ const QualificationLevels = () => {
               </div>
             ))} */}
             <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
-              <p className="text-center">Diploma</p>
+              <Link
+                to={`/universities?country=&specialty=&qualification_level=diploma`}
+                className="text-center"
+              >
+                Diploma
+              </Link>
             </div>
             <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
-              <p className="text-center">Bachelor’s Degree</p>
+              <Link
+                to={`/universities?country=&specialty=&qualification_level=bachelor`}
+                className="text-center"
+              >
+                Bachelor's Degree
+              </Link>{" "}
             </div>
             <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
-              <p className="text-center">Master's Degree</p>
+              <Link
+                to={`/universities?country=&specialty=&qualification_level=master`}
+                className="text-center"
+              >
+                Master's Degree
+              </Link>{" "}
             </div>
           </div>
         </div>

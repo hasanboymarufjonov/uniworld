@@ -101,6 +101,15 @@ const UniversityList = () => {
         <div className="container mx-auto max-w-6xl bg-white py-8 rounded-lg lg:ml-5 lg:mt-0 mt-4 h-fit">
           {loading ? (
             <p>Loading...</p>
+          ) : universities.length === 0 ? (
+            <div className="flex flex-col items-center justify-center">
+              <img
+                src="https://img.icons8.com/ios-filled/200/inbox.png"
+                alt="No results"
+                className="w-24 h-24 mb-4"
+              />
+              <p>No universities found.</p>
+            </div>
           ) : (
             <div className="lg:px-4 ">
               {universities.map((university) => (
@@ -121,13 +130,23 @@ const UniversityList = () => {
                         <h2 className="text-4xl font-semibold mb-2">
                           {university.name}
                         </h2>
-                        <div>
-                          {university.is_featured && (
-                            <p className="bg-primary text-secondary p-1 rounded-lg float-right flex ">
-                              <span>•</span>{" "}
-                              <span className="ml-1">Featured</span>
-                            </p>
-                          )}
+                        <div className="flex">
+                          <div>
+                            {university.is_featured && (
+                              <p className="bg-primary text-secondary p-1 rounded-lg float-right flex ">
+                                <span>•</span>{" "}
+                                <span className="ml-1">Featured</span>
+                              </p>
+                            )}
+                          </div>
+                          <div className="ml-2">
+                            {university.full_scolarship && (
+                              <p className="bg-primary text-secondary p-1 rounded-lg float-right flex ">
+                                <span>•</span>{" "}
+                                <span className="ml-1">Free</span>
+                              </p>
+                            )}
+                          </div>
                         </div>
                       </div>
                       <p className="text-black mb-2 flex items-center text-base">

@@ -44,20 +44,20 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
         </select>
         {/* Render radio buttons on larger screens */}
         <div className="hidden md:flex flex-wrap">
-          <label className="inline-flex items-center mb-2 mr-4">
+          <label className="inline-flex items-center mb-2 mr-4 w-full">
             <input
               type="radio"
               value=""
               checked={selectedCountry === ""}
               onChange={() => handleCountryChange("")}
-              className="form-radio h-4 w-4 text-primary"
+              className="form-radio h-4 w-4  text-primary"
             />
             <span className="ml-2">All</span>
           </label>
           {countries.map((country) => (
             <label
               key={country.id}
-              className="inline-flex items-center mb-2 mr-4"
+              className="inline-flex items-center mb-2 mr-4 w-full"
               style={{ whiteSpace: "nowrap" }}
             >
               <input

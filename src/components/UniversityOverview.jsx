@@ -4,6 +4,7 @@ import BASE_URL from "../config";
 import HtmlContentRenderer from "./HtmlContentRenderer";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsFillHouseFill, BsFillHouseXFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 function UniversityOverview({ slug }) {
   const [universityData, setUniversityData] = useState(null);
@@ -175,9 +176,12 @@ function UniversityOverview({ slug }) {
           {universityData.specialties.data.map((specialty) => (
             <li key={specialty.id} className="">
               <div className="flex items-center">
-                <h3 className="text-base font-semibold bg-blue-50 p-2 rounded-lg">
+                <Link
+                  to={`/universities?country=&specialty=${specialty.id}&qualification_level=`}
+                  className="text-base font-semibold bg-blue-50 p-2 rounded-lg"
+                >
                   {specialty.name}
-                </h3>
+                </Link>
                 <p className="ml-2">{specialty.course_count}</p>
               </div>
             </li>

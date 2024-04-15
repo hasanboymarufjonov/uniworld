@@ -8,6 +8,14 @@ import HomePage from "./pages/HomePage";
 import UniversityPage from "./pages/UniversityPage";
 import SearchPage from "./pages/SearchPage";
 
+import UniversityOverview from "./components/UniversityOverview";
+import UniversityCourses from "./components/UniversityCourses";
+
+import TermsAndConditions from "./components/TermsAndConditions";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+
+import AboutUs from "./components/AboutUs";
+
 function App() {
   return (
     <>
@@ -17,8 +25,14 @@ function App() {
         <Route
           path="/universities/:universityName"
           element={<UniversityPage />}
-        />
+        >
+          <Route path="overview" element={<UniversityOverview />} />
+          <Route path="courses" element={<UniversityCourses />} />
+        </Route>
         <Route path="/universities" element={<SearchPage />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/about-us" element={<AboutUs />} />
       </Routes>
       <Footer />
     </>

@@ -13,6 +13,8 @@ function UniversityCourses({ slug }) {
   const [subjects, setSubjects] = useState([]);
   const [selectedQualification, setSelectedQualification] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedSubjectId, setSelectedSubjectId] = useState("");
+
   const [universityId, setUniversityId] = useState(null);
 
   useEffect(() => {
@@ -132,7 +134,7 @@ function UniversityCourses({ slug }) {
             >
               <option value="">All</option>
               {subjects.map((subject) => (
-                <option key={subject.id} value={subject.name}>
+                <option key={subject.id} value={subject.id}>
                   {subject.name}
                 </option>
               ))}

@@ -4,9 +4,11 @@ import matchImg from "../assets/operator.png";
 
 const AssistanceCards = () => {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary px-8">
       <div className="text-center">
-        <h2 className="text-4xl pt-10">How UniWorld Can Help You</h2>
+        <h2 className="text-3xl lg:text-4xl pt-10">
+          How UniWorld Can Help You
+        </h2>
         <p className="text-base mt-1">
           Our team of advisors is ready to support you at every step of your
           study abroad journey.
@@ -61,12 +63,6 @@ const AssistanceCards = () => {
             </p>
           </div>
         </a>
-      </div>
-      <div className="text-center">
-        <p>Our consultation are 100% free for students like you.</p>
-        <button className="bg-secondary py-2 px-10 rounded-lg text-white mt-4">
-          Speak to Advisor
-        </button>
       </div>
     </div>
   );
