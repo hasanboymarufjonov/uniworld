@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import BASE_URL from "../config";
+import BASE_URL from "../../config.js";
 import { Link } from "react-router-dom";
 
 function FullScholarshipUniversitiesSlider() {
@@ -31,7 +31,7 @@ function FullScholarshipUniversitiesSlider() {
         {featuredUniversities.map((university) => (
           <Link
             key={university.id}
-            to={`universities/${university.slug}`}
+            to={`universities/${university.slug}/overview`}
             className="flex-none  shadow-md border border-gray-100 bg-white w-1/2 lg:w-1/5 rounded-lg"
           >
             <div className=" overflow-hidden ">

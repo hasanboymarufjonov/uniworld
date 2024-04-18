@@ -1,10 +1,10 @@
-import Hero from "../components/Hero";
-import Countries from "../components/Countries";
+import Hero from "../components/HomePage/Hero.jsx";
+import Countries from "../components/HomePage/Countries.jsx";
 import AdvisorApplication from "../components/HomePage/AdvisorApplication";
 import QualificationLevels from "../components/HomePage/QualificationLevels";
-import AssistanceCards from "../components/AssistanceCards";
-import FeaturedUniversitiesSlider from "../components/FeaturedUniversitiesSlider";
-import FullScholarshipUniversitiesSlider from "../components/FullScholarshipUniversitiesSlider";
+import AssistanceCards from "../components/HomePage/AssistanceCards.jsx";
+import FeaturedUniversitiesSlider from "../components/HomePage/FeaturedUniversitiesSlider.jsx";
+import FullScholarshipUniversitiesSlider from "../components/HomePage/FullScholarshipUniversitiesSlider.jsx";
 
 const HomePage = () => {
   return (

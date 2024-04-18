@@ -8,7 +8,11 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/common/countries/`);
+        const response = await fetch(`${BASE_URL}/common/countries/`, {
+          params: {
+            limit: 40
+          }
+        });
         const data = await response.json();
         setCountries(data.results);
         setLoading(false);

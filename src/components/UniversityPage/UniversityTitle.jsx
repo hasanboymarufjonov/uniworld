@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import BASE_URL from "../config";
+import BASE_URL from "../../config.js";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
 const UniversityTitle = ({ slug, onUniversityIdChange }) => {

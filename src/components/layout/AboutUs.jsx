@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import BASE_URL from "../config";
-import HtmlContentRenderer from "./HtmlContentRenderer";
+import BASE_URL from "../../config.js";
+import HtmlContentRenderer from "../shared/HtmlContentRenderer.jsx";
 
 const AboutUs = () => {
   const [aboutUsContent, setAboutUsContent] = useState({

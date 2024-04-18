@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import BASE_URL from "../config";
-import HtmlContentRenderer from "./HtmlContentRenderer";
+import BASE_URL from "../../config.js";
+import HtmlContentRenderer from "../shared/HtmlContentRenderer.jsx";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsFillHouseFill, BsFillHouseXFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function UniversityOverview({ slug }) {
   const [universityData, setUniversityData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const { universityName } = useParams();
+
   useEffect(() => {
     const fetchUniversityData = async () => {
       try {
         const response = await axios.get(
-          `${BASE_URL}/universities/${slug}/detail/`
+          `${BASE_URL}/universities/${universityName}/detail/`
         );
         setUniversityData(response.data);
         setLoading(false);

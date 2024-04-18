@@ -1,4 +1,4 @@
-import UniversityList from "../components/UniversityList";
+import UniversityList from "../components/SearchPage/UniversityList.jsx";
 
 const SearchPage = () => {
   return (

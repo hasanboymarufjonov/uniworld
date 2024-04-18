@@ -1,20 +1,20 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/layout/Header.jsx";
+import Footer from "./components/layout/Footer.jsx";
 
 import HomePage from "./pages/HomePage";
 import UniversityPage from "./pages/UniversityPage";
 import SearchPage from "./pages/SearchPage";
 
-import UniversityOverview from "./components/UniversityOverview";
-import UniversityCourses from "./components/UniversityCourses";
+import UniversityOverview from "./components/UniversityPage/UniversityOverview.jsx";
+import UniversityCourses from "./components/UniversityPage/UniversityCourses.jsx";
 
-import TermsAndConditions from "./components/TermsAndConditions";
-import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsAndConditions from "./components/common/TermsAndConditions.jsx";
+import PrivacyPolicy from "./components/common/PrivacyPolicy.jsx";
 
-import AboutUs from "./components/AboutUs";
+import AboutUs from "./components/layout/AboutUs.jsx";
 
 function App() {
   return (

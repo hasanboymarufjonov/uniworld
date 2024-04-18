@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BASE_URL from "../config";
+import BASE_URL from "../../config.js";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
@@ -23,7 +23,11 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
   useEffect(() => {
     const fetchRegions = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/common/regions/`);
+        const response = await axios.get(`${BASE_URL}/common/regions/`, {
+          params: {
+            limit: 20
+          }
+        });
         setRegions(response.data.results);
       } catch (error) {
         console.error("Error fetching regions:", error);

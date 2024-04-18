@@ -8,9 +8,9 @@ import {
   Collapse,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
 
-import logoImg from "../assets/logo3.png";
+import logoImg from "../../assets/logo3.png";
 
 export default function Header() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -71,7 +71,9 @@ export default function Header() {
             href="/"
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
+              <Link to="/">
             <img src={logoImg} className="w-32 my-2" alt="" />
+              </Link>
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>

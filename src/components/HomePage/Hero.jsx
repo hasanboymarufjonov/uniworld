@@ -24,7 +24,7 @@ const Hero = () => {
                 </h2>
               </div>
               <div class="flex justify-center items-center mt-8 ">
-                <h2 class="block font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
+                <h2 class="block  text-4xl md:text-5xl lg:text-[88px] ml-2">
                   For You{" "}
                 </h2>
                 <div className="flex">
@@ -46,8 +46,8 @@ const Hero = () => {
                   />
                 </div>
 
-                <h2 class="block font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                  in World
+                <h2 class="block  text-4xl md:text-5xl lg:text-[88px] ml-2">
+                   Worldwide
                 </h2>
               </div>
             </div>

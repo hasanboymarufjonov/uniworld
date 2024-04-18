@@ -35,10 +35,8 @@ const AdvisorApplication = () => {
         }
       );
       if (response.ok) {
-        // Data submitted successfully, close the modal
         setIsOpen(false);
       } else {
-        // Handle error
         console.error("Error submitting data");
       }
     } catch (error) {
@@ -76,13 +74,13 @@ const AdvisorApplication = () => {
                     First Name
                   </label>
                   <input
-                    type="text"
-                    id="first_name"
-                    name="first_name"
-                    value={formData.first_name}
-                    onChange={handleChange}
-                    placeholder="Enter your first name"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                      type="text"
+                      id="first_name"
+                      name="first_name"
+                      value={formData.first_name}
+                      onChange={handleChange}
+                      placeholder="Enter your first name"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -90,47 +88,47 @@ const AdvisorApplication = () => {
                     Last Name
                   </label>
                   <input
-                    type="text"
-                    id="last_name"
-                    name="last_name"
-                    value={formData.last_name}
-                    onChange={handleChange}
-                    placeholder="Enter your last name"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                      type="text"
+                      id="last_name"
+                      name="last_name"
+                      value={formData.last_name}
+                      onChange={handleChange}
+                      placeholder="Enter your last name"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label
-                    htmlFor="who_are_you"
-                    className="text-sm font-semibold"
-                  >
+                  <label htmlFor="who_are_you" className="text-sm font-semibold">
                     Who Are You
                   </label>
-                  <input
-                    type="text"
-                    id="who_are_you"
-                    name="who_are_you"
-                    value={formData.who_are_you}
-                    onChange={handleChange}
-                    placeholder="Describe yourself"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                  />
+                  <select
+                      id="who_are_you"
+                      name="who_are_you"
+                      value={formData.who_are_you}
+                      onChange={handleChange}
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                  >
+                    <option value="">Select</option>
+                    <option value="parent">Parent</option>
+                    <option value="student">Student</option>
+                  </select>
                 </div>
+
                 <div className="flex flex-col">
                   <label
-                    htmlFor="phone_number"
-                    className="text-sm font-semibold"
+                      htmlFor="phone_number"
+                      className="text-sm font-semibold"
                   >
                     Phone Number
                   </label>
                   <input
-                    type="tel"
-                    id="phone_number"
-                    name="phone_number"
-                    value={formData.phone_number}
-                    onChange={handleChange}
-                    placeholder="Enter your phone number"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                      type="tel"
+                      id="phone_number"
+                      name="phone_number"
+                      value={formData.phone_number}
+                      onChange={handleChange}
+                      placeholder="Enter your phone number"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -138,13 +136,13 @@ const AdvisorApplication = () => {
                     Country
                   </label>
                   <input
-                    type="text"
-                    id="country"
-                    name="country"
-                    value={formData.country}
-                    onChange={handleChange}
-                    placeholder="Enter your country"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                      type="text"
+                      id="country"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleChange}
+                      placeholder="Enter your country"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -152,36 +150,36 @@ const AdvisorApplication = () => {
                     Region
                   </label>
                   <input
-                    type="text"
-                    id="region"
-                    name="region"
-                    value={formData.region}
-                    onChange={handleChange}
-                    placeholder="Enter your region"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                      type="text"
+                      id="region"
+                      name="region"
+                      value={formData.region}
+                      onChange={handleChange}
+                      placeholder="Enter your region"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
                   />
                 </div>
                 <div className="py-2">
                   <p>
                     By clicking the Submit Application button, you agree to out{" "}
                     <Link
-                      to="/terms-and-conditions"
-                      className="underline text-secondary"
+                        to="/terms-and-conditions"
+                        className="underline text-secondary"
                     >
                       Terms & Conditions
                     </Link>{" "}
                     and{" "}
                     <Link
-                      to="/privacy-policy"
-                      className="underline text-secondary"
+                        to="/privacy-policy"
+                        className="underline text-secondary"
                     >
                       Privacy Policy
                     </Link>
                   </p>
                 </div>
                 <button
-                  type="submit"
-                  className="bg-secondary py-3 px-6 rounded-lg text-white"
+                    type="submit"
+                    className="bg-secondary py-3 px-6 rounded-lg text-white"
                 >
                   Submit
                 </button>

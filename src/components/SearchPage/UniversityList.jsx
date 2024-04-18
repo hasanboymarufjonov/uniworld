@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import BASE_URL from "../config";
-import Filters from "./SearchPage/Filters";
+import BASE_URL from "../../config.js";
+import Filters from "./Filters.jsx";
 
 const UniversityList = () => {
   const location = useLocation();
@@ -155,13 +155,13 @@ const UniversityList = () => {
                     </div>
                     <div className="flex">
                       <Link
-                        to={university.slug}
+                        to={`${university.slug}/overview`}
                         className="w-fit p-2 rounded-md bg-secondary text-white"
                       >
                         Learn more
                       </Link>
                       <Link
-                        to={university.slug}
+                        to={`${university.slug}/courses`}
                         className="border w-fit p-2 rounded-md border-secondary text-secondary ml-2"
                       >
                         {university.course_count} courses available

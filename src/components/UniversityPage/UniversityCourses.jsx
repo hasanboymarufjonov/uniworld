@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BASE_URL from "../config";
-import ApplyModal from "./ApplyModal";
-import UniversityTitle from "./UniversityTitle";
+import BASE_URL from "../../config.js";
+import ApplyModal from "./ApplyModal.jsx";
+import UniversityTitle from "./UniversityTitle.jsx";
+import { useParams } from "react-router-dom";
 
 function UniversityCourses({ slug }) {
   const [courses, setCourses] = useState([]);
@@ -15,13 +16,15 @@ function UniversityCourses({ slug }) {
   const [selectedSubject, setSelectedSubject] = useState("");
   const [selectedSubjectId, setSelectedSubjectId] = useState("");
 
+  const { universityName } = useParams();
+
   const [universityId, setUniversityId] = useState(null);
 
   useEffect(() => {
     const fetchUniversityCourses = async () => {
       try {
         const response = await axios.get(
-          `${BASE_URL}/universities/${slug}/courses/`,
+          `${BASE_URL}/universities/${universityName}/courses/`,
           {
             params: {
               specialty: selectedSubject,
@@ -100,7 +103,7 @@ function UniversityCourses({ slug }) {
     <>
       <div className="max-w-4xl mx-auto ">
         <UniversityTitle
-          slug={slug}
+          slug={universityName}
           onUniversityIdChange={updateUniversityId}
         />
         <h2 className="text-2xl font-semibold mb-4">Courses Offered</h2>
