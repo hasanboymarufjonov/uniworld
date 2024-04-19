@@ -30,7 +30,7 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="about-us" className="flex items-center">
+        <a href="/about-us" className="flex items-center">
           About us
         </a>
       </Typography>
