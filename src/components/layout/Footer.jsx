@@ -42,7 +42,7 @@ const Footer = () => {
 
           <div className="mt-3  md:flex justify-between">
             <div className=" gap-8 underline flex">
-              <Link to="/terms-and-condition">Terms & Conditions</Link>
+              <Link to="/terms-and-conditions">Terms & Conditions</Link>
               <Link to="/privacy-policy">Privacy Policy</Link>
               <p>Contact us</p>
               <Link to="/about-us">About us</Link>

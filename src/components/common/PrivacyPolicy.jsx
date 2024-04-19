@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BASE_URL from "../../config.js";
+import HtmlContentRenderer from "../shared/HtmlContentRenderer.jsx";
 
 const PrivacyPolicy = () => {
   const [policy, setPolicy] = useState("");
@@ -12,6 +13,7 @@ const PrivacyPolicy = () => {
         const data = await response.json();
         setPolicy(data.policy);
         setLoading(false);
+        console.log(data.policy);
       } catch (error) {
         console.error("Error fetching privacy policy: ", error);
       }
@@ -21,12 +23,12 @@ const PrivacyPolicy = () => {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
+    <div className="max-w-3xl mx-auto p-4">
       <h1 className="text-3xl font-semibold mb-4">Privacy Policy</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="prose" dangerouslySetInnerHTML={{ __html: policy }} />
+        <HtmlContentRenderer htmlContent={policy} />
       )}
     </div>
   );
