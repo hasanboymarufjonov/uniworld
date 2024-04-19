@@ -98,7 +98,7 @@ const UniversityList = () => {
           handleQualificationChange={handleQualificationChange}
         />
 
-        <div className="container mx-auto max-w-6xl bg-white py-8 rounded-lg lg:ml-5 lg:mt-0 mt-4 h-fit">
+        <div className="container mx-auto max-w-6xl bg-white py-0 md:py-4 md:rounded-lg lg:ml-5 lg:mt-0 h-fit">
           {loading ? (
             <p>Loading...</p>
           ) : universities.length === 0 ? (

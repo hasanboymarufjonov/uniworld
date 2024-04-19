@@ -57,7 +57,7 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
           <select
             value={selectedOption}
             onChange={handleOptionChange}
-            className="p-2 w-full mb-2 md:hidden"
+            className="p-2 w-full mb-2 md:hidden rounded-lg"
           >
             <option value="">All</option>
             {options.map((option) => (

@@ -10,8 +10,8 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
       try {
         const response = await fetch(`${BASE_URL}/common/countries/`, {
           params: {
-            limit: 40
-          }
+            limit: 40,
+          },
         });
         const data = await response.json();
         setCountries(data.results);
@@ -37,7 +37,7 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
         <select
           value={selectedCountry}
           onChange={handleChange}
-          className="p-2 w-full mb-2 mr-4 md:hidden"
+          className="p-2 w-full mb-2  md:hidden rounded-lg"
         >
           <option value="">All</option>
           {countries.map((country) => (
