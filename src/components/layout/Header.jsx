@@ -30,8 +30,8 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Guides{" "}
+        <a href="about-us" className="flex items-center">
+          About us
         </a>
       </Typography>
       <Typography
@@ -45,7 +45,7 @@ export default function Header() {
         </a>
       </Typography>
 
-      <Typography
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -54,7 +54,7 @@ export default function Header() {
         <a href="#" className="flex items-center">
           Articles
         </a>
-      </Typography>
+      </Typography> */}
 
       <Typography>
         <LanguageSwitcher />
@@ -71,9 +71,9 @@ export default function Header() {
             href="/"
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
-              <Link to="/">
-            <img src={logoImg} className="w-32 my-2" alt="" />
-              </Link>
+            <Link to="/">
+              <img src={logoImg} className="w-32 my-2" alt="" />
+            </Link>
           </Typography>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
