@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import BASE_URL from "../../config.js";
+import { useLocation, useParams } from "react-router-dom";
 import ApplyModal from "./ApplyModal.jsx";
 import UniversityTitle from "./UniversityTitle.jsx";
-import { useParams } from "react-router-dom";
+import BASE_URL from "../../config.js";
 
-function UniversityCourses({ slug }) {
+function UniversityCourses() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [qualifications, setQualifications] = useState([]);
   const [subjects, setSubjects] = useState([]);
-  const [selectedQualification, setSelectedQualification] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
-  const [selectedSubjectId, setSelectedSubjectId] = useState("");
+  const [selectedQualification, setSelectedQualification] = useState(
+    queryParams.get("qualification_level") || ""
+  );
+  const [selectedSubject, setSelectedSubject] = useState(
+    queryParams.get("specialty") || ""
+  );
 
   const { universityName } = useParams();
 
@@ -41,7 +47,7 @@ function UniversityCourses({ slug }) {
     };
 
     fetchUniversityCourses();
-  }, [slug, selectedQualification, selectedSubject]);
+  }, [universityName, selectedQualification, selectedSubject]);
 
   useEffect(() => {
     const fetchFilters = async () => {
@@ -67,27 +73,29 @@ function UniversityCourses({ slug }) {
     setSelectedCourse(courseId);
     setIsModalOpen(true);
   };
-
   const handleQualificationChange = (e) => {
-    setSelectedQualification(e.target.value);
+    const qualificationValue = e.target.value;
+    setSelectedQualification(qualificationValue);
+    queryParams.set("qualification_level", qualificationValue);
+
+    if (selectedSubject !== "") {
+      queryParams.set("specialty", selectedSubject);
+    }
+
+    window.history.replaceState({}, "", `${location.pathname}?${queryParams}`);
   };
 
   const handleSubjectChange = (e) => {
-    setSelectedSubject(e.target.value);
-  };
+    const subjectValue = e.target.value;
+    setSelectedSubject(subjectValue);
+    queryParams.set("specialty", subjectValue);
 
-  const filteredCourses = courses.filter((course) => {
-    // if (
-    //   selectedQualification &&
-    //   course.qualification !== selectedQualification
-    // ) {
-    //   return false;
-    // }
-    // if (selectedSubject && !course.subjects.includes(selectedSubject)) {
-    //   return false;
-    // }
-    return true;
-  });
+    if (selectedQualification !== "") {
+      queryParams.set("qualification_level", selectedQualification);
+    }
+
+    window.history.replaceState({}, "", `${location.pathname}?${queryParams}`);
+  };
 
   const updateUniversityId = (id) => {
     setUniversityId(id);
@@ -110,9 +118,6 @@ function UniversityCourses({ slug }) {
         <div className="flex justify-end mb-4 items-center">
           <p className="mr-2">Filter by</p>
           <div className="pr-2">
-            {/* <label className="block text-sm font-medium text-gray-700">
-              Qualification:
-            </label> */}
             <select
               value={selectedQualification}
               onChange={handleQualificationChange}
@@ -127,9 +132,6 @@ function UniversityCourses({ slug }) {
             </select>
           </div>
           <div className="pl-2">
-            {/* <label className="block text-sm font-medium text-gray-700">
-              Subject:
-            </label> */}
             <select
               value={selectedSubject}
               onChange={handleSubjectChange}
@@ -148,10 +150,10 @@ function UniversityCourses({ slug }) {
           <p>Loading...</p>
         ) : (
           <ul>
-            {filteredCourses.length === 0 ? (
+            {courses.length === 0 ? (
               <p>No courses available</p>
             ) : (
-              filteredCourses.map((course) => (
+              courses.map((course) => (
                 <li
                   key={course.id}
                   className="border-2 border-gray-100 rounded-xl bg-white p-4 mb-4"

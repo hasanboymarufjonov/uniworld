@@ -179,7 +179,7 @@ function UniversityOverview({ slug }) {
             <li key={specialty.id} className="">
               <div className="flex items-center">
                 <Link
-                  to={`/universities?country=&specialty=${specialty.id}&qualification_level=`}
+                  to={`/universities/${universityName}/courses?specialty=${specialty.id}&qualification_level=`}
                   className="text-base font-semibold bg-blue-50 p-2 rounded-lg"
                 >
                   {specialty.name}
