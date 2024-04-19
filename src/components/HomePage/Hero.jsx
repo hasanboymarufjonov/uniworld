@@ -23,31 +23,32 @@ const Hero = () => {
                   University
                 </h2>
               </div>
-              <div class="flex justify-center items-center mt-8 ">
-                <h2 class="block  text-4xl md:text-5xl lg:text-[88px] ml-2">
-                  For You{" "}
-                </h2>
+              <div class="lg:flex lg:justify-center items-center mt-8 ">
                 <div className="flex">
-                  {" "}
-                  <img
-                    src="https://www.easyuni.com/static/assets/img/anime-guy1.png"
-                    alt=""
-                    className="w-12 md:w-16 lg:w-24 ml-4"
-                  />
-                  <img
-                    src="https://www.easyuni.com/static/assets/img/anime-guy2.png"
-                    alt=""
-                    className="w-12 md:w-16 lg:w-24 -ml-4"
-                  />
-                  <img
-                    src="https://www.easyuni.com/static/assets/img/anime-guy3.png"
-                    alt=""
-                    className="w-12 md:w-16 lg:w-24 -ml-4"
-                  />
+                  <h2 class="block  text-4xl md:text-5xl lg:text-[88px] md:ml-2 ml-10">
+                    For You{" "}
+                  </h2>
+                  <div className="flex">
+                    {" "}
+                    <img
+                      src="https://www.easyuni.com/static/assets/img/anime-guy1.png"
+                      alt=""
+                      className="w-12 md:w-16 lg:w-24 ml-4"
+                    />
+                    <img
+                      src="https://www.easyuni.com/static/assets/img/anime-guy2.png"
+                      alt=""
+                      className="w-12 md:w-16 lg:w-24 -ml-4"
+                    />
+                    <img
+                      src="https://www.easyuni.com/static/assets/img/anime-guy3.png"
+                      alt=""
+                      className="w-12 md:w-16 lg:w-24 -ml-4"
+                    />
+                  </div>
                 </div>
-
-                <h2 class="block  text-4xl md:text-5xl lg:text-[88px] ml-2">
-                   Worldwide
+                <h2 class="block  text-4xl md:text-5xl lg:text-[88px] ml-2 md:mt-0 mt-8">
+                  Worldwide
                 </h2>
               </div>
             </div>

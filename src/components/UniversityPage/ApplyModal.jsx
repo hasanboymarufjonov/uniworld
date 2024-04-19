@@ -25,8 +25,8 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
       try {
         const response = await axios.get(`${BASE_URL}/common/regions/`, {
           params: {
-            limit: 20
-          }
+            limit: 20,
+          },
         });
         setRegions(response.data.results);
       } catch (error) {
@@ -153,7 +153,6 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               onChange={handleChange}
               placeholder="Email"
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-              required
             />
           </div>
           <div className="mb-4">

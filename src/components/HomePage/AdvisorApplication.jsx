@@ -66,7 +66,7 @@ const AdvisorApplication = () => {
 
       {/* Modal */}
       {isOpen && (
-        <div className="fixed z-50 inset-0 overflow-y-auto">
+        <div className="fixed z-50 inset-0 overflow-y-auto px-2">
           <div className="flex items-center justify-center min-h-screen">
             <div className="bg-white p-8 rounded-lg relative">
               <h2 className="text-2xl font-bold mb-4">Speak to Advisor</h2>
@@ -76,7 +76,10 @@ const AdvisorApplication = () => {
               >
                 &#10005;{" "}
               </button>
-              <form onSubmit={handleSubmit} className="space-y-4 w-[400px]">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 md:w-[400px] w-full"
+              >
                 <div className="flex flex-col">
                   <label htmlFor="first_name" className="text-sm font-semibold">
                     First Name
