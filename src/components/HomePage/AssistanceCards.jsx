@@ -6,7 +6,7 @@ const AssistanceCards = () => {
   return (
     <div className="bg-primary px-8">
       <div className="text-center">
-        <h2 className="text-3xl lg:text-4xl pt-10">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl pt-10">
           How UniWorld Can Help You
         </h2>
         <p className="text-base mt-1">
