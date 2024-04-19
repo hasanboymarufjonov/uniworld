@@ -179,7 +179,7 @@ function UniversityCourses() {
                   </div>
                   <div className="">
                     <p className="font-semibold">Intake Months </p>
-                    <div>
+                    <div className="md:block grid grid-cols-3">
                       {course.intake_months.map((month, index) => (
                         <span key={index} className="mr-2">
                           {month.charAt(0).toUpperCase() + month.slice(1)},
