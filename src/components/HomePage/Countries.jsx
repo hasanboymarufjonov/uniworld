@@ -33,13 +33,15 @@ const Countries = () => {
       ) : (
         <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8  py-2 mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-1">
-            {countries.map((country) => (
+            {countries.map((country, index) => (
               <Link
-                key={country.id}
+                key={index}
                 to={`/universities?country=${country.id}&specialty=&qualification_level=`}
-                className="bg-white border shadow-sm rounded-xl p-4 "
+                className={`bg-white border shadow-sm rounded-xl p-4 ${
+                  index === 2 ? "col-span-2" : "col-span-1"
+                }`}
               >
-                <p className="text-center"> {country.name}</p>
+                <p className="text-center">{country.name}</p>
               </Link>
             ))}
           </div>

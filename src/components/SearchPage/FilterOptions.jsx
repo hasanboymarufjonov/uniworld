@@ -83,13 +83,15 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
                 key={option.id || option}
                 className="inline-flex items-center mr-4 mb-2"
               >
-                <input
-                  type="radio"
-                  value={option.id || option}
-                  checked={selectedOption === (option.id || option)}
-                  onChange={() => onChange(option.id || option)}
-                  className="form-radio h-4 w-4 text-primary"
-                />
+                <div className="w-4 h-4">
+                  <input
+                    type="radio"
+                    value={option.id || option}
+                    checked={selectedOption === (option.id || option)}
+                    onChange={() => onChange(option.id || option)}
+                    className="form-radio h-4 w-4 text-primary "
+                  />
+                </div>
                 <span className="ml-2">
                   {formatQualificationLevel(option.name || option)}
                 </span>
