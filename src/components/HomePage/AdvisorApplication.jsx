@@ -131,8 +131,8 @@ const AdvisorApplication = () => {
                     className="border border-gray-300 rounded-md py-2 px-3 mt-1"
                   >
                     <option value="">Select</option>
-                    <option value="parent">Parent</option>
-                    <option value="student">Student</option>
+                    <option value="PARENT">Parent</option>
+                    <option value="STUDENT">Student</option>
                   </select>
                 </div>
 

@@ -14,6 +14,7 @@ const TermsAndConditions = () => {
         const data = await response.json();
         setTerms(data.terms);
         setLoading(false);
+        console.log(data.terms);
       } catch (error) {
         console.error("Error fetching terms and conditions: ", error);
       }
@@ -28,7 +29,7 @@ const TermsAndConditions = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className="prose" dangerouslySetInnerHTML={{ __html: terms }} />
+        <div dangerouslySetInnerHTML={{ __html: terms }} />
       )}
     </div>
   );
