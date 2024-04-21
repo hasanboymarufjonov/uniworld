@@ -38,7 +38,7 @@ const Countries = () => {
                 key={index}
                 to={`/universities?country=${country.id}&specialty=&qualification_level=`}
                 className={`bg-white border shadow-sm rounded-xl p-4 ${
-                  index === 2 ? "col-span-2" : "col-span-1"
+                  index === 2 ? "col-span-2 lg:col-span-1" : "col-span-1"
                 }`}
               >
                 <p className="text-center">{country.name}</p>
