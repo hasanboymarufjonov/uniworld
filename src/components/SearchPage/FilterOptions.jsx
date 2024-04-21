@@ -62,7 +62,7 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
             <option value="">All</option>
             {options.map((option) => (
               <option key={option.id || option} value={option.id || option}>
-                {option.name || option}
+                {formatQualificationLevel(option.name || option)}
               </option>
             ))}
           </select>

@@ -101,6 +101,27 @@ function UniversityCourses() {
     setUniversityId(id);
   };
 
+  const formatQualificationLevel = (level) => {
+    switch (level) {
+      case "foundation":
+        return "Foundation degree";
+      case "certificate":
+        return "Certificate";
+      case "bachelor":
+        return "Bachelor's degree";
+      case "diploma":
+        return "Diploma";
+      case "master":
+        return "Master's degree";
+      case "undergraduate":
+        return "Undergraduate";
+      case "postgraduate":
+        return "Postgraduate";
+      default:
+        return level;
+    }
+  };
+
   const studyTypeNames = {
     full_time: "Full-time",
     part_time: "Part-time",
@@ -126,7 +147,7 @@ function UniversityCourses() {
               <option value="">All</option>
               {qualifications.map((qualification) => (
                 <option key={qualification} value={qualification}>
-                  {qualification}
+                  {formatQualificationLevel(qualification)}
                 </option>
               ))}
             </select>
