@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BASE_URL from "../../config";
 import { Link } from "react-router-dom";
 import RegionSelector from "../shared/RegionSelector";
+import CountrySelector from "../shared/CountrySelector";
 
 const AdvisorApplication = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,13 @@ const AdvisorApplication = () => {
     setFormData((prevData) => ({
       ...prevData,
       region: regionId,
+    }));
+  };
+
+  const handleCountrySelect = (countryId) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      country: countryId,
     }));
   };
 
@@ -149,7 +157,7 @@ const AdvisorApplication = () => {
                   <label htmlFor="country" className="text-sm font-semibold">
                     Country
                   </label>
-                  <input
+                  {/* <input
                     type="text"
                     id="country"
                     name="country"
@@ -157,7 +165,8 @@ const AdvisorApplication = () => {
                     onChange={handleChange}
                     placeholder="Country of study"
                     className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                  />
+                  /> */}
+                  <CountrySelector onSelect={handleCountrySelect} />
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="region" className="text-sm font-semibold">
