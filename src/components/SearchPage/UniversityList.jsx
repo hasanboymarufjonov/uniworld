@@ -133,7 +133,7 @@ const UniversityList = () => {
                         <div className="flex">
                           <div>
                             {university.is_featured && (
-                              <p className="bg-primary text-secondary p-1 rounded-lg float-right flex ">
+                              <p className="bg-primary text-secondary px-2 py-1  rounded-lg float-right flex ">
                                 <span>•</span>{" "}
                                 <span className="ml-1">Featured</span>
                               </p>
@@ -141,7 +141,7 @@ const UniversityList = () => {
                           </div>
                           <div className="ml-2">
                             {university.full_scolarship && (
-                              <p className="bg-primary text-secondary p-1 rounded-lg float-right flex ">
+                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg float-right flex ">
                                 <span>•</span>{" "}
                                 <span className="ml-1">Free</span>
                               </p>
