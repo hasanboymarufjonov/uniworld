@@ -10,12 +10,18 @@ const Countries = () => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/common/countries/`);
-        const shuffledCountries = response.data.results.sort(
-          () => Math.random() - 0.5
-        );
-        const randomCountries = shuffledCountries.slice(0, 5);
-        setCountries(randomCountries);
+        const response = await axios.get(`${BASE_URL}/common/countries/`, {
+          params: {
+            is_top: true,
+            limit: 5,
+          },
+        });
+        // const shuffledCountries = response.data.results.sort(
+        //   () => Math.random() - 0.5
+        // );
+        // const randomCountries = shuffledCountries.slice(0, 5);
+        // setCountries(randomCountries);
+        setCountries(response.data.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching countries:", error);
