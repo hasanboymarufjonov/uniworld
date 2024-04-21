@@ -1,17 +1,16 @@
-import { useState } from "react";
 import { useParams, Outlet, Link } from "react-router-dom";
 
 const UniversityPage = () => {
   const { universityName } = useParams();
-  const [showOverview, setShowOverview] = useState(true);
 
-  const handleShowOverview = () => {
-    setShowOverview(true);
-  };
+  // Get the current URL
+  const url = window.location.href;
 
-  const handleShowCourses = () => {
-    setShowOverview(false);
-  };
+  // Extract the part of the URL after the university name
+  const urlAfterUniversity = url.split(`${universityName}/`)[1];
+
+  // Extract the first word before the first '?'
+  const firstWordAfterUniversityName = urlAfterUniversity.split("?")[0];
 
   return (
     <div className="min-h-[calc(100vh-220px)] bg-[#DFDFEC] -mt-4 py-10 px-4">
@@ -19,18 +18,20 @@ const UniversityPage = () => {
         <Link
           to={`/universities/${universityName}/overview`}
           className={`mx-2 px-4 py-2 ${
-            showOverview ? "border-b-4 border-secondary" : ""
+            firstWordAfterUniversityName === "overview"
+              ? "border-b-4 border-secondary"
+              : ""
           }`}
-          onClick={handleShowOverview}
         >
           Overview
         </Link>
         <Link
           to={`/universities/${universityName}/courses`}
           className={`mx-2 px-4 py-2 ${
-            showOverview ? "" : "border-b-4 border-secondary"
+            firstWordAfterUniversityName === "courses"
+              ? "border-b-4 border-secondary"
+              : ""
           }`}
-          onClick={handleShowCourses}
         >
           Courses
         </Link>
