@@ -123,7 +123,11 @@ function UniversityOverview({ slug }) {
             <p className="font-bold text-xl">
               {universityData.tuition_fee} per year
             </p>
-            <p>Estimated tuition fees as reported by the institution.</p>
+            {/* <p>Estimated tuition fees as reported by the institution.</p> */}
+            <p>
+              The tuition fee might be outdated, please confirm it with the
+              consultant.
+            </p>
           </div>
           <div className="p-4 lg:w-1/2 flex justify-around">
             <div>
