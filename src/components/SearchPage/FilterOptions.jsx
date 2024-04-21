@@ -68,7 +68,7 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
           </select>
           {/* Render radio buttons on larger screens */}
           <div className="hidden md:flex flex-wrap">
-            <label className="inline-flex items-center mr-4 mb-2">
+            <label className="inline-flex items-center mr-4 mb-2 w-full">
               <input
                 type="radio"
                 value=""
@@ -81,7 +81,7 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
             {options.map((option) => (
               <label
                 key={option.id || option}
-                className="inline-flex items-center mr-4 mb-2"
+                className="inline-flex items-center mr-4 mb-2 w-full"
               >
                 <div className="w-4 h-4">
                   <input
