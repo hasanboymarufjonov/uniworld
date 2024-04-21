@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import BASE_URL from "../../config.js";
 import HtmlContentRenderer from "../shared/HtmlContentRenderer.jsx";
+import { Link } from "react-router-dom";
+import { HiArrowLongRight } from "react-icons/hi2";
 
 const AboutUs = () => {
   const [aboutUsContent, setAboutUsContent] = useState({
@@ -41,9 +43,11 @@ const AboutUs = () => {
           <>
             <div className="md:flex items-center justify-between  rounded-lg w-full p-8">
               <div className="mb-8 mr-8">
-                <p className="bg-white w-fit text-xs md:text-sm rounded-xl border border-gray-700 text-gray-700 p-1">
-                  Search, compare and apply to universities in the World{" "}
-                </p>
+                <Link to="/universities">
+                  <p className="bg-white w-fit text-xs md:text-sm rounded-xl border border-gray-700 text-gray-700 p-1">
+                    Search, compare and apply to universities in the World{" "}
+                  </p>
+                </Link>
                 <h2 className="text-4xl md:text-5xl font-semibold mb-2 mt-2">
                   Find the Right University
                 </h2>
@@ -114,6 +118,16 @@ const AboutUs = () => {
                   {" "}
                   <HtmlContentRenderer htmlContent={aboutUsContent.cardBody} />
                 </p>
+                <div className="flex justify-center">
+                  <button className="bg-white text-[#111827] p-2 rounded text-base font-semibold mr-2">
+                    Contact us
+                  </button>
+                  <Link to="/universities">
+                    <button className=" p-2 rounded text-base font-semibold ml-2 flex items-center">
+                      Check universities <HiArrowLongRight className="ml-2" />
+                    </button>
+                  </Link>
+                </div>
               </div>
             )}
           </>
