@@ -161,7 +161,7 @@ const UniversityList = () => {
                         Learn more
                       </Link>
                       <Link
-                        to={`${university.slug}/courses`}
+                        to={`${university.slug}/courses?qualification_level=${selectedQualification}&specialty=${selectedSpecialty}`}
                         className="border w-fit p-2 rounded-md border-secondary text-secondary ml-2"
                       >
                         {university.course_count} courses available
