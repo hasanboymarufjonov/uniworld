@@ -200,10 +200,13 @@ function UniversityCourses() {
                   </div>
                   <div className="">
                     <p className="font-semibold">Intake Months </p>
-                    <div className="md:block grid grid-cols-3">
+                    <div className="md:block grid grid-cols-3 py-1">
                       {course.intake_months.map((month, index) => (
-                        <span key={index} className="mr-2">
-                          {month.charAt(0).toUpperCase() + month.slice(1)},
+                        <span
+                          key={index}
+                          className="mr-2 border border-black rounded p-1 text-center"
+                        >
+                          {month.charAt(0).toUpperCase() + month.slice(1)}
                         </span>
                       ))}
                     </div>
