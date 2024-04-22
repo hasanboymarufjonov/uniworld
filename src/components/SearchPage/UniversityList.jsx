@@ -9,6 +9,10 @@ const UniversityList = () => {
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
 
+  const [count, setCount] = useState(0);
+  const [limit, setLimit] = useState(9);
+  const [offset, setOffset] = useState(0);
+
   const [universities, setUniversities] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(
     queryParams.get("country") || ""
@@ -24,21 +28,38 @@ const UniversityList = () => {
 
   useEffect(() => {
     fetchUniversities();
-  }, [selectedCountry, selectedSpecialty, selectedQualification, searchTerm]);
+  }, [
+    selectedCountry,
+    selectedSpecialty,
+    selectedQualification,
+    searchTerm,
+    limit,
+    offset,
+  ]);
 
   const fetchUniversities = async () => {
     try {
       const params = new URLSearchParams();
+
       if (selectedCountry) params.append("country", selectedCountry);
       if (selectedSpecialty) params.append("specialty", selectedSpecialty);
       if (selectedQualification)
         params.append("qualification_level", selectedQualification);
       if (searchTerm) params.append("search", searchTerm);
+
+      params.append("limit", limit);
+      params.append("offset", offset);
+      queryParams.forEach((value, key) => {
+        params.append(key, value);
+      });
+
       const response = await fetch(
         `${BASE_URL}/universities/list/?${params.toString()}`
       );
+
       const data = await response.json();
       setUniversities(data.results);
+      setCount(data.count);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching universities: ", error);
@@ -72,6 +93,23 @@ const UniversityList = () => {
     navigate(
       `?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification_level=${selectedQualification}&search=${value}`
     );
+  };
+
+  const handlePageChange = (newOffset) => {
+    setOffset(newOffset);
+  };
+
+  const totalPages = Math.ceil(count / limit);
+  const currentPage = Math.floor(offset / limit) + 1;
+
+  const goToNextPage = () => {
+    const nextOffset = offset + limit;
+    setOffset(nextOffset);
+  };
+
+  const goToPreviousPage = () => {
+    const previousOffset = Math.max(offset - limit, 0);
+    setOffset(previousOffset);
   };
 
   return (
@@ -172,6 +210,49 @@ const UniversityList = () => {
               ))}
             </div>
           )}
+
+          {/* Pagination */}
+          <div className="pt-6 border-t-2 mx-4">
+            {totalPages > 1 && (
+              <ul className="flex justify-center">
+                <li>
+                  <button
+                    onClick={goToPreviousPage}
+                    disabled={currentPage === 1}
+                    className="mx-1 px-2"
+                  >
+                    Previous
+                  </button>
+                </li>
+                {[...Array(totalPages).keys()].map((pageNumber) => (
+                  <li key={pageNumber} className="mx-1">
+                    <Link
+                      to={`?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification_level=${selectedQualification}&search=${searchTerm}&limit=${limit}&offset=${
+                        pageNumber * limit
+                      }`}
+                      onClick={() => handlePageChange(pageNumber * limit)}
+                      className={`p-3${
+                        pageNumber + 1 === currentPage
+                          ? " border-t-2 border-secondary text-secondary"
+                          : ""
+                      }`}
+                    >
+                      {pageNumber + 1}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <button
+                    onClick={goToNextPage}
+                    disabled={currentPage === totalPages}
+                    className="mx-1 px-2"
+                  >
+                    Next
+                  </button>
+                </li>
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </div>
