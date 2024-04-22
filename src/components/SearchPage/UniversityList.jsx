@@ -3,6 +3,8 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import BASE_URL from "../../config.js";
 import Filters from "./Filters.jsx";
+import { HiArrowLongRight } from "react-icons/hi2";
+import { HiArrowLongLeft } from "react-icons/hi2";
 
 const UniversityList = () => {
   const location = useLocation();
@@ -212,16 +214,16 @@ const UniversityList = () => {
           )}
 
           {/* Pagination */}
-          <div className="pt-6 border-t-2 mx-4">
+          <div className="pt-6 border-t-2 mx-4 py-8">
             {totalPages > 1 && (
               <ul className="flex justify-center">
                 <li>
                   <button
                     onClick={goToPreviousPage}
                     disabled={currentPage === 1}
-                    className="mx-1 px-2"
+                    className="mx-1 px-2 flex items-center"
                   >
-                    Previous
+                    <HiArrowLongLeft className="mr-2" /> Previous
                   </button>
                 </li>
                 {[...Array(totalPages).keys()].map((pageNumber) => (
@@ -245,9 +247,9 @@ const UniversityList = () => {
                   <button
                     onClick={goToNextPage}
                     disabled={currentPage === totalPages}
-                    className="mx-1 px-2"
+                    className="mx-1 px-2 flex items-center"
                   >
-                    Next
+                    Next <HiArrowLongRight className="ml-2" />
                   </button>
                 </li>
               </ul>
