@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CountryFilter from "./CountryFilter";
 import FilterOptions from "./FilterOptions";
-import { FiFilter } from "react-icons/fi"; // Import the Filter icon from react-icons library
+import { FiFilter } from "react-icons/fi";
 
 const Filters = ({
   selectedCountry,
@@ -11,9 +11,8 @@ const Filters = ({
   selectedQualification,
   handleQualificationChange,
 }) => {
-  const [showFilters, setShowFilters] = useState(true); // State variable to track filter visibility
+  const [showFilters, setShowFilters] = useState(true);
 
-  // Function to toggle filter visibility
   const toggleFilters = () => {
     setShowFilters((prevState) => !prevState);
   };

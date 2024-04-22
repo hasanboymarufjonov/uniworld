@@ -41,7 +41,6 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
     fetchData();
   }, [paramName]);
 
-  // Function to handle option change
   const handleOptionChange = (event) => {
     onChange(event.target.value);
   };

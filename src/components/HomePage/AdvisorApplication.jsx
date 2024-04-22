@@ -39,7 +39,6 @@ const AdvisorApplication = () => {
 
   const handleSubmit = async () => {
     try {
-      // Call the API to submit the form data
       const response = await fetch(
         `${BASE_URL}/applications/advisor-application/create/`,
         {

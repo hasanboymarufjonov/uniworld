@@ -24,7 +24,6 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
     fetchCountries();
   }, []);
 
-  // Function to handle country change
   const handleChange = (event) => {
     handleCountryChange(event.target.value);
   };

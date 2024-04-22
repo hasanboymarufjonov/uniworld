@@ -3,13 +3,10 @@ import { useParams, Outlet, Link } from "react-router-dom";
 const UniversityPage = () => {
   const { universityName } = useParams();
 
-  // Get the current URL
   const url = window.location.href;
 
-  // Extract the part of the URL after the university name
   const urlAfterUniversity = url.split(`${universityName}/`)[1];
 
-  // Extract the first word before the first '?'
   const firstWordAfterUniversityName = urlAfterUniversity.split("?")[0];
 
   return (
