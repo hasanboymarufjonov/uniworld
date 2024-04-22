@@ -39,6 +39,7 @@ function UniversityCourses() {
           }
         );
         setCourses(response.data.results);
+        console.log(response.data.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching university courses:", error);
@@ -183,7 +184,14 @@ function UniversityCourses() {
                   <div className="flex justify-between mt-2">
                     <div>
                       <h4 className="font-semibold">Duration</h4>
-                      <p> {course.duration} years</p>
+                      <p>
+                        {Number.isInteger(parseFloat(course.duration))
+                          ? parseFloat(course.duration) % 1 === 0
+                            ? parseFloat(course.duration)
+                            : parseFloat(course.duration).toFixed(1)
+                          : course.duration}{" "}
+                        years
+                      </p>
                     </div>
                     <div>
                       <h4 className="font-semibold">Study Type</h4>
