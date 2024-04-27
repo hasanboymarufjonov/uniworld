@@ -102,15 +102,30 @@ const AboutUs = () => {
                 </div>
               </div>
             </div>
-
             <div className="mb-4 p-8">
               <h2 className="text-4xl font-semibold ">Our Services</h2>
-              <p className="m-8">
-                <HtmlContentRenderer htmlContent={aboutUsContent.ourServices} />{" "}
-              </p>
+              <div className=" flex-none md:flex">
+                <div className="md:w-2/3 md:pr-10">
+                  <p className="mt-8">
+                    <HtmlContentRenderer
+                      htmlContent={aboutUsContent.ourServices}
+                    />{" "}
+                  </p>
+                </div>
+                <div className="md:w-1/3 md:pl-20 mt-6">
+                  <p className="text-5xl font-bold">2024</p>
+                  <p className="py-4">Website Launched</p>
+                  <p className="text-5xl font-bold">20.000</p>
+                  <p className="py-4">
+                    Students & parents are planned to be served per year
+                  </p>
+                  <p className="text-5xl font-bold">100+</p>
+                  <p className="pt-4">Universities and colleges Worldwide</p>
+                </div>
+              </div>
             </div>
             {aboutUsContent.cardTitle && aboutUsContent.cardBody && (
-              <div className="rounded-lg p-20 bg-[#111827] text-white">
+              <div className="rounded-lg md:p-20 p-10 bg-[#111827] text-white">
                 <h2 className="text-xl md:text-4xl font-semibold mb-2 text-center">
                   {aboutUsContent.cardTitle}
                 </h2>
