@@ -17,6 +17,7 @@ import PrivacyPolicy from "./components/common/PrivacyPolicy.jsx";
 import AboutUs from "./components/layout/AboutUs.jsx";
 
 function App() {
+
   return (
     <>
       <Header />

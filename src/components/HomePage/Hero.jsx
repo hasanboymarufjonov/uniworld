@@ -1,6 +1,9 @@
-import React from "react";
+import { useTranslation } from "react-i18next";
+
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-primary">
       <div class="relative overflow-hidden">
@@ -8,11 +11,11 @@ const Hero = () => {
           <div class="max-w-7xl text-center mx-auto">
             <div class="mt-5 max-w-9xl">
               <h2 class="block text-4xl md:text-5xl lg:text-[88px] ">
-                Find The
+                {t("Find The")}
               </h2>
               <div class="flex justify-center items-center mt-8">
                 <h2 class="block font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                  Right
+                 {t("Right")} 
                 </h2>
                 <img
                   src="https://www.easyuni.com/static/assets/img/webp/anime-hat.webp"
@@ -20,13 +23,13 @@ const Hero = () => {
                   className="w-12 md:w-16 lg:w-32 ml-4"
                 />
                 <h2 class="block font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                  University
+                 {t("University")} 
                 </h2>
               </div>
               <div class="lg:flex lg:justify-center items-center mt-8 ">
                 <div className="flex">
                   <h2 class="block  text-4xl md:text-5xl lg:text-[88px] md:ml-2 ml-10">
-                    For You{" "}
+                    {t("For You")}
                   </h2>
                   <div className="flex">
                     {" "}
@@ -48,7 +51,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <h2 class="block  text-4xl md:text-5xl lg:text-[88px] ml-2 md:mt-0 mt-8">
-                  Worldwide
+                  {t("Worldwide")}
                 </h2>
               </div>
             </div>

@@ -2,16 +2,21 @@ import visaImg from "../../assets/Visa&Travel Advice.png";
 import applicationImg from "../../assets/Applicaiton guidance.png";
 import matchImg from "../../assets/operator.png";
 
+import { useTranslation } from "react-i18next";
+
+
 const AssistanceCards = () => {
+
+  const { t } = useTranslation();
+
   return (
     <div className="bg-primary px-8">
       <div className="text-center">
         <h2 className="text-2xl md:text-3xl lg:text-4xl pt-10">
-          How UniWorld Can Help You
+         {t("How UniWorld Can Help You")}
         </h2>
         <p className="text-base mt-1">
-          Our team of advisors is ready to support you at every step of your
-          study abroad journey.
+         {t("Our team of advisors is ready to support you at every step of your study abroad journey")} 
         </p>
       </div>
 

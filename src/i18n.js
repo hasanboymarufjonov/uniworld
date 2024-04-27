@@ -1,17 +1,17 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
-import heroTranslations from "./translations/heroTranslations.json";
+import mainTranslations from "./translations/mainTranslations.json"
 
 const translations = {
   en: {
     translation: {
-      ...heroTranslations.ru.translation,
+      ...mainTranslations.en.translation,
     },
   },
   uz: {
     translation: {
-      ...heroTranslations.uz.translation,
+      ...mainTranslations.uz.translation,
     },
   },
 };
