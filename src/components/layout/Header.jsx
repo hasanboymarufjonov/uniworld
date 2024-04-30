@@ -11,8 +11,11 @@ import { Link } from "react-router-dom";
 import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
 
 import logoImg from "../../assets/logo3.png";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+  const { t } = useTranslation();
+
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,7 +34,7 @@ export default function Header() {
         className="p-1 font-normal"
       >
         <a href="/about-us" className="flex items-center">
-          About us
+          {t("About us")}
         </a>
       </Typography>
       <Typography
@@ -41,7 +44,7 @@ export default function Header() {
         className="p-1 font-normal"
       >
         <a href="/universities" className="flex items-center">
-          Universities
+          {t("Universities")}
         </a>
       </Typography>
 

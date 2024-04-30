@@ -4,6 +4,11 @@ import HtmlContentRenderer from "../shared/HtmlContentRenderer.jsx";
 import { Link } from "react-router-dom";
 import { HiArrowLongRight } from "react-icons/hi2";
 
+import Img1 from "../../assets/aboutPage/1.jpeg";
+import Img2 from "../../assets/aboutPage/2.jpeg";
+import Img3 from "../../assets/aboutPage/3.jpeg";
+import Img4 from "../../assets/aboutPage/4.webp";
+
 const AboutUs = () => {
   const [aboutUsContent, setAboutUsContent] = useState({
     findUniversity: "",
@@ -16,7 +21,11 @@ const AboutUs = () => {
   useEffect(() => {
     const fetchAboutUsContent = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/common/about-us/`);
+        const response = await fetch(`${BASE_URL}/common/about-us/`, {
+          headers: {
+            "Accept-Language": "uz", // Specify the desired language code here
+          },
+        });
         const data = await response.json();
         setAboutUsContent({
           findUniversity: data.find_university,
@@ -62,34 +71,34 @@ const AboutUs = () => {
               <div className="flex">
                 <div className="mt-40 mr-5">
                   <img
-                    src="https://via.placeholder.com/150x250"
+                    src={Img1}
                     alt="University Image 1"
-                    className="rounded-lg"
+                    className="rounded-lg w-[150px] h-[150px] object-cover"
                   />
                 </div>
                 {/* Place the first two images together */}
                 <div className="mt-20">
                   <div className="mb-4">
                     <img
-                      src="https://via.placeholder.com/150x250"
+                      src={Img2}
                       alt="University Image 1"
-                      className="rounded-lg"
+                      className="rounded-lg w-[150px] h-[150px] object-cover"
                     />
                   </div>
                   <div className="mb-4">
                     <img
-                      src="https://via.placeholder.com/150x250"
+                      src={Img3}
                       alt="University Image 2"
-                      className="rounded-lg"
+                      className="rounded-lg w-[150px] h-[150px] object-cover"
                     />
                   </div>
                 </div>
                 <div className="ml-5">
                   <div className="mb-4">
                     <img
-                      src="https://via.placeholder.com/150x250"
+                      src={Img4}
                       alt="University Image 3"
-                      className="rounded-lg"
+                      className="rounded-lg w-[150px] h-[150px] object-cover"
                     />
                   </div>
                   <div className="mb-4">

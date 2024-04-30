@@ -8,8 +8,17 @@
         "Worldwide":"Worldwide",
         "How UniWorld Can Help You": "How UniWorld Can Help You",
         "Our team of advisors is ready to support you at every step of your study abroad journey": "Our team of advisors is ready to support you at every step of your study abroad journey",
-        "Фирма Dezintash был основан в 2017 году, и с этого момента старается для народа. В нашем команде собрались профессионалы и делают своё дело качественно. Наши препораты самые лучшие в Республике.": "Фирма Dezintash был основан в 2017 году, и с этого момента старается для народа. В нашем команде собрались профессионалы и делают своё дело качественно. Наши препораты самые лучшие в Республике.",
-        "Команда Dezintash делает всё качественно, безопасно и быстро. Вы можете вызвыть наших специалистов и избавиться от насекомых, грызунов или бактерии навсегда.": "Команда Dezintash делает всё качественно, безопасно и быстро. Вы можете вызвыть наших специалистов и избавиться от насекомых, грызунов или бактерии навсегда."
+        "About us":"About us",
+        "Universities":"Universities",
+        "Visa & Travel Advice":"Visa & Travel Advice",
+        "Get help after application, all the way to your first day at university.":"Get help after application, all the way to your first day at university.",
+        "Application Guidance" : "Application Guidance",
+        "We'll get you to the right place to start your application.":"We'll get you to the right place to start your application.",
+        "Find your best matches":"Find your best matches",     
+        "See programs that best match your eligibility and aspirations.":"See programs that best match your eligibility and aspirations.",
+        "Speak to Advisor":"Speak to Advisor",
+        "Featured Universities":"Featured Universities",
+        "Full Scholarships Universities":"Full Scholarships Universities"
       }
     },
     "uz": {
@@ -21,8 +30,18 @@
         "Worldwide": "toping",
         "How UniWorld Can Help You": "Biz sizga qanday yordam bera olamiz",
         "Our team of advisors is ready to support you at every step of your study abroad journey": "Bizning maslahatchilarimiz chet elda o'qish yo'lingizning har bir bosqichida sizni qo'llab-quvvatlashga tayyor",
-        "Фирма Dezintash был основан в 2017 году, и с этого момента старается для народа. В нашем команде собрались профессионалы и делают своё дело качественно. Наши препораты самые лучшие в Республике.": "“Dezintash” kompaniyasi 2017-yilda tashkil etilgan bo‘lib, shundan buyon xalq uchun mehnat qilib kelmoqda. Bizning jamoamiz professionallardan iborat va ular o'z ishlarini yuqori sifatli bajaradilar. Tayyorgarliklarimiz respublikada eng yaxshisi.",
-        "Команда Dezintash делает всё качественно, безопасно и быстро. Вы можете вызвыть наших специалистов и избавиться от насекомых, грызунов или бактерии навсегда.": "Dezintash jamoasi hamma narsani samarali, xavfsiz va tez bajaradi. Siz bizning mutaxassislarimizga qo'ng'iroq qilishingiz va hasharotlar, kemiruvchilar yoki bakteriyalardan abadiy qutulishingiz mumkin."
+        "About us":"Biz haqimizda",
+        "Universities":"Universitetlar",
+        "Visa & Travel Advice":"Viza va sayohat bo'yicha maslahat",
+        "Get help after application, all the way to your first day at university.":"Universitetdagi birinchi kuningizgacha ariza topshirganingizdan keyin yordam oling.",
+        "Application Guidance" : "Ariza bo'yicha yo'riqnoma",
+        "We'll get you to the right place to start your application.":"Biz sizni arizangizni boshlash uchun kerakli joyga olib boramiz.",
+        "Find your best matches":"Eng yaxshi mosliklaringizni toping",
+        "See programs that best match your eligibility and aspirations.":"Muvofiqligingiz va intilishlaringizga eng mos keladigan dasturlarni ko'ring.",
+        "Speak to Advisor":"Maslahatchi bilan gaplashing",
+        "Featured Universities":"Tanlangan universitetlar",
+        "Full Scholarships Universities":"To'liq stipendiyalik universitetlar"
+
       }
     }
   }

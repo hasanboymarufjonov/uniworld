@@ -4,19 +4,19 @@ import matchImg from "../../assets/operator.png";
 
 import { useTranslation } from "react-i18next";
 
-
 const AssistanceCards = () => {
-
   const { t } = useTranslation();
 
   return (
     <div className="bg-primary px-8">
       <div className="text-center">
         <h2 className="text-2xl md:text-3xl lg:text-4xl pt-10">
-         {t("How UniWorld Can Help You")}
+          {t("How UniWorld Can Help You")}
         </h2>
         <p className="text-base mt-1">
-         {t("Our team of advisors is ready to support you at every step of your study abroad journey")} 
+          {t(
+            "Our team of advisors is ready to support you at every step of your study abroad journey"
+          )}
         </p>
       </div>
 
@@ -29,11 +29,12 @@ const AssistanceCards = () => {
           />
           <div class="p-4 md:p-5">
             <h3 class="text-lg font-bold text-gray-800">
-              Visa & Travel Advice{" "}
+              {t("Visa & Travel Advice")}
             </h3>
             <p class="mt-1 text-gray-500">
-              Get help after application, all the way to your first day at
-              university.
+              {t(
+                "Get help after application, all the way to your first day at university."
+              )}
             </p>
           </div>
         </a>
@@ -46,10 +47,10 @@ const AssistanceCards = () => {
           />
           <div class="p-4 md:p-5">
             <h3 class="text-lg font-bold text-gray-800">
-              Application Guidance
+              {t("Application Guidance")}
             </h3>
             <p class="mt-1 text-gray-500">
-              We'll get you to the right place to start your application.
+              {t("We'll get you to the right place to start your application.")}
             </p>
           </div>
         </a>
@@ -61,10 +62,12 @@ const AssistanceCards = () => {
           />
           <div class="p-4 md:p-5">
             <h3 class="text-lg font-bold text-gray-800">
-              Find your best matches{" "}
+              {t("Find your best matches")}
             </h3>
             <p class="mt-1 text-gray-500">
-              See programs that best match your eligibility and aspirations.
+              {t(
+                "See programs that best match your eligibility and aspirations."
+              )}
             </p>
           </div>
         </a>

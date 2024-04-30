@@ -3,8 +3,10 @@ import BASE_URL from "../../config";
 import { Link } from "react-router-dom";
 import RegionSelector from "../shared/RegionSelector";
 import CountrySelector from "../shared/CountrySelector";
+import { useTranslation } from "react-i18next";
 
 const AdvisorApplication = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
     first_name: "",
@@ -65,7 +67,7 @@ const AdvisorApplication = () => {
         onClick={() => setIsOpen(true)}
         className="bg-secondary py-3 px-10 rounded-lg text-white"
       >
-        Speak to Advisor
+        {t("Speak to Advisor")}
       </button>
 
       {/* Darkened background overlay */}

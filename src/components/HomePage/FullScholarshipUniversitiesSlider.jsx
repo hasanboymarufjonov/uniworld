@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../../config.js";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function FullScholarshipUniversitiesSlider() {
+  const { t } = useTranslation();
   const [featuredUniversities, setFeaturedUniversities] = useState([]);
 
   useEffect(() => {
@@ -26,7 +28,9 @@ function FullScholarshipUniversitiesSlider() {
 
   return (
     <div className="overflow-hidden w-full lg:px-20 px-4 py-10 bg-primary">
-      <h2 className="text-2xl md:text-4xl">Full Scholarships Universities</h2>
+      <h2 className="text-2xl md:text-4xl">
+        {t("Full Scholarships Universities")}
+      </h2>
       <div className="flex flex-no-wrap gap-2 md:gap-4 w-full mt-10 overflow-x-auto pb-4">
         {featuredUniversities.map((university) => (
           <Link
