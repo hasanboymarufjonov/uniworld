@@ -1,48 +1,50 @@
 {
-    "en": {
-      "translation": {
-        "Find The": "Find The",
-        "Right": "Right",
-        "University": "University",
-        "For You":"For You",
-        "Worldwide":"Worldwide",
-        "How UniWorld Can Help You": "How UniWorld Can Help You",
-        "Our team of advisors is ready to support you at every step of your study abroad journey": "Our team of advisors is ready to support you at every step of your study abroad journey",
-        "About us":"About us",
-        "Universities":"Universities",
-        "Visa & Travel Advice":"Visa & Travel Advice",
-        "Get help after application, all the way to your first day at university.":"Get help after application, all the way to your first day at university.",
-        "Application Guidance" : "Application Guidance",
-        "We'll get you to the right place to start your application.":"We'll get you to the right place to start your application.",
-        "Find your best matches":"Find your best matches",     
-        "See programs that best match your eligibility and aspirations.":"See programs that best match your eligibility and aspirations.",
-        "Speak to Advisor":"Speak to Advisor",
-        "Featured Universities":"Featured Universities",
-        "Full Scholarships Universities":"Full Scholarships Universities"
-      }
-    },
-    "uz": {
-      "translation": {
-        "Find The": "O'zingizga",
-        "Right":"Mos",
-        "University":"Universitetni",
-        "For You" : "Biz bilan",
-        "Worldwide": "toping",
-        "How UniWorld Can Help You": "Biz sizga qanday yordam bera olamiz",
-        "Our team of advisors is ready to support you at every step of your study abroad journey": "Bizning maslahatchilarimiz chet elda o'qish yo'lingizning har bir bosqichida sizni qo'llab-quvvatlashga tayyor",
-        "About us":"Biz haqimizda",
-        "Universities":"Universitetlar",
-        "Visa & Travel Advice":"Viza va sayohat bo'yicha maslahat",
-        "Get help after application, all the way to your first day at university.":"Universitetdagi birinchi kuningizgacha ariza topshirganingizdan keyin yordam oling.",
-        "Application Guidance" : "Ariza bo'yicha yo'riqnoma",
-        "We'll get you to the right place to start your application.":"Biz sizni arizangizni boshlash uchun kerakli joyga olib boramiz.",
-        "Find your best matches":"Eng yaxshi mosliklaringizni toping",
-        "See programs that best match your eligibility and aspirations.":"Muvofiqligingiz va intilishlaringizga eng mos keladigan dasturlarni ko'ring.",
-        "Speak to Advisor":"Maslahatchi bilan gaplashing",
-        "Featured Universities":"Tanlangan universitetlar",
-        "Full Scholarships Universities":"To'liq stipendiyalik universitetlar"
-
-      }
+  "en": {
+    "translation": {
+      "Find The": "Find The",
+      "Right": "Right",
+      "University": "University",
+      "For You": "For You",
+      "Worldwide": "Worldwide",
+      "How UniWorld Can Help You": "How UniWorld Can Help You",
+      "Our team of advisors is ready to support you at every step of your study abroad journey": "Our team of advisors is ready to support you at every step of your study abroad journey",
+      "About us": "About us",
+      "Universities": "Universities",
+      "Visa & Travel Advice": "Visa & Travel Advice",
+      "Get help after application, all the way to your first day at university.": "Get help after application, all the way to your first day at university.",
+      "Application Guidance": "Application Guidance",
+      "We'll get you to the right place to start your application.": "We'll get you to the right place to start your application.",
+      "Find your best matches": "Find your best matches",
+      "See programs that best match your eligibility and aspirations.": "See programs that best match your eligibility and aspirations.",
+      "Speak to Advisor": "Speak to Advisor",
+      "Featured Universities": "Featured Universities",
+      "Full Scholarships Universities": "Full Scholarships Universities",
+      "One Click to Your Dream University": "One Click to Your Dream University",
+      "2024 All rights reserved.": "2024 All rights reserved."
+    }
+  },
+  "uz": {
+    "translation": {
+      "Find The": "O'zingizga",
+      "Right": "Mos",
+      "University": "Universitetni",
+      "For You": "Biz bilan",
+      "Worldwide": "toping",
+      "How UniWorld Can Help You": "Biz sizga qanday yordam bera olamiz",
+      "Our team of advisors is ready to support you at every step of your study abroad journey": "Bizning maslahatchilarimiz chet elda o'qish yo'lingizning har bir bosqichida sizni qo'llab-quvvatlashga tayyor",
+      "About us": "Biz haqimizda",
+      "Universities": "Universitetlar",
+      "Visa & Travel Advice": "Viza va sayohat bo'yicha maslahat",
+      "Get help after application, all the way to your first day at university.": "Universitetdagi birinchi kuningizgacha ariza topshirganingizdan keyin yordam oling.",
+      "Application Guidance": "Ariza bo'yicha yo'riqnoma",
+      "We'll get you to the right place to start your application.": "Biz sizni arizangizni boshlash uchun kerakli joyga olib boramiz.",
+      "Find your best matches": "Eng yaxshi mosliklaringizni toping",
+      "See programs that best match your eligibility and aspirations.": "Muvofiqligingiz va intilishlaringizga eng mos keladigan dasturlarni ko'ring.",
+      "Speak to Advisor": "Maslahatchi bilan gaplashing",
+      "Featured Universities": "Tanlangan universitetlar",
+      "Full Scholarships Universities": "To'liq stipendiyalik universitetlar",
+      "One Click to Your Dream University": "Orzuingizdagi universitetga bir qadam",
+      "2024 All rights reserved.": "2024 Barcha huquqlar himoyalangan."
     }
   }
-  
+}

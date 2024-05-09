@@ -1,7 +1,10 @@
 import { FaInstagram, FaYoutube, FaTelegram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <footer class="w-full py-4 px-4 sm:px-6 lg:px-8 mx-auto border-t border-gray-900 bottom-0">
@@ -16,7 +19,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="mt-3">
-            <p>One Click to Your Dream University</p>
+            <p>{t("One Click to Your Dream University")}</p>
           </div>
 
           <div class="mt-3 space-x-2">
@@ -47,7 +50,10 @@ const Footer = () => {
               <p>Contact us</p>
               <Link to="/about-us">About us</Link>
             </div>
-            <div className="mt-4 md:mt-0"> © 2024 All rights reserved.</div>
+            <div className="mt-4 md:mt-0">
+              {" "}
+              © {t("2024 All rights reserved.")}
+            </div>
           </div>
         </div>
       </footer>

@@ -8,6 +8,7 @@ import Img1 from "../../assets/aboutPage/1.jpeg";
 import Img2 from "../../assets/aboutPage/2.jpeg";
 import Img3 from "../../assets/aboutPage/3.jpeg";
 import Img4 from "../../assets/aboutPage/4.webp";
+import Img5 from "../../assets/aboutPage/5.jpeg";
 
 const AboutUs = () => {
   const [aboutUsContent, setAboutUsContent] = useState({
@@ -81,14 +82,14 @@ const AboutUs = () => {
                   <div className="mb-4">
                     <img
                       src={Img2}
-                      alt="University Image 1"
+                      alt="University Image 2"
                       className="rounded-lg w-[150px] h-[150px] object-cover"
                     />
                   </div>
                   <div className="mb-4">
                     <img
                       src={Img3}
-                      alt="University Image 2"
+                      alt="University Image 3"
                       className="rounded-lg w-[150px] h-[150px] object-cover"
                     />
                   </div>
@@ -97,15 +98,15 @@ const AboutUs = () => {
                   <div className="mb-4">
                     <img
                       src={Img4}
-                      alt="University Image 3"
+                      alt="University Image 4"
                       className="rounded-lg w-[150px] h-[150px] object-cover"
                     />
                   </div>
                   <div className="mb-4">
                     <img
-                      src="https://via.placeholder.com/150x250"
-                      alt="University Image 4"
-                      className="rounded-lg"
+                      src={Img5}
+                      alt="University Image 5"
+                      className="rounded-lg  w-[150px] h-[150px] object-cover"
                     />
                   </div>
                 </div>

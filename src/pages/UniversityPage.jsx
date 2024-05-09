@@ -16,7 +16,7 @@ const UniversityPage = () => {
           to={`/universities/${universityName}/overview`}
           className={`mx-2 px-4 py-2 ${
             firstWordAfterUniversityName === "overview"
-              ? "border-b-4 border-secondary"
+              ? "border-b-4 border-secondary" 
               : ""
           }`}
         >
