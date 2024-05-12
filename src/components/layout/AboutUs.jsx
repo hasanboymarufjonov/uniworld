@@ -19,12 +19,14 @@ const AboutUs = () => {
   });
   const [loading, setLoading] = useState(true);
 
+  const lang = localStorage.getItem("i18nextLng");
+
   useEffect(() => {
     const fetchAboutUsContent = async () => {
       try {
         const response = await fetch(`${BASE_URL}/common/about-us/`, {
           headers: {
-            "Accept-Language": "uz", // Specify the desired language code here
+            "Accept-Language": lang,
           },
         });
         const data = await response.json();
@@ -41,7 +43,7 @@ const AboutUs = () => {
     };
 
     fetchAboutUsContent();
-  }, []);
+  }, [lang]);
 
   return (
     <div className="bg-primary">
