@@ -11,6 +11,8 @@ const UniversityList = () => {
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
 
+  const lang = localStorage.getItem("i18nextLng");
+
   const [count, setCount] = useState(0);
   const [limit, setLimit] = useState(9);
   const [offset, setOffset] = useState(0);
@@ -56,7 +58,12 @@ const UniversityList = () => {
       });
 
       const response = await fetch(
-        `${BASE_URL}/universities/list/?${params.toString()}`
+        `${BASE_URL}/universities/list/?${params.toString()}`,
+        {
+          headers: {
+            "Accept-Language": lang,
+          },
+        }
       );
 
       const data = await response.json();

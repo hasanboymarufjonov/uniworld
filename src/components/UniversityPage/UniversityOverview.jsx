@@ -11,12 +11,18 @@ function UniversityOverview({ slug }) {
   const [loading, setLoading] = useState(true);
 
   const { universityName } = useParams();
+  const lang = localStorage.getItem("i18nextLng");
 
   useEffect(() => {
     const fetchUniversityData = async () => {
       try {
         const response = await axios.get(
-          `${BASE_URL}/universities/${universityName}/detail/`
+          `${BASE_URL}/universities/${universityName}/detail/`,
+          {
+            headers: {
+              "Accept-Language": lang,
+            },
+          }
         );
         setUniversityData(response.data);
         setLoading(false);

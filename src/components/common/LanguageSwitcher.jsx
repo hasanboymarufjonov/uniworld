@@ -9,7 +9,7 @@ function LanguageSwitcher() {
     const lang = event.target.value;
     i18n.changeLanguage(lang);
 
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (

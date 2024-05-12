@@ -8,6 +8,7 @@ import BASE_URL from "../../config.js";
 function UniversityCourses() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
+  const lang = localStorage.getItem("i18nextLng");
 
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,7 +32,11 @@ function UniversityCourses() {
       try {
         const response = await axios.get(
           `${BASE_URL}/universities/${universityName}/courses/`,
+
           {
+            headers: {
+              "Accept-Language": lang,
+            },
             params: {
               specialty: selectedSubject,
               qualification_level: selectedQualification,
@@ -194,11 +199,15 @@ function UniversityCourses() {
                       </p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-secondary">Study Type</h4>
+                      <h4 className="font-semibold text-secondary">
+                        Study Type
+                      </h4>
                       <p>{studyTypeNames[course.study_type]}</p>{" "}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-secondary">Tuition Fee</h4>
+                      <h4 className="font-semibold text-secondary">
+                        Tuition Fee
+                      </h4>
                       <p>
                         {" "}
                         $ {parseFloat(course.tuition_fee).toLocaleString()} per
@@ -207,7 +216,9 @@ function UniversityCourses() {
                     </div>
                   </div>
                   <div className="">
-                    <p className="font-semibold text-secondary">Intake Months </p>
+                    <p className="font-semibold text-secondary">
+                      Intake Months{" "}
+                    </p>
                     <div className="md:block grid grid-cols-3 py-1">
                       {course.intake_months.map((month, index) => (
                         <span
