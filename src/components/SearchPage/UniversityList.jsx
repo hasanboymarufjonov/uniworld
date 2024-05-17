@@ -5,8 +5,10 @@ import BASE_URL from "../../config.js";
 import Filters from "./Filters.jsx";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { HiArrowLongLeft } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
 
 const UniversityList = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
@@ -182,7 +184,7 @@ const UniversityList = () => {
                             {university.is_featured && (
                               <p className="bg-primary text-secondary px-2 py-1  rounded-lg float-right flex ">
                                 <span>•</span>{" "}
-                                <span className="ml-1">Featured</span>
+                                <span className="ml-1">{t("Featured")}</span>
                               </p>
                             )}
                           </div>
@@ -190,7 +192,7 @@ const UniversityList = () => {
                             {university.full_scolarship && (
                               <p className="bg-primary text-secondary px-2 py-1 rounded-lg float-right flex ">
                                 <span>•</span>{" "}
-                                <span className="ml-1">Free</span>
+                                <span className="ml-1">{t("Free")}</span>
                               </p>
                             )}
                           </div>
@@ -205,13 +207,13 @@ const UniversityList = () => {
                         to={`${university.slug}/overview`}
                         className="w-fit p-2 rounded-md bg-secondary text-white"
                       >
-                        Learn more
+                        {t("Learn more")}
                       </Link>
                       <Link
                         to={`${university.slug}/courses?qualification_level=${selectedQualification}&specialty=${selectedSpecialty}`}
                         className="border w-fit p-2 rounded-md border-secondary text-secondary ml-2"
                       >
-                        {university.course_count} courses available
+                        {university.course_count} {t("courses available ")}
                       </Link>
                     </div>
                   </div>
@@ -230,7 +232,7 @@ const UniversityList = () => {
                     disabled={currentPage === 1}
                     className="mx-1 px-2 flex items-center"
                   >
-                    <HiArrowLongLeft className="mr-2" /> Previous
+                    <HiArrowLongLeft className="mr-2" /> {t("Previous")}
                   </button>
                 </li>
                 {[...Array(totalPages).keys()].map((pageNumber) => (
@@ -256,7 +258,7 @@ const UniversityList = () => {
                     disabled={currentPage === totalPages}
                     className="mx-1 px-2 flex items-center"
                   >
-                    Next <HiArrowLongRight className="ml-2" />
+                    {t("Next")} <HiArrowLongRight className="ml-2" />
                   </button>
                 </li>
               </ul>

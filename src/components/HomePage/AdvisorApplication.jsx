@@ -78,7 +78,9 @@ const AdvisorApplication = () => {
         <div className="fixed z-50 inset-0 overflow-y-auto px-2">
           <div className="flex items-center justify-center min-h-screen">
             <div className="bg-white p-8 rounded-lg relative">
-              <h2 className="text-2xl font-bold mb-4">Speak to Advisor</h2>
+              <h2 className="text-2xl font-bold mb-4">
+                {t("Speak to Advisor")}
+              </h2>
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-4 right-4 text-black hover:text-gray-900 text-2xl"
@@ -91,7 +93,7 @@ const AdvisorApplication = () => {
               >
                 <div className="flex flex-col">
                   <label htmlFor="first_name" className="text-sm font-semibold">
-                    First Name
+                    {t("First Name")}
                   </label>
                   <input
                     type="text"
@@ -105,7 +107,7 @@ const AdvisorApplication = () => {
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="last_name" className="text-sm font-semibold">
-                    Last Name
+                    {t("Last Name")}
                   </label>
                   <input
                     type="text"
@@ -122,7 +124,7 @@ const AdvisorApplication = () => {
                     htmlFor="who_are_you"
                     className="text-sm font-semibold"
                   >
-                    Who Are You
+                    {t("Who Are You")}
                   </label>
                   <select
                     id="who_are_you"
@@ -142,7 +144,7 @@ const AdvisorApplication = () => {
                     htmlFor="phone_number"
                     className="text-sm font-semibold"
                   >
-                    Phone Number
+                    {t("Phone Number")}
                   </label>
                   <input
                     type="tel"
@@ -156,7 +158,7 @@ const AdvisorApplication = () => {
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="country" className="text-sm font-semibold">
-                    Country
+                    {t("Country")}
                   </label>
                   {/* <input
                     type="text"
@@ -171,7 +173,7 @@ const AdvisorApplication = () => {
                 </div>
                 <div className="flex flex-col">
                   <label htmlFor="region" className="text-sm font-semibold">
-                    Region
+                    {t("Region")}
                   </label>
                   <RegionSelector onSelect={handleRegionSelect} />
                 </div>
@@ -197,7 +199,7 @@ const AdvisorApplication = () => {
                   type="submit"
                   className="bg-secondary py-3 px-6 rounded-lg text-white"
                 >
-                  Submit
+                  {t("Submit")}
                 </button>
               </form>
             </div>

@@ -77,7 +77,19 @@
       "Living cost": "Yashash narxi",
       "The amount is indicated taking into account the average cost of food, accommodation, etc in": "Miqdor 2024 yil uchun oziq-ovqat, turar joy va hokazolarning o'rtacha narxini hisobga olgan holda ko'rsatilgan",
       "for 2024": "",
-      "Courses available": "Mavjud kurslar"
+      "Courses available": "Mavjud kurslar",
+      "First Name": "Ism",
+      "Last Name": "Familiya",
+      "Who Are You": "Kimsiz?",
+      "Phone Number": "Telefon raqam",
+      "Region": "Viloyat",
+      "Submit": "Arizani yuborish",
+      "Learn more": "Batafsil ma'lumot",
+      "courses available": "kurslar mavjud",
+      "Featured": "Tavsiya etilgan",
+      "Free": "Bepul",
+      "Next": "Keyingi",
+      "Previous": "Oldingi"
     }
   }
 }
