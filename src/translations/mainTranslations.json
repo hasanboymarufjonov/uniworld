@@ -64,7 +64,12 @@
       "Tuition Fee": "O'qish to'lovi",
       "Study Type": "O'quv turi",
       "Duration": "Davomiyligi",
-      "Courses Offered": "Taklif etilgan kurslar"
+      "Courses Offered": "Taklif etilgan kurslar",
+      "About": "Universitet haqida",
+      "Establishment Year": "Tashkil etilgan yili",
+      "Institution Type": "Tashkilot turi",
+      "Students Count": "Talabalar soni",
+      "Address": "Manzil"
     }
   }
 }

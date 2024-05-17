@@ -5,10 +5,12 @@ import HtmlContentRenderer from "../shared/HtmlContentRenderer.jsx";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsFillHouseFill, BsFillHouseXFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function UniversityOverview({ slug }) {
   const [universityData, setUniversityData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const { universityName } = useParams();
   const lang = localStorage.getItem("i18nextLng");
@@ -65,26 +67,32 @@ function UniversityOverview({ slug }) {
         />
       </div>
       <div className="bg-white px-6 py-8 rounded-lg mb-4">
-        <h3 className="text-3xl font-bold mb-6">About</h3>
+        <h3 className="text-3xl font-bold mb-6">{t("About")}</h3>
         <HtmlContentRenderer htmlContent={universityData.about} />
       </div>
       <div className="bg-white rounded-lg px-6 py-8 mb-4">
-        <h3 className="text-3xl font-bold mb-6">Overview</h3>
+        <h3 className="text-3xl font-bold mb-6">{t("Overview")}</h3>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <h2 className="text-lg font-semibold mb-2">Establishment Year</h2>
+            <h2 className="text-lg font-semibold mb-2">
+              {t("Establishment Year")}
+            </h2>
             <p>{universityData.establishment_year}</p>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-2">Institution Type</h2>
+            <h2 className="text-lg font-semibold mb-2">
+              {t("Institution Type")}
+            </h2>
             <p>{universityData.institution_type}</p>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-2">Students Count</h2>
+            <h2 className="text-lg font-semibold mb-2">
+              {t("Students Count")}
+            </h2>
             <p>{universityData.students_count}</p>
           </div>
           <div>
-            <h2 className="text-lg font-semibold mb-2">Address</h2>
+            <h2 className="text-lg font-semibold mb-2">{t("Address")}</h2>
             <p>{universityData.address}</p>
           </div>
         </div>
