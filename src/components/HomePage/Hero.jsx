@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ const Hero = () => {
               </h2>
               <div class="flex justify-center items-center mt-8">
                 <h2 class="block font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                 {t("Right")} 
+                  {t("Right")}
                 </h2>
                 <img
                   src="https://www.easyuni.com/static/assets/img/webp/anime-hat.webp"
@@ -23,7 +23,7 @@ const Hero = () => {
                   className="w-12 md:w-16 lg:w-32 ml-4"
                 />
                 <h2 class="block font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                 {t("University")} 
+                  {t("University")}
                 </h2>
               </div>
               <div class="lg:flex lg:justify-center items-center mt-8 ">
@@ -54,6 +54,11 @@ const Hero = () => {
                   {t("Worldwide")}
                 </h2>
               </div>
+              <Link to="/universities">
+                <button className="bg-secondary text-white px-20 py-2 rounded-md text-2xl mt-10">
+                  {t("Universities")}
+                </button>
+              </Link>
             </div>
           </div>
         </div>
