@@ -55,7 +55,7 @@ const Hero = () => {
                 </h2>
               </div>
               <Link to="/universities">
-                <button className="bg-secondary text-white px-20 py-2 rounded-md text-2xl mt-10">
+                <button className="bg-secondary text-white px-20 py-2 rounded-md text-xl mt-10 hover:opacity-90">
                   {t("Universities")}
                 </button>
               </Link>
