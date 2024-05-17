@@ -2,15 +2,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import BASE_URL from "../../config";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const QualificationLevels = () => {
   const [qualificationLevels, setQualificationLevels] = useState([]);
   const [loading, setLoading] = useState(true);
+  const lang = localStorage.getItem("i18nextLng");
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchQualificationLevels = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/universities/filters/`);
+        const response = await axios.get(`${BASE_URL}/universities/filters/`, {
+          headers: {
+            "Accept-Language": lang,
+          },
+        });
         const { qualification_levels } = response.data;
         setQualificationLevels(qualification_levels.slice(0, 3));
         setLoading(false);
@@ -43,7 +50,7 @@ const QualificationLevels = () => {
                 to={`/universities?country=&specialty=&qualification_level=diploma`}
                 className="text-center"
               >
-                Diploma
+                {t("Diploma")}
               </Link>
             </div>
             <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
@@ -51,7 +58,7 @@ const QualificationLevels = () => {
                 to={`/universities?country=&specialty=&qualification_level=bachelor`}
                 className="text-center"
               >
-                Bachelor's Degree
+                {t("Bachelor's Degree")}{" "}
               </Link>{" "}
             </div>
             <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center hidden lg:block text-center">
@@ -59,7 +66,8 @@ const QualificationLevels = () => {
                 to={`/universities?country=&specialty=&qualification_level=master`}
                 className="text-center"
               >
-                Master's Degree
+                {" "}
+                {t("Master's Degree")}{" "}
               </Link>{" "}
             </div>
           </div>
@@ -68,7 +76,7 @@ const QualificationLevels = () => {
               to={`/universities?country=&specialty=&qualification_level=master`}
               className="text-center"
             >
-              Master's Degree
+              {t("Master's Degree")}{" "}
             </Link>{" "}
           </div>
         </div>

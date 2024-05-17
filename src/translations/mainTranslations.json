@@ -25,7 +25,8 @@
       "Country": "Country",
       "All": "All",
       "Overview": "Overview",
-      "Courses": "Courses"
+      "Courses": "Courses",
+      "Diploma": "Diploma"
     }
   },
   "uz": {
@@ -54,7 +55,10 @@
       "Country": "Davlat",
       "All": "Hammasi",
       "Overview": "Umumiy ma'lumot",
-      "Courses": "Kurslar"
+      "Courses": "Kurslar",
+      "Diploma": "Diplom",
+      "Bachelor's Degree": "Bakalavr",
+      "Master's Degree": "Magistratura"
     }
   }
 }
