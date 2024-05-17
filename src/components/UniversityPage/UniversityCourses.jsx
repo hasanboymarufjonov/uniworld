@@ -4,11 +4,13 @@ import { useLocation, useParams } from "react-router-dom";
 import ApplyModal from "./ApplyModal.jsx";
 import UniversityTitle from "./UniversityTitle.jsx";
 import BASE_URL from "../../config.js";
+import { useTranslation } from "react-i18next";
 
 function UniversityCourses() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const lang = localStorage.getItem("i18nextLng");
+  const { t } = useTranslation();
 
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -144,7 +146,7 @@ function UniversityCourses() {
           slug={universityName}
           onUniversityIdChange={updateUniversityId}
         />
-        <h2 className="text-2xl font-semibold mb-4">Courses Offered</h2>
+        <h2 className="text-2xl font-semibold mb-4">{t("Courses Offered")}</h2>
         <div className="flex justify-end mb-4 items-center">
           <p className="mr-2">Filter by</p>
           <div className="pr-2">
@@ -191,7 +193,9 @@ function UniversityCourses() {
                   <h3 className="text-lg font-semibold">{course.name}</h3>
                   <div className="flex justify-between mt-2">
                     <div>
-                      <h4 className="font-semibold text-secondary">Duration</h4>
+                      <h4 className="font-semibold text-secondary">
+                        {t("Duration")}
+                      </h4>
                       <p>
                         {Number.isInteger(parseFloat(course.duration))
                           ? parseFloat(course.duration) % 1 === 0
@@ -203,13 +207,13 @@ function UniversityCourses() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary">
-                        Study Type
+                        {t("Study Type")}
                       </h4>
                       <p>{studyTypeNames[course.study_type]}</p>{" "}
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary">
-                        Tuition Fee
+                        {t("Tuition Fee")}
                       </h4>
                       <p>
                         {" "}
@@ -220,7 +224,7 @@ function UniversityCourses() {
                   </div>
                   <div className="">
                     <p className="font-semibold text-secondary">
-                      Intake Months{" "}
+                      {t("Intake Months")}{" "}
                     </p>
                     <div className="md:block grid grid-cols-3 py-1">
                       {course.intake_months.map((month, index) => (
@@ -237,7 +241,7 @@ function UniversityCourses() {
                     className="bg-secondary hover:bg-blue-800 text-white py-2 px-8 rounded-lg mt-2"
                     onClick={() => handleApply(course.id)}
                   >
-                    Apply Now
+                    {t("Apply Now")}
                   </button>
                 </li>
               ))

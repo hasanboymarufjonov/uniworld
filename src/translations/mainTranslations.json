@@ -58,7 +58,13 @@
       "Courses": "Kurslar",
       "Diploma": "Diplom",
       "Bachelor's Degree": "Bakalavr",
-      "Master's Degree": "Magistratura"
+      "Master's Degree": "Magistratura",
+      "Apply Now": "Ariza yuborish",
+      "Intake Months": "Qabul qilish oylari",
+      "Tuition Fee": "O'qish to'lovi",
+      "Study Type": "O'quv turi",
+      "Duration": "Davomiyligi",
+      "Courses Offered": "Taklif etilgan kurslar"
     }
   }
 }
