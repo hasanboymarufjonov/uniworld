@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import BASE_URL from "../../config";
+import { useTranslation } from "react-i18next";
 
 const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   const lang = localStorage.getItem("i18nextLng");
 
@@ -35,7 +38,7 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
 
   return (
     <div className="mb-4">
-      <h2 className="text-xl font-semibold mb-2">Country:</h2>
+      <h2 className="text-xl font-semibold mb-2">{t("Country")}:</h2>
       <div className="flex flex-wrap">
         {/* Render select element on mobile */}
         <select
@@ -60,7 +63,7 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
               onChange={() => handleCountryChange("")}
               className="form-radio h-4 w-4  text-primary"
             />
-            <span className="ml-2">All</span>
+            <span className="ml-2">{t("All")} </span>
           </label>
           {countries.map((country) => (
             <label

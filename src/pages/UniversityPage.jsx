@@ -1,7 +1,9 @@
 import { useParams, Outlet, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const UniversityPage = () => {
   const { universityName } = useParams();
+  const { t } = useTranslation();
 
   const url = window.location.href;
 
@@ -16,11 +18,11 @@ const UniversityPage = () => {
           to={`/universities/${universityName}/overview`}
           className={`mx-2 px-4 py-2 ${
             firstWordAfterUniversityName === "overview"
-              ? "border-b-4 border-secondary" 
+              ? "border-b-4 border-secondary"
               : ""
           }`}
         >
-          Overview
+          {t("Overview")}
         </Link>
         <Link
           to={`/universities/${universityName}/courses`}
@@ -30,7 +32,7 @@ const UniversityPage = () => {
               : ""
           }`}
         >
-          Courses
+          {t("Courses")}
         </Link>
       </div>
       <Outlet />
