@@ -6,11 +6,16 @@ import { Link } from "react-router-dom";
 const Countries = () => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const lang = localStorage.getItem("i18nextLng");
 
   useEffect(() => {
     const fetchCountries = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/common/countries/`, {
+          headers: {
+            "Accept-Language": lang,
+          },
+
           params: {
             is_top: true,
             limit: 5,
