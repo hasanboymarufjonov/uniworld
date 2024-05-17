@@ -5,10 +5,15 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const lang = localStorage.getItem("i18nextLng");
+
   useEffect(() => {
     const fetchCountries = async () => {
       try {
         const response = await fetch(`${BASE_URL}/common/countries/`, {
+          headers: {
+            "Accept-Language": lang,
+          },
           params: {
             limit: 40,
           },

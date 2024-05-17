@@ -26,10 +26,16 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const lang = localStorage.getItem("i18nextLng");
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/universities/filters/`);
+        const response = await fetch(`${BASE_URL}/universities/filters/`, {
+          headers: {
+            "Accept-Language": lang,
+          },
+        });
         const data = await response.json();
         setOptions(data[paramName]);
         setLoading(false);
