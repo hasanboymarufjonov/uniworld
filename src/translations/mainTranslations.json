@@ -69,7 +69,15 @@
       "Establishment Year": "Tashkil etilgan yili",
       "Institution Type": "Tashkilot turi",
       "Students Count": "Talabalar soni",
-      "Address": "Manzil"
+      "Address": "Manzil",
+      "Admissions": "Qabul oylari",
+      "Tuition and application fees": "O'qish va ariza to'lovlari",
+      "The tuition fee might be outdated, please confirm it with theconsultant.": "O'quv to'lovi eskirgan bo'lishi mumkin, iltimos buni maslahatchi bilan tasdiqlang.",
+      "Application fee": "Ariza toʻlovi",
+      "Living cost": "Yashash narxi",
+      "The amount is indicated taking into account the average cost of food, accommodation, etc in": "Miqdor 2024 yil uchun oziq-ovqat, turar joy va hokazolarning o'rtacha narxini hisobga olgan holda ko'rsatilgan",
+      "for 2024": "",
+      "Courses available": "Mavjud kurslar"
     }
   }
 }

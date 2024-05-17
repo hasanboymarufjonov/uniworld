@@ -98,7 +98,7 @@ function UniversityOverview({ slug }) {
         </div>
       </div>
       <div className="bg-white rounded-lg px-6 py-8 mb-4">
-        <h3 className="text-3xl font-bold mb-6">Admissions</h3>
+        <h3 className="text-3xl font-bold mb-6">{t("Admissions")} </h3>
 
         <div className="grid grid-cols-3 lg:grid-cols-6 mt-4">
           {[
@@ -130,7 +130,7 @@ function UniversityOverview({ slug }) {
       </div>
       <div className="bg-white rounded-lg px-6 py-8 mb-4">
         <h3 className="text-3xl font-bold mb-6">
-          Tuition and application fees
+          {t("Tuition and application fees")}
         </h3>
         <div className="flex flex-col md:flex-row">
           <div className="bg-blue-50 rounded-lg p-4 lg:w-1/2">
@@ -139,13 +139,14 @@ function UniversityOverview({ slug }) {
             </p>
             {/* <p>Estimated tuition fees as reported by the institution.</p> */}
             <p>
-              The tuition fee might be outdated, please confirm it with the
-              consultant.
+              {t(
+                "The tuition fee might be outdated, please confirm it with theconsultant."
+              )}
             </p>
           </div>
           <div className="p-4 lg:w-1/2 flex justify-around">
             <div>
-              <p className="font-semibold">Application fee</p>
+              <p className="font-semibold">{t("Application fee")}</p>
               <p>{universityData.application_fee}</p>
             </div>
 
@@ -156,7 +157,7 @@ function UniversityOverview({ slug }) {
           </div>
         </div>
         <div>
-          <h3 className="text-3xl font-bold my-6 ">Living cost</h3>
+          <h3 className="text-3xl font-bold my-6 ">{t("Living cost")}</h3>
           <div className="flex justify-between items-center flex-col md:flex-row">
             <div className="bg-blue-50 rounded-lg p-4 lg:w-1/2">
               <p className="font-bold text-xl">
@@ -164,9 +165,10 @@ function UniversityOverview({ slug }) {
               </p>
               <p>Average living cost in {universityData.country.name}</p>
               <p className="mt-2">
-                The amount is indicated taking into account the average cost of
-                food, accommodation, etc in {universityData.country.name} for
-                2024
+                {t(
+                  "The amount is indicated taking into account the average cost of food, accommodation, etc in"
+                )}{" "}
+                {universityData.country.name} {t("for 2024")}
               </p>
             </div>
             <div className="p-4 lg:w-1/2 flex justify-around items-center">
@@ -187,7 +189,7 @@ function UniversityOverview({ slug }) {
       </div>
       <div className="bg-white rounded-lg px-6 py-8">
         <h3 className="text-3xl font-bold mb-6">
-          Courses available
+          {t("Courses available")}
           <span className="bg-blue-50 p-2 rounded-lg ml-2 text-xl">
             {universityData.specialties.total_courses}
           </span>
