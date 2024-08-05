@@ -40,7 +40,8 @@ const AdvisorApplication = () => {
     }));
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch(
         `${BASE_URL}/applications/advisor-application/create/`,
