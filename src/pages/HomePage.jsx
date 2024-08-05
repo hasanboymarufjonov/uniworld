@@ -5,6 +5,8 @@ import QualificationLevels from "../components/HomePage/QualificationLevels";
 import AssistanceCards from "../components/HomePage/AssistanceCards.jsx";
 import FeaturedUniversitiesSlider from "../components/HomePage/FeaturedUniversitiesSlider.jsx";
 import FullScholarshipUniversitiesSlider from "../components/HomePage/FullScholarshipUniversitiesSlider.jsx";
+import CareerCompass from "../components/HomePage/CareerCompass.jsx";
+import EligibilityCheck from "../components/HomePage/EligibilityCheck.jsx";
 
 const HomePage = () => {
   return (
@@ -16,6 +18,8 @@ const HomePage = () => {
       </div>
       <AssistanceCards />
       <AdvisorApplication />
+      <CareerCompass />
+      <EligibilityCheck />
       <FeaturedUniversitiesSlider />
       <FullScholarshipUniversitiesSlider />
     </div>

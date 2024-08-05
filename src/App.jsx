@@ -16,10 +16,11 @@ import PrivacyPolicy from "./components/common/PrivacyPolicy.jsx";
 
 import AboutUs from "./components/layout/AboutUs.jsx";
 
-function App() {
+import PathwayAdvice from "./components/PathwayPage/PathwayAdvice.jsx";
 
+function App() {
   return (
-    <>
+    <div className="bg-primary">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -34,9 +35,13 @@ function App() {
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route
+          path="/pathway-advice/:pathway/detail"
+          element={<PathwayAdvice />}
+        />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

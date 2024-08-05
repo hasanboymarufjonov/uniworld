@@ -9,6 +9,7 @@ const AdvisorApplication = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
+    type: "SPEAK_WITH_ADVISOR",
     first_name: "",
     last_name: "",
     who_are_you: "",
@@ -85,40 +86,64 @@ const AdvisorApplication = () => {
                 onClick={() => setIsOpen(false)}
                 className="absolute top-4 right-4 text-black hover:text-gray-900 text-2xl"
               >
-                &#10005;{" "}
+                &#10005;
               </button>
               <form
                 onSubmit={handleSubmit}
-                className="space-y-4 md:w-[400px] w-full"
+                className="space-y-4 md:w-[600px] w-full"
               >
-                <div className="flex flex-col">
-                  <label htmlFor="first_name" className="text-sm font-semibold">
-                    {t("First Name")}
-                  </label>
-                  <input
-                    type="text"
-                    id="first_name"
-                    name="first_name"
-                    value={formData.first_name}
-                    onChange={handleChange}
-                    placeholder="Enter your first name"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="first_name"
+                      className="text-sm font-semibold"
+                    >
+                      {t("First Name")}
+                    </label>
+                    <input
+                      type="text"
+                      id="first_name"
+                      name="first_name"
+                      value={formData.first_name}
+                      onChange={handleChange}
+                      placeholder="Enter your first name"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="last_name"
+                      className="text-sm font-semibold"
+                    >
+                      {t("Last Name")}
+                    </label>
+                    <input
+                      type="text"
+                      id="last_name"
+                      name="last_name"
+                      value={formData.last_name}
+                      onChange={handleChange}
+                      placeholder="Enter your last name"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                    />
+                  </div>
                 </div>
-                <div className="flex flex-col">
-                  <label htmlFor="last_name" className="text-sm font-semibold">
-                    {t("Last Name")}
-                  </label>
-                  <input
-                    type="text"
-                    id="last_name"
-                    name="last_name"
-                    value={formData.last_name}
-                    onChange={handleChange}
-                    placeholder="Enter your last name"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                  />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col">
+                    <label htmlFor="country" className="text-sm font-semibold">
+                      {t("Country")}
+                    </label>
+                    <CountrySelector onSelect={handleCountrySelect} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="region" className="text-sm font-semibold">
+                      {t("Region")}
+                    </label>
+                    <RegionSelector onSelect={handleRegionSelect} />
+                  </div>
                 </div>
+
                 <div className="flex flex-col">
                   <label
                     htmlFor="who_are_you"
@@ -156,30 +181,10 @@ const AdvisorApplication = () => {
                     className="border border-gray-300 rounded-md py-2 px-3 mt-1"
                   />
                 </div>
-                <div className="flex flex-col">
-                  <label htmlFor="country" className="text-sm font-semibold">
-                    {t("Country")}
-                  </label>
-                  {/* <input
-                    type="text"
-                    id="country"
-                    name="country"
-                    value={formData.country}
-                    onChange={handleChange}
-                    placeholder="Country of study"
-                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                  /> */}
-                  <CountrySelector onSelect={handleCountrySelect} />
-                </div>
-                <div className="flex flex-col">
-                  <label htmlFor="region" className="text-sm font-semibold">
-                    {t("Region")}
-                  </label>
-                  <RegionSelector onSelect={handleRegionSelect} />
-                </div>
+                <hr />
                 <div className="py-2">
                   <p>
-                    By clicking the Submit Application button, you agree to out{" "}
+                    By clicking the Submit Application button, you agree to our{" "}
                     <Link
                       to="/terms-and-conditions"
                       className="underline text-secondary"
@@ -199,7 +204,7 @@ const AdvisorApplication = () => {
                   type="submit"
                   className="bg-secondary py-3 px-6 rounded-lg text-white"
                 >
-                  {t("Submit")}
+                  Submit
                 </button>
               </form>
             </div>
