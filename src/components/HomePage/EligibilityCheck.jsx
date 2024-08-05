@@ -1,11 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import BASE_URL from "../../config";
 import Specialties from "../shared/Specialties";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const EligibilityCheck = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -90,11 +92,19 @@ const EligibilityCheck = () => {
                 <label className="block text-sm font-medium mb-1">
                   Phone Number
                 </label>
-                <input
-                  {...register("phone_number", { required: true })}
-                  className="w-full px-3 py-2 border rounded-lg"
-                  type="text"
-                  required
+                <PhoneInput
+                  country={"uz"}
+                  value=""
+                  onChange={(phone) => setValue("phone_number", phone)}
+                  inputProps={{
+                    name: "phone_number",
+                    required: true,
+                  }}
+                  inputStyle={{
+                    width: "100%",
+                    borderRadius: "0.375rem",
+                    border: "1px solid rgb(238, 238, 238)",
+                  }}
                 />
               </div>
               <div className="mb-4">
