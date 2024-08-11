@@ -3,9 +3,9 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import api from "../../../app/api";
 import Filters from "./Filters.jsx";
-import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
-import { useTranslation } from "react-i18next";
+import Pagination from "../../shared/Pagination.jsx";
 import inboxIcon from "../../../assets/images/icons/inbox.png";
+import { useTranslation } from "react-i18next";
 
 const UniversityList = () => {
   const { t } = useTranslation();
@@ -149,11 +149,11 @@ const UniversityList = () => {
               <p>No universities found.</p>
             </div>
           ) : (
-            <div className="lg:px-4 ">
+            <div className="lg:px-4">
               {universities.map((university) => (
                 <div
                   key={university.id}
-                  className="bg-white flex flex-col sm:flex-row w-full mx-auto border-t-2 border-gray-200 px-5 "
+                  className="bg-white flex flex-col sm:flex-row w-full mx-auto border-t-2 border-gray-200 px-5"
                 >
                   <div className="sm:w-48 sm:h-36 sm:object-cover my-4">
                     <img
@@ -171,7 +171,7 @@ const UniversityList = () => {
                         <div className="flex">
                           <div>
                             {university.is_featured && (
-                              <p className="bg-primary text-secondary px-2 py-1  rounded-lg float-right flex ">
+                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
                                 <span>•</span>{" "}
                                 <span className="ml-1">{t("Featured")}</span>
                               </p>
@@ -179,7 +179,7 @@ const UniversityList = () => {
                           </div>
                           <div className="ml-2">
                             {university.full_scolarship && (
-                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg float-right flex ">
+                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
                                 <span>•</span>{" "}
                                 <span className="ml-1">{t("Free")}</span>
                               </p>
@@ -211,48 +211,18 @@ const UniversityList = () => {
             </div>
           )}
 
-          {/* Pagination */}
-          <div className="pt-6 border-t-2 mx-4 py-8">
-            {totalPages > 1 && (
-              <ul className="flex justify-center">
-                <li>
-                  <button
-                    onClick={goToPreviousPage}
-                    disabled={currentPage === 1}
-                    className="mx-1 px-2 flex items-center"
-                  >
-                    <HiArrowLongLeft className="mr-2" /> {t("Previous")}
-                  </button>
-                </li>
-                {[...Array(totalPages).keys()].map((pageNumber) => (
-                  <li key={pageNumber} className="mx-1">
-                    <Link
-                      to={`?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification_level=${selectedQualification}&search=${searchTerm}&limit=${limit}&offset=${
-                        pageNumber * limit
-                      }`}
-                      onClick={() => handlePageChange(pageNumber * limit)}
-                      className={`p-3${
-                        pageNumber + 1 === currentPage
-                          ? " border-t-2 border-secondary text-secondary"
-                          : ""
-                      }`}
-                    >
-                      {pageNumber + 1}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    onClick={goToNextPage}
-                    disabled={currentPage === totalPages}
-                    className="mx-1 px-2 flex items-center"
-                  >
-                    {t("Next")} <HiArrowLongRight className="ml-2" />
-                  </button>
-                </li>
-              </ul>
-            )}
-          </div>
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            limit={limit}
+            selectedCountry={selectedCountry}
+            selectedSpecialty={selectedSpecialty}
+            selectedQualification={selectedQualification}
+            searchTerm={searchTerm}
+            handlePageChange={handlePageChange}
+            goToNextPage={goToNextPage}
+            goToPreviousPage={goToPreviousPage}
+          />
         </div>
       </div>
     </div>
