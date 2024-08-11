@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import BASE_URL from "../../../app/config.js";
+import axios from "../../../app/api.js";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
 const UniversityTitle = ({ slug, onUniversityIdChange }) => {
@@ -10,9 +9,7 @@ const UniversityTitle = ({ slug, onUniversityIdChange }) => {
   useEffect(() => {
     const fetchUniversityData = async () => {
       try {
-        const response = await axios.get(
-          `${BASE_URL}/universities/${slug}/detail/`
-        );
+        const response = await axios.get(`/universities/${slug}/detail/`);
         setUniversityData(response.data);
         onUniversityIdChange(response.data.id);
         setLoading(false);
@@ -30,14 +27,12 @@ const UniversityTitle = ({ slug, onUniversityIdChange }) => {
   }
 
   return (
-    <div>
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-4">
-          <h1 className="text-3xl font-semibold mb-4">{universityData.name}</h1>
-          <div className="flex items-center">
-            <HiOutlineLocationMarker />
-            <p className="text-gray-600 ml-2">{universityData.country.name}</p>
-          </div>
+    <div className="max-w-4xl mx-auto">
+      <div className="mb-4">
+        <h1 className="text-3xl font-semibold mb-4">{universityData.name}</h1>
+        <div className="flex items-center">
+          <HiOutlineLocationMarker />
+          <p className="text-gray-600 ml-2">{universityData.country.name}</p>
         </div>
       </div>
     </div>

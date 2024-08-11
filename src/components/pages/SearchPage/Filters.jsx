@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CountryFilter from "./CountryFilter.jsx";
 import FilterOptions from "./FilterOptions.jsx";
 import { FiFilter } from "react-icons/fi";

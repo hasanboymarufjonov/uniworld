@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import BASE_URL from "../../../app/config.js";
+import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import axios from "../../../app/api.js";
 import HtmlContentRenderer from "../../shared/HtmlContentRenderer.jsx";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { BsFillHouseFill, BsFillHouseXFill } from "react-icons/bs";
-import { Link, useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function UniversityOverview({ slug }) {
   const [universityData, setUniversityData] = useState(null);
@@ -19,7 +19,7 @@ function UniversityOverview({ slug }) {
     const fetchUniversityData = async () => {
       try {
         const response = await axios.get(
-          `${BASE_URL}/universities/${universityName}/detail/`,
+          `/universities/${universityName}/detail/`,
           {
             headers: {
               "Accept-Language": lang,
@@ -28,7 +28,6 @@ function UniversityOverview({ slug }) {
         );
         setUniversityData(response.data);
         setLoading(false);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching university data:", error);
         setLoading(false);
@@ -36,7 +35,7 @@ function UniversityOverview({ slug }) {
     };
 
     fetchUniversityData();
-  }, [slug]);
+  }, [slug, universityName, lang]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -137,10 +136,9 @@ function UniversityOverview({ slug }) {
             <p className="font-bold text-xl">
               {universityData.tuition_fee} per year
             </p>
-            {/* <p>Estimated tuition fees as reported by the institution.</p> */}
             <p>
               {t(
-                "The tuition fee might be outdated, please confirm it with theconsultant."
+                "The tuition fee might be outdated, please confirm it with the consultant."
               )}
             </p>
           </div>
@@ -151,7 +149,7 @@ function UniversityOverview({ slug }) {
             </div>
 
             <div>
-              <p className="font-semibold">Visa fee</p>
+              <p className="font-semibold">{t("Visa fee")}</p>
               <p>{universityData.visa_fee}</p>
             </div>
           </div>
@@ -173,7 +171,7 @@ function UniversityOverview({ slug }) {
             </div>
             <div className="p-4 lg:w-1/2 flex justify-around items-center">
               <div>
-                <p className="font-semibold">Dormitory</p>
+                <p className="font-semibold">{t("Dormitory")}</p>
                 <p>{universityData.has_dormitory ? "Yes" : "No"}</p>
               </div>
               <div className="ml-12">

@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import BASE_URL from "../../../app/config.js";
+import api from "../../../app/api";
 import Filters from "./Filters.jsx";
-import { HiArrowLongRight } from "react-icons/hi2";
-import { HiArrowLongLeft } from "react-icons/hi2";
+import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import inboxIcon from "../../../assets/images/icons/inbox.png";
 
 const UniversityList = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
-
-  const lang = localStorage.getItem("i18nextLng");
 
   const [count, setCount] = useState(0);
   const [limit, setLimit] = useState(9);
@@ -59,16 +57,10 @@ const UniversityList = () => {
         params.append(key, value);
       });
 
-      const response = await fetch(
-        `${BASE_URL}/universities/list/?${params.toString()}`,
-        {
-          headers: {
-            "Accept-Language": lang,
-          },
-        }
+      const response = await api.get(
+        `/universities/list/?${params.toString()}`
       );
-
-      const data = await response.json();
+      const data = response.data;
       setUniversities(data.results);
       setCount(data.count);
       setLoading(false);
@@ -125,10 +117,7 @@ const UniversityList = () => {
 
   return (
     <div>
-      {" "}
       <div className="flex justify-center">
-        {" "}
-        {/* Center the input */}
         <input
           type="search"
           value={searchTerm}
@@ -153,7 +142,7 @@ const UniversityList = () => {
           ) : universities.length === 0 ? (
             <div className="flex flex-col items-center justify-center">
               <img
-                src="https://img.icons8.com/ios-filled/200/inbox.png"
+                src={inboxIcon}
                 alt="No results"
                 className="w-24 h-24 mb-4"
               />

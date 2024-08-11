@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import BASE_URL from "../../../app/config.js";
+import { useState, useEffect } from "react";
+import api from "../../../app/api";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
@@ -23,10 +22,8 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
   useEffect(() => {
     const fetchRegions = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/common/regions/`, {
-          params: {
-            limit: 20,
-          },
+        const response = await api.get("/common/regions/", {
+          params: { limit: 20 },
         });
         setRegions(response.data.results);
       } catch (error) {
@@ -55,7 +52,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
         university: universityId,
         course: courseId,
       };
-      await axios.post(`${BASE_URL}/applications/create/`, updatedFormData);
+      await api.post("/applications/create/", updatedFormData);
       setLoading(false);
       setFormData({
         university: "",
@@ -73,12 +70,13 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
       toast.success("Application submitted!");
     } catch (error) {
       console.error("Error submitting application:", error);
+      setLoading(false);
     }
   };
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-full flex items-center justify-center ${
+      className={`fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 ${
         isOpen ? "block" : "hidden"
       }`}
     >
@@ -186,7 +184,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
           </div>
           <div className="py-2">
             <p>
-              By clicking the Submit Application button, you agree to out{" "}
+              By clicking the Submit Application button, you agree to our{" "}
               <Link
                 to="/terms-and-conditions"
                 className="underline text-secondary"

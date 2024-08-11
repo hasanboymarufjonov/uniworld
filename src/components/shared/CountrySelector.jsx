@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import BASE_URL from "../../app/config.js";
+import axios from "../../app/api.js";
 
 const CountrySelector = ({ onSelect }) => {
   const [countries, setCountries] = useState([]);
@@ -8,9 +8,8 @@ const CountrySelector = ({ onSelect }) => {
   useEffect(() => {
     const fetchCountries = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/common/countries/?limit=50`);
-        const data = await response.json();
-        setCountries(data.results);
+        const response = await axios.get(`/common/countries/?limit=50`);
+        setCountries(response.data.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching countries: ", error);

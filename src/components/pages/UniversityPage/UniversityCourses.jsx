@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import api from "../../../app/api";
 import { useLocation, useParams } from "react-router-dom";
 import ApplyModal from "./ApplyModal.jsx";
 import UniversityTitle from "./UniversityTitle.jsx";
-import BASE_URL from "../../../app/config.js";
 import { useTranslation } from "react-i18next";
 
 function UniversityCourses() {
@@ -32,9 +31,8 @@ function UniversityCourses() {
   useEffect(() => {
     const fetchUniversityCourses = async () => {
       try {
-        const response = await axios.get(
-          `${BASE_URL}/universities/${universityName}/courses/`,
-
+        const response = await api.get(
+          `/universities/${universityName}/courses/`,
           {
             headers: {
               "Accept-Language": lang,
@@ -46,7 +44,6 @@ function UniversityCourses() {
           }
         );
         setCourses(response.data.results);
-        console.log(response.data.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching university courses:", error);
@@ -60,7 +57,7 @@ function UniversityCourses() {
   useEffect(() => {
     const fetchFilters = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/universities/filters/`, {
+        const response = await api.get(`/universities/filters/`, {
           headers: {
             "Accept-Language": lang,
           },
@@ -84,6 +81,7 @@ function UniversityCourses() {
     setSelectedCourse(courseId);
     setIsModalOpen(true);
   };
+
   const handleQualificationChange = (e) => {
     const qualificationValue = e.target.value;
     setSelectedQualification(qualificationValue);
@@ -141,7 +139,7 @@ function UniversityCourses() {
 
   return (
     <>
-      <div className="max-w-4xl mx-auto ">
+      <div className="max-w-4xl mx-auto">
         <UniversityTitle
           slug={universityName}
           onUniversityIdChange={updateUniversityId}
@@ -209,14 +207,13 @@ function UniversityCourses() {
                       <h4 className="font-semibold text-secondary">
                         {t("Study Type")}
                       </h4>
-                      <p>{studyTypeNames[course.study_type]}</p>{" "}
+                      <p>{studyTypeNames[course.study_type]}</p>
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary">
                         {t("Tuition Fee")}
                       </h4>
                       <p>
-                        {" "}
                         $ {parseFloat(course.tuition_fee).toLocaleString()} per
                         year
                       </p>
@@ -224,7 +221,7 @@ function UniversityCourses() {
                   </div>
                   <div className="">
                     <p className="font-semibold text-secondary">
-                      {t("Intake Months")}{" "}
+                      {t("Intake Months")}
                     </p>
                     <div className="md:block grid grid-cols-3 py-1">
                       {course.intake_months.map((month, index) => (

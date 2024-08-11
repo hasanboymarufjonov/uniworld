@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import BASE_URL from "../../../app/config.js";
+import api from "../../../app/api";
 
 const formatQualificationLevel = (level) => {
   switch (level) {
@@ -26,18 +26,11 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
   const [options, setOptions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const lang = localStorage.getItem("i18nextLng");
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/universities/filters/`, {
-          headers: {
-            "Accept-Language": lang,
-          },
-        });
-        const data = await response.json();
-        setOptions(data[paramName]);
+        const response = await api.get(`/universities/filters/`);
+        setOptions(response.data[paramName]);
         setLoading(false);
       } catch (error) {
         console.error(`Error fetching ${paramName}: `, error);
@@ -94,7 +87,7 @@ const FilterOptions = ({ paramName, labelText, onChange, selectedOption }) => {
                     value={option.id || option}
                     checked={selectedOption === (option.id || option)}
                     onChange={() => onChange(option.id || option)}
-                    className="form-radio h-4 w-4 text-primary "
+                    className="form-radio h-4 w-4 text-primary"
                   />
                 </div>
                 <span className="ml-2">

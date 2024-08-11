@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import BASE_URL from "../../app/config.js";
+import axios from "../../app/api.js";
 
 const RegionSelector = ({ onSelect }) => {
   const [regions, setRegions] = useState([]);
@@ -8,9 +8,8 @@ const RegionSelector = ({ onSelect }) => {
   useEffect(() => {
     const fetchRegions = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/common/regions/?limit=20`);
-        const data = await response.json();
-        setRegions(data.results);
+        const response = await axios.get(`/common/regions/?limit=20`);
+        setRegions(response.data.results);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching regions: ", error);

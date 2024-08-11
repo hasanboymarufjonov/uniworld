@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import BASE_URL from "../../app/config.js";
+import axios from "../../app/api.js";
 
 const Specialties = ({ register }) => {
   const [specialties, setSpecialties] = useState([]);
@@ -10,7 +9,7 @@ const Specialties = ({ register }) => {
   useEffect(() => {
     const fetchSpecialties = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/universities/filters/`);
+        const response = await axios.get(`/universities/filters/`);
         setSpecialties(response.data.specialties);
       } catch (err) {
         setError("Failed to load specialties. Please try again.");

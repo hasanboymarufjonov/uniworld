@@ -3,10 +3,9 @@ import BASE_URL from "./config.js";
 
 const lang = localStorage.getItem("i18nextLng");
 
-// Create an Axios instance with a base URL
 const api = axios.create({
     baseURL: BASE_URL,
-    timeout: 10000, // Optional: set a timeout for requests
+    timeout: 10000, 
     headers: {
         'Content-Type': 'application/json',
         "Accept-Language": lang,
@@ -14,13 +13,11 @@ const api = axios.create({
 });
 
 
-// Response interceptor for global error handling or transformation
 api.interceptors.response.use(
     (response) => {
         return response;
     },
     (error) => {
-        // Global error handling
         console.error("API error:", error);
         return Promise.reject(error);
     }

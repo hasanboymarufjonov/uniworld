@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import api from "../../app/api"; // Import the custom Axios instance
+import api from "../../app/api";
 
 const TermsAndConditions = () => {
   const [terms, setTerms] = useState("");
@@ -8,7 +8,7 @@ const TermsAndConditions = () => {
   useEffect(() => {
     const fetchTerms = async () => {
       try {
-        const response = await api.get('/common/terms-and-conditions/');
+        const response = await api.get("/common/terms-and-conditions/");
         setTerms(response.data.terms);
         setLoading(false);
         console.log(response.data.terms);
@@ -22,14 +22,14 @@ const TermsAndConditions = () => {
   }, []);
 
   return (
-      <div className="max-w-3xl mx-auto p-6">
-        <h1 className="text-3xl font-semibold mb-4">Terms and Conditions</h1>
-        {loading ? (
-            <p>Loading...</p>
-        ) : (
-            <div dangerouslySetInnerHTML={{ __html: terms }} />
-        )}
-      </div>
+    <div className="max-w-3xl mx-auto p-6">
+      <h1 className="text-3xl font-semibold mb-4">Terms and Conditions</h1>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div dangerouslySetInnerHTML={{ __html: terms }} />
+      )}
+    </div>
   );
 };
 
