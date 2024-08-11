@@ -1,27 +1,25 @@
-import Hero from "../components/HomePage/Hero.jsx";
-import Countries from "../components/HomePage/Countries.jsx";
-import AdvisorApplication from "../components/HomePage/AdvisorApplication";
-import QualificationLevels from "../components/HomePage/QualificationLevels";
-import AssistanceCards from "../components/HomePage/AssistanceCards.jsx";
-import FeaturedUniversitiesSlider from "../components/HomePage/FeaturedUniversitiesSlider.jsx";
-import FullScholarshipUniversitiesSlider from "../components/HomePage/FullScholarshipUniversitiesSlider.jsx";
-import CareerCompass from "../components/HomePage/CareerCompass.jsx";
-import EligibilityCheck from "../components/HomePage/EligibilityCheck.jsx";
+import Hero from "../components/pages/HomePage/Hero.jsx";
+import Countries from "../components/pages/HomePage/Countries.jsx";
+import AdvisorApplication from "../components/pages/HomePage/AdvisorApplication";
+import QualificationLevels from "../components/pages/HomePage/QualificationLevels";
+import AssistanceCards from "../components/pages/HomePage/AssistanceCards.jsx";
+import FeaturedUniversitiesSlider from "../components/pages/HomePage/FeaturedUniversitiesSlider.jsx";
+import FullScholarshipUniversitiesSlider from "../components/pages/HomePage/FullScholarshipUniversitiesSlider.jsx";
+import CareerCompass from "../components/pages/HomePage/CareerCompass.jsx";
+import EligibilityCheck from "../components/pages/HomePage/EligibilityCheck.jsx";
 
 const HomePage = () => {
   return (
-    <div className="">
-      <Hero />
-      <div className="py-10 bg-primary">
+    <div>
+        <Hero />
         <Countries />
         <QualificationLevels />
-      </div>
-      <AssistanceCards />
-      <AdvisorApplication />
-      <CareerCompass />
-      <EligibilityCheck />
-      <FeaturedUniversitiesSlider />
-      <FullScholarshipUniversitiesSlider />
+        <AssistanceCards />
+        <AdvisorApplication />
+        <CareerCompass />
+        <EligibilityCheck />
+        <FeaturedUniversitiesSlider />
+        <FullScholarshipUniversitiesSlider />
     </div>
   );
 };

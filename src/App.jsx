@@ -1,22 +1,15 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
-
 import Header from "./components/layout/Header.jsx";
 import Footer from "./components/layout/Footer.jsx";
-
 import HomePage from "./pages/HomePage";
 import UniversityPage from "./pages/UniversityPage";
 import SearchPage from "./pages/SearchPage";
-
-import UniversityOverview from "./components/UniversityPage/UniversityOverview.jsx";
-import UniversityCourses from "./components/UniversityPage/UniversityCourses.jsx";
-
+import UniversityOverview from "./components/pages/UniversityPage/UniversityOverview.jsx";
+import UniversityCourses from "./components/pages/UniversityPage/UniversityCourses.jsx";
 import TermsAndConditions from "./components/common/TermsAndConditions.jsx";
 import PrivacyPolicy from "./components/common/PrivacyPolicy.jsx";
-
-import AboutUs from "./components/layout/AboutUs.jsx";
-
-import PathwayAdvice from "./components/PathwayPage/PathwayAdvice.jsx";
+import AboutUs from "./components/pages/AboutPage/AboutUs.jsx";
+import PathwayAdvice from "./components/pages/PathwayPage/PathwayAdvice.jsx";
 
 function App() {
   return (

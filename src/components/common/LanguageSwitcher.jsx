@@ -1,6 +1,4 @@
 import { useTranslation } from "react-i18next";
-import ukFlag from "../../assets/language/uk.png";
-import uzFlag from "../../assets/language/uz.png";
 
 function LanguageSwitcher() {
   const { t, i18n } = useTranslation();

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import BASE_URL from "../../config";
+import BASE_URL from "../../app/config.js";
 
 const RegionSelector = ({ onSelect }) => {
   const [regions, setRegions] = useState([]);

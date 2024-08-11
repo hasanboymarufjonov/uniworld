@@ -10,7 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
 
-import logoImg from "../../assets/logo3.png";
+import logoImg from "../../assets/images/logos/logo.png";
 import { useTranslation } from "react-i18next";
 
 export default function Header() {
