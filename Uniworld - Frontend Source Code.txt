@@ -231,6 +231,7 @@ export default TermsAndConditions;
 --- File: components\layout\Footer.jsx ---
 
 import { FaInstagram, FaYoutube, FaTelegram } from "react-icons/fa";
+import logoImg from "../../assets/images/logos/logo.png";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -238,58 +239,55 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <div>
-      <footer class="w-full py-4 px-4 sm:px-6 lg:px-8 mx-auto border-t border-gray-900 bottom-0 bg-white">
-        <div class="text-center">
-          <div class="mt-3">
-            <p class="text-gray-900">
-              {/* ©{" "} */}
-              <span className="font-bold text-lg">
-                <span className="text-secondary">uni</span>world
-              </span>
-              {/* . 2024 All rights reserved. */}
-            </p>
-          </div>
-          <div className="mt-3">
-            <p>{t("One Click to Your Dream University")}</p>
-          </div>
+    <footer className="w-full py-4 px-4 sm:px-6 lg:px-8 mx-auto border-t border-gray-900 bg-white">
+      <div className="text-center">
+        <div className="mb-3">
+          <img src={logoImg} alt="uniworld logo" className="w-32 mx-auto" />
+        </div>
+        <div className="mb-3">
+          <p className="text-gray-900">
+            {t("One Click to Your Dream University")}
+          </p>
+        </div>
+        <div className="mb-3 flex justify-center space-x-4">
+          <a
+            className="inline-flex justify-center items-center w-8 h-8 text-gray-900 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 transition"
+            href="#"
+          >
+            <FaTelegram size={16} />
+          </a>
+          <a
+            className="inline-flex justify-center items-center w-8 h-8 text-gray-900 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 transition"
+            href="https://www.instagram.com/uniworld_study"
+          >
+            <FaInstagram size={16} />
+          </a>
+          <a
+            className="inline-flex justify-center items-center w-8 h-8 text-gray-900 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 transition"
+            href="#"
+          >
+            <FaYoutube size={16} />
+          </a>
+        </div>
 
-          <div class="mt-3 space-x-2">
-            <a
-              class="inline-flex justify-center items-center size-10 text-center text-gray-700 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition  "
-              href="#"
-            >
-              <FaTelegram />
-            </a>
-            <a
-              class="inline-flex justify-center items-center size-10 text-center text-gray-700 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition  "
-              href="#"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              class="inline-flex justify-center items-center size-10 text-center text-gray-700 hover:bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white transition  "
-              href="#"
-            >
-              <FaYoutube />
-            </a>
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center mt-3 text-gray-900">
+          <div className="flex flex-wrap justify-center gap-4 mb-4 md:mb-0">
+            <Link to="/terms-and-conditions" className="hover:underline">
+              Terms & Conditions
+            </Link>
+            <Link to="/privacy-policy" className="hover:underline">
+              Privacy Policy
+            </Link>
+            <Link to="/about-us" className="hover:underline">
+              About us
+            </Link>
           </div>
-
-          <div className="mt-3  md:flex justify-between">
-            <div className=" gap-8 underline flex">
-              <Link to="/terms-and-conditions">Terms & Conditions</Link>
-              <Link to="/privacy-policy">Privacy Policy</Link>
-              <p>Contact us</p>
-              <Link to="/about-us">About us</Link>
-            </div>
-            <div className="mt-4 md:mt-0">
-              {" "}
-              © {t("2024 All rights reserved.")}
-            </div>
+          <div>
+            <p>© {t("2024 All rights reserved.")}</p>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
 
@@ -303,14 +301,11 @@ import React from "react";
 import {
   Navbar,
   Typography,
-  Button,
   IconButton,
-  Card,
   Collapse,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
-
 import logoImg from "../../assets/images/logos/logo.png";
 import { useTranslation } from "react-i18next";
 
@@ -334,9 +329,9 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/about-us" className="flex items-center">
+        <Link to="/about-us" className="flex items-center">
           {t("About us")}
-        </a>
+        </Link>
       </Typography>
       <Typography
         as="li"
@@ -344,22 +339,10 @@ export default function Header() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="/universities" className="flex items-center">
+        <Link to="/universities" className="flex items-center">
           {t("Universities")}
-        </a>
+        </Link>
       </Typography>
-
-      {/* <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <a href="#" className="flex items-center">
-          Articles
-        </a>
-      </Typography> */}
-
       <Typography>
         <LanguageSwitcher />
       </Typography>
@@ -421,45 +404,8 @@ export default function Header() {
             </IconButton>
           </div>
         </div>
-        <Collapse open={openNav}>
-          {navList}
-          {/* <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="text" size="sm" className="">
-              <span>Log In</span>
-            </Button>
-            <Button fullWidth variant="gradient" size="sm" className="">
-              <span>Sign in</span>
-            </Button>
-          </div> */}
-        </Collapse>
+        <Collapse open={openNav}>{navList}</Collapse>
       </Navbar>
-      {/* <div className="mx-auto max-w-screen-md py-12">
-        <Card className="mb-12 overflow-hidden">
-          <img
-            alt="nature"
-            className="h-[32rem] w-full object-cover object-center"
-            src="https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2717&q=80"
-          />
-        </Card>
-        <Typography variant="h2" color="blue-gray" className="mb-2">
-          What is Material Tailwind
-        </Typography>
-        <Typography color="gray" className="font-normal">
-          Can you help me out? you will get a lot of free exposure doing this
-          can my website be in english?. There is too much white space do less
-          with more, so that will be a conversation piece can you rework to make
-          the pizza look more delicious other agencies charge much lesser can
-          you make the blue bluer?. I think we need to start from scratch can my
-          website be in english?, yet make it sexy i&apos;ll pay you in a week
-          we don&apos;t need to pay upfront i hope you understand can you make
-          it stand out more?. Make the font bigger can you help me out? you will
-          get a lot of free exposure doing this that&apos;s going to be a chunk
-          of change other agencies charge much lesser. Are you busy this
-          weekend? I have a new project with a tight deadline that&apos;s going
-          to be a chunk of change. There are more projects lined up charge extra
-          the next time.
-        </Typography>
-      </div> */}
     </div>
   );
 }
@@ -676,8 +622,8 @@ const AdvisorApplication = () => {
     e.preventDefault();
     try {
       const response = await api.post(
-          "/applications/advisor-application/create/",
-          formData
+        "/applications/advisor-application/create/",
+        formData
       );
       if (response.status === 200) {
         setIsOpen(false);
@@ -690,155 +636,153 @@ const AdvisorApplication = () => {
   };
 
   return (
-      <div className="bg-primary flex justify-center items-center">
-        <button
-            onClick={() => setIsOpen(true)}
-            className="bg-secondary py-3 px-10 rounded-lg text-white"
-        >
-          {t("Speak to Advisor")}
-        </button>
+    <div className="bg-primary flex justify-center items-center">
+      <button
+        onClick={() => setIsOpen(true)}
+        className="bg-secondary py-3 px-10 rounded-lg text-white"
+      >
+        {t("Speak to Advisor")}
+      </button>
 
-        {/* Darkened background overlay */}
-        {isOpen && <div className="fixed inset-0 bg-black opacity-50 z-50"></div>}
+      {isOpen && <div className="fixed inset-0 bg-black opacity-50 z-50"></div>}
 
-        {/* Modal */}
-        {isOpen && (
-            <div className="fixed z-50 inset-0 overflow-y-auto px-2">
-              <div className="flex items-center justify-center min-h-screen">
-                <div className="bg-white p-8 rounded-lg relative">
-                  <h2 className="text-2xl font-bold mb-4">
-                    {t("Speak to Advisor")}
-                  </h2>
-                  <button
-                      onClick={() => setIsOpen(false)}
-                      className="absolute top-4 right-4 text-black hover:text-gray-900 text-2xl"
-                  >
-                    &#10005;
-                  </button>
-                  <form
-                      onSubmit={handleSubmit}
-                      className="space-y-4 md:w-[600px] w-full"
-                  >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="flex flex-col">
-                        <label
-                            htmlFor="first_name"
-                            className="text-sm font-semibold"
-                        >
-                          {t("First Name")}
-                        </label>
-                        <input
-                            type="text"
-                            id="first_name"
-                            name="first_name"
-                            value={formData.first_name}
-                            onChange={handleChange}
-                            placeholder="Enter your first name"
-                            className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                        />
-                      </div>
-                      <div className="flex flex-col">
-                        <label
-                            htmlFor="last_name"
-                            className="text-sm font-semibold"
-                        >
-                          {t("Last Name")}
-                        </label>
-                        <input
-                            type="text"
-                            id="last_name"
-                            name="last_name"
-                            value={formData.last_name}
-                            onChange={handleChange}
-                            placeholder="Enter your last name"
-                            className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="flex flex-col">
-                        <label htmlFor="country" className="text-sm font-semibold">
-                          {t("Country")}
-                        </label>
-                        <CountrySelector onSelect={handleCountrySelect} />
-                      </div>
-                      <div className="flex flex-col">
-                        <label htmlFor="region" className="text-sm font-semibold">
-                          {t("Region")}
-                        </label>
-                        <RegionSelector onSelect={handleRegionSelect} />
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col">
-                      <label
-                          htmlFor="who_are_you"
-                          className="text-sm font-semibold"
-                      >
-                        {t("Who Are You")}
-                      </label>
-                      <select
-                          id="who_are_you"
-                          name="who_are_you"
-                          value={formData.who_are_you}
-                          onChange={handleChange}
-                          className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                      >
-                        <option value="">Select</option>
-                        <option value="PARENT">Parent</option>
-                        <option value="STUDENT">Student</option>
-                      </select>
-                    </div>
-
-                    <div className="flex flex-col">
-                      <label
-                          htmlFor="phone_number"
-                          className="text-sm font-semibold"
-                      >
-                        {t("Phone Number")}
-                      </label>
-                      <input
-                          type="tel"
-                          id="phone_number"
-                          name="phone_number"
-                          value={formData.phone_number}
-                          onChange={handleChange}
-                          placeholder="Enter your phone number"
-                          className="border border-gray-300 rounded-md py-2 px-3 mt-1"
-                      />
-                    </div>
-                    <hr />
-                    <div className="py-2">
-                      <p>
-                        By clicking the Submit Application button, you agree to our{" "}
-                        <Link
-                            to="/terms-and-conditions"
-                            className="underline text-secondary"
-                        >
-                          Terms & Conditions
-                        </Link>{" "}
-                        and{" "}
-                        <Link
-                            to="/privacy-policy"
-                            className="underline text-secondary"
-                        >
-                          Privacy Policy
-                        </Link>
-                      </p>
-                    </div>
-                    <button
-                        type="submit"
-                        className="bg-secondary py-3 px-6 rounded-lg text-white"
+      {isOpen && (
+        <div className="fixed z-50 inset-0 overflow-y-auto px-2">
+          <div className="flex items-center justify-center min-h-screen">
+            <div className="bg-white p-8 rounded-lg relative">
+              <h2 className="text-2xl font-bold mb-4">
+                {t("Speak to Advisor")}
+              </h2>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="absolute top-4 right-4 text-black hover:text-gray-900 text-2xl"
+              >
+                &#10005;
+              </button>
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 md:w-[600px] w-full"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="first_name"
+                      className="text-sm font-semibold"
                     >
-                      Submit
-                    </button>
-                  </form>
+                      {t("First Name")}
+                    </label>
+                    <input
+                      type="text"
+                      id="first_name"
+                      name="first_name"
+                      value={formData.first_name}
+                      onChange={handleChange}
+                      placeholder="Enter your first name"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label
+                      htmlFor="last_name"
+                      className="text-sm font-semibold"
+                    >
+                      {t("Last Name")}
+                    </label>
+                    <input
+                      type="text"
+                      id="last_name"
+                      name="last_name"
+                      value={formData.last_name}
+                      onChange={handleChange}
+                      placeholder="Enter your last name"
+                      className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                    />
+                  </div>
                 </div>
-              </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col">
+                    <label htmlFor="country" className="text-sm font-semibold">
+                      {t("Country")}
+                    </label>
+                    <CountrySelector onSelect={handleCountrySelect} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="region" className="text-sm font-semibold">
+                      {t("Region")}
+                    </label>
+                    <RegionSelector onSelect={handleRegionSelect} />
+                  </div>
+                </div>
+
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="who_are_you"
+                    className="text-sm font-semibold"
+                  >
+                    {t("Who Are You")}
+                  </label>
+                  <select
+                    id="who_are_you"
+                    name="who_are_you"
+                    value={formData.who_are_you}
+                    onChange={handleChange}
+                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                  >
+                    <option value="">Select</option>
+                    <option value="PARENT">Parent</option>
+                    <option value="STUDENT">Student</option>
+                  </select>
+                </div>
+
+                <div className="flex flex-col">
+                  <label
+                    htmlFor="phone_number"
+                    className="text-sm font-semibold"
+                  >
+                    {t("Phone Number")}
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone_number"
+                    name="phone_number"
+                    value={formData.phone_number}
+                    onChange={handleChange}
+                    placeholder="Enter your phone number"
+                    className="border border-gray-300 rounded-md py-2 px-3 mt-1"
+                  />
+                </div>
+                <hr />
+                <div className="py-2">
+                  <p>
+                    By clicking the Submit Application button, you agree to our{" "}
+                    <Link
+                      to="/terms-and-conditions"
+                      className="underline text-secondary"
+                    >
+                      Terms & Conditions
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      to="/privacy-policy"
+                      className="underline text-secondary"
+                    >
+                      Privacy Policy
+                    </Link>
+                  </p>
+                </div>
+                <button
+                  type="submit"
+                  className="bg-secondary py-3 px-6 rounded-lg text-white"
+                >
+                  Submit
+                </button>
+              </form>
             </div>
-        )}
-      </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -1851,9 +1795,9 @@ import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import api from "../../../app/api";
 import Filters from "./Filters.jsx";
-import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
-import { useTranslation } from "react-i18next";
+import Pagination from "../../shared/Pagination.jsx";
 import inboxIcon from "../../../assets/images/icons/inbox.png";
+import { useTranslation } from "react-i18next";
 
 const UniversityList = () => {
   const { t } = useTranslation();
@@ -1997,11 +1941,11 @@ const UniversityList = () => {
               <p>No universities found.</p>
             </div>
           ) : (
-            <div className="lg:px-4 ">
+            <div className="lg:px-4">
               {universities.map((university) => (
                 <div
                   key={university.id}
-                  className="bg-white flex flex-col sm:flex-row w-full mx-auto border-t-2 border-gray-200 px-5 "
+                  className="bg-white flex flex-col sm:flex-row w-full mx-auto border-t-2 border-gray-200 px-5"
                 >
                   <div className="sm:w-48 sm:h-36 sm:object-cover my-4">
                     <img
@@ -2019,7 +1963,7 @@ const UniversityList = () => {
                         <div className="flex">
                           <div>
                             {university.is_featured && (
-                              <p className="bg-primary text-secondary px-2 py-1  rounded-lg float-right flex ">
+                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
                                 <span>•</span>{" "}
                                 <span className="ml-1">{t("Featured")}</span>
                               </p>
@@ -2027,7 +1971,7 @@ const UniversityList = () => {
                           </div>
                           <div className="ml-2">
                             {university.full_scolarship && (
-                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg float-right flex ">
+                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
                                 <span>•</span>{" "}
                                 <span className="ml-1">{t("Free")}</span>
                               </p>
@@ -2059,48 +2003,18 @@ const UniversityList = () => {
             </div>
           )}
 
-          {/* Pagination */}
-          <div className="pt-6 border-t-2 mx-4 py-8">
-            {totalPages > 1 && (
-              <ul className="flex justify-center">
-                <li>
-                  <button
-                    onClick={goToPreviousPage}
-                    disabled={currentPage === 1}
-                    className="mx-1 px-2 flex items-center"
-                  >
-                    <HiArrowLongLeft className="mr-2" /> {t("Previous")}
-                  </button>
-                </li>
-                {[...Array(totalPages).keys()].map((pageNumber) => (
-                  <li key={pageNumber} className="mx-1">
-                    <Link
-                      to={`?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification_level=${selectedQualification}&search=${searchTerm}&limit=${limit}&offset=${
-                        pageNumber * limit
-                      }`}
-                      onClick={() => handlePageChange(pageNumber * limit)}
-                      className={`p-3${
-                        pageNumber + 1 === currentPage
-                          ? " border-t-2 border-secondary text-secondary"
-                          : ""
-                      }`}
-                    >
-                      {pageNumber + 1}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <button
-                    onClick={goToNextPage}
-                    disabled={currentPage === totalPages}
-                    className="mx-1 px-2 flex items-center"
-                  >
-                    {t("Next")} <HiArrowLongRight className="ml-2" />
-                  </button>
-                </li>
-              </ul>
-            )}
-          </div>
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            limit={limit}
+            selectedCountry={selectedCountry}
+            selectedSpecialty={selectedSpecialty}
+            selectedQualification={selectedQualification}
+            searchTerm={searchTerm}
+            handlePageChange={handlePageChange}
+            goToNextPage={goToNextPage}
+            goToPreviousPage={goToPreviousPage}
+          />
         </div>
       </div>
     </div>
@@ -2922,6 +2836,75 @@ const HtmlContentRenderer = ({ htmlContent }) => {
 };
 
 export default HtmlContentRenderer;
+
+
+
+--- File: components\shared\Pagination.jsx ---
+
+import { Link } from "react-router-dom";
+import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
+import { useTranslation } from "react-i18next";
+
+const Pagination = ({
+  totalPages,
+  currentPage,
+  limit,
+  selectedCountry,
+  selectedSpecialty,
+  selectedQualification,
+  searchTerm,
+  handlePageChange,
+  goToNextPage,
+  goToPreviousPage,
+}) => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="pt-6 border-t-2 mx-4 py-8">
+      {totalPages > 1 && (
+        <ul className="flex justify-center">
+          <li>
+            <button
+              onClick={goToPreviousPage}
+              disabled={currentPage === 1}
+              className="mx-1 px-2 flex items-center"
+            >
+              <HiArrowLongLeft className="mr-2" /> {t("Previous")}
+            </button>
+          </li>
+          {[...Array(totalPages).keys()].map((pageNumber) => (
+            <li key={pageNumber} className="mx-1">
+              <Link
+                to={`?country=${selectedCountry}&specialty=${selectedSpecialty}&qualification_level=${selectedQualification}&search=${searchTerm}&limit=${limit}&offset=${
+                  pageNumber * limit
+                }`}
+                onClick={() => handlePageChange(pageNumber * limit)}
+                className={`p-3${
+                  pageNumber + 1 === currentPage
+                    ? " border-t-2 border-secondary text-secondary"
+                    : ""
+                }`}
+              >
+                {pageNumber + 1}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <button
+              onClick={goToNextPage}
+              disabled={currentPage === totalPages}
+              className="mx-1 px-2 flex items-center"
+            >
+              {t("Next")} <HiArrowLongRight className="ml-2" />
+            </button>
+          </li>
+        </ul>
+      )}
+    </div>
+  );
+};
+
+export default Pagination;
 
 
 
