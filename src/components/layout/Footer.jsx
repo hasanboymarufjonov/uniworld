@@ -41,13 +41,13 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:justify-between md:items-center mt-3 text-gray-900">
           <div className="flex flex-wrap justify-center gap-4 mb-4 md:mb-0">
             <Link to="/terms-and-conditions" className="hover:underline">
-              Terms & Conditions
+              {t("Terms & Conditions")}
             </Link>
             <Link to="/privacy-policy" className="hover:underline">
-              Privacy Policy
+              {t("Privacy Policy")}
             </Link>
             <Link to="/about-us" className="hover:underline">
-              About us
+              {t("About us")}
             </Link>
           </div>
           <div>

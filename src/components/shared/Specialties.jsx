@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "../../app/api.js";
+import { useTranslation } from "react-i18next";
 
 const Specialties = ({ register }) => {
   const [specialties, setSpecialties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchSpecialties = async () => {
@@ -26,7 +28,9 @@ const Specialties = ({ register }) => {
 
   return (
     <div className="mb-4">
-      <label className="block text-sm font-medium mb-1">Needed Specialty</label>
+      <label className="block text-sm font-medium mb-1">
+        {t("Needed Specialty")}
+      </label>
       <select
         {...register("needed_specialty", { required: true })}
         className="w-full px-3 py-2 border rounded-lg"

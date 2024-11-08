@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
-import api from "../../../app/api.js"
+import api from "../../../app/api.js";
 import { Link } from "react-router-dom";
+
+import { useTranslation } from "react-i18next";
 
 const CareerCompass = () => {
   const [careers, setCareers] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     api
@@ -30,8 +34,8 @@ const CareerCompass = () => {
   return (
     <div className="mx-20 py-8 ">
       <h2 className="text-4xl">
-        <span className="font-bold">Career Compass:</span> Pick your passion,
-        we'll find the path.
+        <span className="font-bold">{t("Career Compass")}:</span>{" "}
+        {t("Pick your passion, we'll find the path")}.
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
         {careers.map((career) => (

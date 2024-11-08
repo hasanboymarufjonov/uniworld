@@ -5,6 +5,7 @@ import Specialties from "../../shared/Specialties.jsx";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const EligibilityCheck = () => {
   const { register, handleSubmit, reset, setValue } = useForm();
@@ -12,6 +13,7 @@ const EligibilityCheck = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const { t } = useTranslation();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -50,7 +52,7 @@ const EligibilityCheck = () => {
         onClick={handleOpenModal}
         className="px-8 py-4 bg-secondary text-white rounded-lg"
       >
-        Apply for Eligibility Check
+        {t("Apply for Eligibility Check")}
       </button>
 
       {isModalOpen && (
@@ -67,7 +69,7 @@ const EligibilityCheck = () => {
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    First Name
+                    {t("First Name")}
                   </label>
                   <input
                     {...register("first_name", { required: true })}
@@ -78,7 +80,7 @@ const EligibilityCheck = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    Last Name
+                    {t("Last Name")}
                   </label>
                   <input
                     {...register("last_name", { required: true })}
@@ -90,7 +92,7 @@ const EligibilityCheck = () => {
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium mb-1">
-                  Phone Number
+                  {t("Phone Number")}
                 </label>
                 <PhoneInput
                   country={"uz"}
@@ -108,7 +110,9 @@ const EligibilityCheck = () => {
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium mb-1">Age</label>
+                <label className="block text-sm font-medium mb-1">
+                  {t("Age")}
+                </label>
                 <input
                   {...register("age", { required: true })}
                   className="w-full px-3 py-2 border rounded-lg"
@@ -119,7 +123,7 @@ const EligibilityCheck = () => {
               <div className="grid grid-cols-2 gap-4 mb-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    Current Education Level
+                    {t("Current Education Level")}
                   </label>
                   <select
                     {...register("current_education_level", { required: true })}
@@ -132,7 +136,7 @@ const EligibilityCheck = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">
-                    Needed Education Level
+                    {t("Needed Education Level")}
                   </label>
                   <select
                     {...register("needed_education_level", { required: true })}
@@ -156,20 +160,21 @@ const EligibilityCheck = () => {
               </div>
               <div className="py-2">
                 <p>
-                  By clicking the Submit Application button, you agree to our{" "}
+                  {t("By clicking the Submit button, you agree to our")}{" "}
                   <Link
                     to="/terms-and-conditions"
                     className="underline text-secondary"
                   >
-                    Terms & Conditions
+                    {t("Terms & Conditions")}
                   </Link>{" "}
-                  and{" "}
+                  {t("and")}{" "}
                   <Link
                     to="/privacy-policy"
                     className="underline text-secondary"
                   >
-                    Privacy Policy
+                    {t("Privacy Policy")}
                   </Link>
+                  {t(".")}
                 </p>
               </div>
               <div className="flex justify-end space-x-2">

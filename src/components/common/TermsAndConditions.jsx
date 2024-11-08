@@ -23,7 +23,7 @@ const TermsAndConditions = () => {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-semibold mb-4">Terms and Conditions</h1>
+      {/* <h1 className="text-3xl font-semibold mb-4">{t("Terms & Conditions")}</h1> */}
       {loading ? (
         <p>Loading...</p>
       ) : (
