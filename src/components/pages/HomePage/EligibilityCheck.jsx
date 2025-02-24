@@ -218,7 +218,7 @@ const EligibilityCheck = ({ onClose }) => {
 
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-          <div className="fixed inset-0 bg-white p-20 overflow-auto">
+          <div className="fixed inset-0 bg-white p-5 md:p-20 overflow-auto">
             <button
               onClick={handleCloseModal}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl"
