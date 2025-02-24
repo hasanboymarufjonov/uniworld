@@ -17,9 +17,9 @@ const HomePage = () => {
       <QualificationLevels />
       <CareerTools />
       <AssistanceCards />
-      <AdvisorApplication />
-      <CareerCompass />
-      <EligibilityCheck />
+      {/* <AdvisorApplication /> */}
+      {/* <CareerCompass /> */}
+      {/* <EligibilityCheck /> */}
       <FeaturedUniversitiesSlider />
       <FullScholarshipUniversitiesSlider />
     </div>

@@ -58,7 +58,7 @@ const AdvisorApplication = () => {
   };
 
   return (
-    <div className="bg-primary flex justify-center items-center">
+    <div className="flex justify-center items-center">
       <button
         onClick={() => setIsOpen(true)}
         className="bg-secondary py-3 px-10 rounded-lg text-white"

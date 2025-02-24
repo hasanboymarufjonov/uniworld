@@ -10,6 +10,7 @@ import TermsAndConditions from "./components/common/TermsAndConditions.jsx";
 import PrivacyPolicy from "./components/common/PrivacyPolicy.jsx";
 import AboutUs from "./components/pages/AboutPage/AboutUs.jsx";
 import PathwayAdvice from "./components/pages/PathwayPage/PathwayAdvice.jsx";
+import CareerCompass from "./components/pages/HomePage/CareerCompass.jsx";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
         <Route path="/universities" element={<SearchPage />} />
         <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/career-compass" element={<CareerCompass />} />
+
         <Route path="/about-us" element={<AboutUs />} />
         <Route
           path="/pathway-advice/:pathway/detail"

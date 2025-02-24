@@ -3,12 +3,14 @@ import advisorImg from "../../../assets/images/illustrations/advisor.png";
 import compassImg from "../../../assets/images/illustrations/compas.png";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import EligibilityCheck from "./EligibilityCheck";
 import AdvisorApplication from "./AdvisorApplication";
 
 const CareerTools = () => {
   const [isEligibilityOpen, setIsEligibilityOpen] = useState(false);
   const [isAdvisorOpen, setIsAdvisorOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleOpenEligibilityModal = () => {
     setIsEligibilityOpen(true);
@@ -24,6 +26,10 @@ const CareerTools = () => {
 
   const handleCloseAdvisorModal = () => {
     setIsAdvisorOpen(false);
+  };
+
+  const handleNavigateToCompass = () => {
+    navigate("/career-compass");
   };
 
   const tools = [
@@ -44,6 +50,7 @@ const CareerTools = () => {
       name: "Career Compass",
       description: "Pick your passion, we will find the path for you",
       image: compassImg,
+      onClick: handleNavigateToCompass,
     },
   ];
 
@@ -84,12 +91,19 @@ const CareerTools = () => {
       ))}
 
       <Modal isOpen={isEligibilityOpen} onClose={handleCloseEligibilityModal}>
-        <h2 className="text-2xl font-bold mb-4">Eligibility Check</h2>
+        <h2 className="text-2xl font-bold">Eligibility Check</h2>
+        <p className="mb-4 text-md">
+          Find the universities & programs that best match your profile with the
+          help of AI
+        </p>
         <EligibilityCheck onClose={handleCloseEligibilityModal} />
       </Modal>
 
       <Modal isOpen={isAdvisorOpen} onClose={handleCloseAdvisorModal}>
         <h2 className="text-2xl font-bold mb-4">Speak to the advisor</h2>
+        <p className="mb-4 text-md">
+          Get free consultation, just leave your contacts
+        </p>
         <AdvisorApplication onClose={handleCloseAdvisorModal} />
       </Modal>
     </div>
