@@ -37,7 +37,7 @@ const EligibilityCheck = () => {
         type: "ELIGIBILITY_CHECK",
         ...data,
       });
-      reset(); // Clear all form fields
+      reset();
       setIsModalOpen(false);
     } catch (err) {
       setError(
