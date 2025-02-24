@@ -7,19 +7,21 @@ import FeaturedUniversitiesSlider from "../components/pages/HomePage/FeaturedUni
 import FullScholarshipUniversitiesSlider from "../components/pages/HomePage/FullScholarshipUniversitiesSlider.jsx";
 import CareerCompass from "../components/pages/HomePage/CareerCompass.jsx";
 import EligibilityCheck from "../components/pages/HomePage/EligibilityCheck.jsx";
+import CareerTools from "../components/pages/HomePage/CareerTools.jsx";
 
 const HomePage = () => {
   return (
     <div>
-        <Hero />
-        <Countries />
-        <QualificationLevels />
-        <AssistanceCards />
-        <AdvisorApplication />
-        <CareerCompass />
-        <EligibilityCheck />
-        <FeaturedUniversitiesSlider />
-        <FullScholarshipUniversitiesSlider />
+      <Hero />
+      <Countries />
+      <QualificationLevels />
+      <CareerTools />
+      <AssistanceCards />
+      <AdvisorApplication />
+      <CareerCompass />
+      <EligibilityCheck />
+      <FeaturedUniversitiesSlider />
+      <FullScholarshipUniversitiesSlider />
     </div>
   );
 };
