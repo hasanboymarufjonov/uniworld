@@ -7,7 +7,7 @@ import "react-phone-input-2/lib/style.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const EligibilityCheck = () => {
+const EligibilityCheck = ({ onClose }) => {
   const { register, handleSubmit, setValue, watch, reset } = useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
