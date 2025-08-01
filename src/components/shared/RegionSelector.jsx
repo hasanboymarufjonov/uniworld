@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import axios from "../../app/api.js";
 
 const RegionSelector = ({ onSelect }) => {
   const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchRegions = async () => {
       try {
         const response = await axios.get(`/common/regions/?limit=20`);
         setRegions(response.data.results);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching regions: ", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -22,13 +25,13 @@ const RegionSelector = ({ onSelect }) => {
   return (
     <div className="">
       {loading ? (
-        <p>Loading regions...</p>
+        <p>{t("loading_regions")}</p>
       ) : (
         <select
           onChange={(e) => onSelect(e.target.value)}
           className="border border-gray-300 rounded-md py-2 px-3 mt-1 w-full"
         >
-          <option value="">Select a region</option>
+          <option value="">{t("select_region")}</option>
           {regions.map((region) => (
             <option key={region.id} value={region.id}>
               {region.name}

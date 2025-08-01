@@ -6,13 +6,12 @@ import {
   Collapse,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../common/LanguageSwitcher.jsx";
 import logoImg from "../../assets/images/logos/logo.png";
-import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const { t } = useTranslation();
-
   const [openNav, setOpenNav] = React.useState(false);
 
   React.useEffect(() => {
@@ -31,7 +30,7 @@ export default function Header() {
         className="p-1 font-normal"
       >
         <Link to="/about-us" className="flex items-center">
-          {t("About us")}
+          {t("header_link_about_us")}
         </Link>
       </Typography>
       <Typography
@@ -41,7 +40,7 @@ export default function Header() {
         className="p-1 font-normal"
       >
         <Link to="/universities" className="flex items-center">
-          {t("Universities")}
+          {t("header_link_universities")}
         </Link>
       </Typography>
       <Typography>
@@ -60,7 +59,11 @@ export default function Header() {
             className="mr-4 cursor-pointer py-1.5 font-medium"
           >
             <Link to="/">
-              <img src={logoImg} className="w-32 my-2" alt="" />
+              <img
+                src={logoImg}
+                className="w-32 my-2"
+                alt={t("uniworld_logo_alt")}
+              />
             </Link>
           </Typography>
           <div className="flex items-center gap-4">

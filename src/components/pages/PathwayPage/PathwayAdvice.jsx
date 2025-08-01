@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import api from "../../../app/api";
 import HtmlContentRenderer from "../../shared/HtmlContentRenderer.jsx";
 
@@ -7,6 +8,7 @@ const PathwayAdvice = () => {
   const { pathway } = useParams();
   const [advice, setAdvice] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchAdvice = async () => {
@@ -26,7 +28,7 @@ const PathwayAdvice = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        Loading...
+        {t("loading")}
       </div>
     );
   }
@@ -34,7 +36,7 @@ const PathwayAdvice = () => {
   if (!advice) {
     return (
       <div className="flex justify-center items-center h-screen">
-        Advice not found.
+        {t("pathway_advice_not_found")}
       </div>
     );
   }
@@ -42,19 +44,14 @@ const PathwayAdvice = () => {
   return (
     <div className="max-w-3xl mx-auto py-8 px-4 min-h-[450px]">
       <h1 className="text-3xl font-bold mb-4">{advice.title}</h1>
-      <p className="text-sm text-gray-500 mt-4">
-        {/* Published at: {new Date(advice.published_at).toLocaleDateString()} */}
-      </p>
       {advice.image && (
         <img
           src={advice.image}
           alt={advice.title}
-          className="w-full h-auto mb-4"
+          className="w-full h-auto mb-4 rounded-lg shadow-md"
         />
       )}
       <HtmlContentRenderer htmlContent={advice.content} />
-
-      {advice.content}
     </div>
   );
 };

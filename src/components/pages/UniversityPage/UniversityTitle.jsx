@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import axios from "../../../app/api.js";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
 const UniversityTitle = ({ slug, onUniversityIdChange }) => {
   const [universityData, setUniversityData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchUniversityData = async () => {
@@ -12,9 +14,9 @@ const UniversityTitle = ({ slug, onUniversityIdChange }) => {
         const response = await axios.get(`/universities/${slug}/detail/`);
         setUniversityData(response.data);
         onUniversityIdChange(response.data.id);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching university data:", error);
+      } finally {
         setLoading(false);
       }
     };
@@ -23,7 +25,11 @@ const UniversityTitle = ({ slug, onUniversityIdChange }) => {
   }, [slug, onUniversityIdChange]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="text-center p-10">{t("loading")}</p>;
+  }
+
+  if (!universityData) {
+    return null; // Don't render anything if data fetch fails
   }
 
   return (

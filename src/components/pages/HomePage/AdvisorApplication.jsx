@@ -1,9 +1,9 @@
 import { useState } from "react";
-import api from "../../../app/api.js";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import api from "../../../app/api.js";
 import RegionSelector from "../../shared/RegionSelector.jsx";
 import CountrySelector from "../../shared/CountrySelector.jsx";
-import { useTranslation } from "react-i18next";
 
 /**
  * A form for users to apply to speak with an advisor.
@@ -45,15 +45,13 @@ const AdvisorApplication = ({ onClose }) => {
         formData
       );
       if (response.status === 201 || response.status === 200) {
-        alert("Application submitted successfully!"); // Or use a more sophisticated notification
-        onClose(); // Close the modal on success
+        alert(t("advisor_form_success_message"));
+        onClose();
       } else {
-        setError("Failed to submit application. Please try again.");
+        setError(t("advisor_form_error_failed_submission"));
       }
     } catch (err) {
-      setError(
-        "An error occurred. Please check your connection and try again."
-      );
+      setError(t("advisor_form_error_connection"));
       console.error("Error submitting data:", err);
     } finally {
       setLoading(false);
@@ -72,7 +70,7 @@ const AdvisorApplication = ({ onClose }) => {
             htmlFor="first_name"
             className="block text-sm font-medium mb-1"
           >
-            {t("First Name")}
+            {t("form_label_first_name")}
           </label>
           <input
             type="text"
@@ -80,14 +78,14 @@ const AdvisorApplication = ({ onClose }) => {
             name="first_name"
             value={formData.first_name}
             onChange={handleChange}
-            placeholder="Enter your first name"
+            placeholder={t("form_placeholder_first_name")}
             className={inputClasses}
             required
           />
         </div>
         <div>
           <label htmlFor="last_name" className="block text-sm font-medium mb-1">
-            {t("Last Name")}
+            {t("form_label_last_name")}
           </label>
           <input
             type="text"
@@ -95,7 +93,7 @@ const AdvisorApplication = ({ onClose }) => {
             name="last_name"
             value={formData.last_name}
             onChange={handleChange}
-            placeholder="Enter your last name"
+            placeholder={t("form_placeholder_last_name")}
             className={inputClasses}
             required
           />
@@ -104,20 +102,20 @@ const AdvisorApplication = ({ onClose }) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="country" className="block text-sm font-medium mb-1">
-            {t("Country")}
+            {t("form_label_country")}
           </label>
           <CountrySelector onSelect={handleCountrySelect} />
         </div>
         <div>
           <label htmlFor="region" className="block text-sm font-medium mb-1">
-            {t("Region")}
+            {t("form_label_region")}
           </label>
           <RegionSelector onSelect={handleRegionSelect} />
         </div>
       </div>
       <div>
         <label htmlFor="who_are_you" className="block text-sm font-medium mb-1">
-          {t("Who Are You")}
+          {t("form_label_who_are_you")}
         </label>
         <select
           id="who_are_you"
@@ -127,9 +125,9 @@ const AdvisorApplication = ({ onClose }) => {
           className={inputClasses}
           required
         >
-          <option value="">Select an option</option>
-          <option value="PARENT">Parent</option>
-          <option value="STUDENT">Student</option>
+          <option value="">{t("form_select_option")}</option>
+          <option value="PARENT">{t("form_option_parent")}</option>
+          <option value="STUDENT">{t("form_option_student")}</option>
         </select>
       </div>
       <div>
@@ -137,7 +135,7 @@ const AdvisorApplication = ({ onClose }) => {
           htmlFor="phone_number"
           className="block text-sm font-medium mb-1"
         >
-          {t("Phone Number")}
+          {t("form_label_phone_number")}
         </label>
         <input
           type="tel"
@@ -145,28 +143,28 @@ const AdvisorApplication = ({ onClose }) => {
           name="phone_number"
           value={formData.phone_number}
           onChange={handleChange}
-          placeholder="Enter your phone number"
+          placeholder={t("form_placeholder_phone_number")}
           className={inputClasses}
           required
         />
       </div>
       <div className="pt-2">
         <p className="text-xs text-gray-500">
-          By clicking Submit, you agree to our{" "}
+          {t("form_terms_agreement_part1")}
           <Link
             to="/terms-and-conditions"
             className="underline text-secondary hover:text-indigo-700"
           >
-            Terms & Conditions
-          </Link>{" "}
-          and{" "}
+            {t("form_terms_link")}
+          </Link>
+          {t("form_terms_agreement_part2")}
           <Link
             to="/privacy-policy"
             className="underline text-secondary hover:text-indigo-700"
           >
-            Privacy Policy
+            {t("form_privacy_link")}
           </Link>
-          .
+          {t("form_terms_agreement_part3")}
         </p>
       </div>
       <button
@@ -174,7 +172,7 @@ const AdvisorApplication = ({ onClose }) => {
         disabled={loading}
         className="w-full bg-secondary py-3 px-6 rounded-lg text-white font-semibold hover:bg-indigo-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
       >
-        {loading ? t("Submitting...") : t("Submit Application")}
+        {loading ? t("form_button_submitting") : t("form_button_submit")}
       </button>
     </form>
   );

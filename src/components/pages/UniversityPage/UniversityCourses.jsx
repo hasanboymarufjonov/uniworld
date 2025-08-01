@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
+import { useLocation, useParams, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import api from "../../../app/api";
-import { useLocation, useParams } from "react-router-dom";
 import ApplyModal from "./ApplyModal.jsx";
 import UniversityTitle from "./UniversityTitle.jsx";
-import { useTranslation } from "react-i18next";
 
 function UniversityCourses() {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const lang = localStorage.getItem("i18nextLng");
   const { t } = useTranslation();
 
   const [courses, setCourses] = useState([]);
@@ -25,7 +24,6 @@ function UniversityCourses() {
   );
 
   const { universityName } = useParams();
-
   const [universityId, setUniversityId] = useState(null);
 
   useEffect(() => {
@@ -34,9 +32,6 @@ function UniversityCourses() {
         const response = await api.get(
           `/universities/${universityName}/courses/`,
           {
-            headers: {
-              "Accept-Language": lang,
-            },
             params: {
               specialty: selectedSubject,
               qualification_level: selectedQualification,
@@ -44,9 +39,9 @@ function UniversityCourses() {
           }
         );
         setCourses(response.data.results);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching university courses:", error);
+      } finally {
         setLoading(false);
       }
     };
@@ -58,9 +53,6 @@ function UniversityCourses() {
     const fetchFilters = async () => {
       try {
         const response = await api.get(`/universities/filters/`, {
-          headers: {
-            "Accept-Language": lang,
-          },
           params: {
             university: universityId,
           },
@@ -86,11 +78,6 @@ function UniversityCourses() {
     const qualificationValue = e.target.value;
     setSelectedQualification(qualificationValue);
     queryParams.set("qualification_level", qualificationValue);
-
-    if (selectedSubject !== "") {
-      queryParams.set("specialty", selectedSubject);
-    }
-
     window.history.replaceState({}, "", `${location.pathname}?${queryParams}`);
   };
 
@@ -98,43 +85,15 @@ function UniversityCourses() {
     const subjectValue = e.target.value;
     setSelectedSubject(subjectValue);
     queryParams.set("specialty", subjectValue);
-
-    if (selectedQualification !== "") {
-      queryParams.set("qualification_level", selectedQualification);
-    }
-
     window.history.replaceState({}, "", `${location.pathname}?${queryParams}`);
   };
 
-  const updateUniversityId = (id) => {
-    setUniversityId(id);
-  };
-
-  const formatQualificationLevel = (level) => {
-    switch (level) {
-      case "foundation":
-        return "Foundation degree";
-      case "certificate":
-        return "Certificate";
-      case "bachelor":
-        return "Bachelor's degree";
-      case "diploma":
-        return "Diploma";
-      case "master":
-        return "Master's degree";
-      case "undergraduate":
-        return "Undergraduate";
-      case "postgraduate":
-        return "Postgraduate";
-      default:
-        return level;
-    }
-  };
-
-  const studyTypeNames = {
-    full_time: "Full-time",
-    part_time: "Part-time",
-    distance: "Distance",
+  const formatLevel = (level, prefix) => {
+    const key = `${prefix}_${level}`;
+    const translation = t(key);
+    return translation === key
+      ? level.charAt(0).toUpperCase() + level.slice(1)
+      : translation;
   };
 
   return (
@@ -142,21 +101,23 @@ function UniversityCourses() {
       <div className="max-w-4xl mx-auto">
         <UniversityTitle
           slug={universityName}
-          onUniversityIdChange={updateUniversityId}
+          onUniversityIdChange={setUniversityId}
         />
-        <h2 className="text-2xl font-semibold mb-4">{t("Courses Offered")}</h2>
+        <h2 className="text-2xl font-semibold mb-4">
+          {t("courses_offered_title")}
+        </h2>
         <div className="flex justify-end mb-4 items-center">
-          <p className="mr-2">Filter by</p>
+          <p className="mr-2">{t("filter_by_label")}</p>
           <div className="pr-2">
             <select
               value={selectedQualification}
               onChange={handleQualificationChange}
               className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-2xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
-              <option value="">All</option>
+              <option value="">{t("filter_options_all")}</option>
               {qualifications.map((qualification) => (
                 <option key={qualification} value={qualification}>
-                  {formatQualificationLevel(qualification)}
+                  {formatLevel(qualification, "qualification_level")}
                 </option>
               ))}
             </select>
@@ -167,7 +128,7 @@ function UniversityCourses() {
               onChange={handleSubjectChange}
               className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-2xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
-              <option value="">All</option>
+              <option value="">{t("filter_options_all")}</option>
               {subjects.map((subject) => (
                 <option key={subject.id} value={subject.id}>
                   {subject.name}
@@ -177,11 +138,11 @@ function UniversityCourses() {
           </div>
         </div>
         {loading ? (
-          <p>Loading...</p>
+          <p>{t("loading")}</p>
         ) : (
           <ul>
             {courses.length === 0 ? (
-              <p>No courses available</p>
+              <p>{t("no_courses_available")}</p>
             ) : (
               courses.map((course) => (
                 <li
@@ -192,7 +153,7 @@ function UniversityCourses() {
                   <div className="flex justify-between mt-2">
                     <div>
                       <h4 className="font-semibold text-secondary">
-                        {t("Duration")}
+                        {t("course_duration_label")}
                       </h4>
                       <p>
                         {Number.isInteger(parseFloat(course.duration))
@@ -200,28 +161,28 @@ function UniversityCourses() {
                             ? parseFloat(course.duration)
                             : parseFloat(course.duration).toFixed(1)
                           : course.duration}{" "}
-                        years
+                        {t("years_text")}
                       </p>
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary">
-                        {t("Study Type")}
+                        {t("course_study_type_label")}
                       </h4>
-                      <p>{studyTypeNames[course.study_type]}</p>
+                      <p>{formatLevel(course.study_type, "study_type")}</p>
                     </div>
                     <div>
                       <h4 className="font-semibold text-secondary">
-                        {t("Tuition Fee")}
+                        {t("course_tuition_fee_label")}
                       </h4>
                       <p>
-                        $ {parseFloat(course.tuition_fee).toLocaleString()} per
-                        year
+                        $ {parseFloat(course.tuition_fee).toLocaleString()}{" "}
+                        {t("per_year_text")}
                       </p>
                     </div>
                   </div>
                   <div className="">
                     <p className="font-semibold text-secondary">
-                      {t("Intake Months")}
+                      {t("course_intake_months_label")}
                     </p>
                     <div className="md:block grid grid-cols-3 py-1">
                       {course.intake_months.map((month, index) => (
@@ -238,7 +199,7 @@ function UniversityCourses() {
                     className="bg-secondary hover:bg-blue-800 text-white py-2 px-8 rounded-lg mt-2"
                     onClick={() => handleApply(course.id)}
                   >
-                    {t("Apply Now")}
+                    {t("apply_now_button")}
                   </button>
                 </li>
               ))

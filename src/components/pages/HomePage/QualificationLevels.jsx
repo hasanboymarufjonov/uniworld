@@ -6,14 +6,14 @@ const QualificationLevels = () => {
 
   return (
     <div>
-      <div className="max-w-[85rem] px-4  sm:px-6 lg:px-8  mx-auto">
+      <div className="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-1">
           <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
             <Link
               to={`/universities?country=&specialty=&qualification_level=diploma`}
               className="text-center"
             >
-              {t("Diploma")}
+              {t("qualification_diploma")}
             </Link>
           </div>
           <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center">
@@ -21,7 +21,7 @@ const QualificationLevels = () => {
               to={`/universities?country=&specialty=&qualification_level=bachelor`}
               className="text-center"
             >
-              {t("Bachelor's Degree")}
+              {t("qualification_bachelor")}
             </Link>{" "}
           </div>
           <div className="bg-white border shadow-sm rounded-xl p-4 flex justify-center items-center hidden lg:block text-center">
@@ -30,7 +30,7 @@ const QualificationLevels = () => {
               className="text-center"
             >
               {" "}
-              {t("Master's Degree")}{" "}
+              {t("qualification_master")}{" "}
             </Link>{" "}
           </div>
         </div>
@@ -39,7 +39,7 @@ const QualificationLevels = () => {
             to={`/universities?country=&specialty=&qualification_level=master`}
             className="text-center"
           >
-            {t("Master's Degree")}
+            {t("qualification_master")}
           </Link>
         </div>
       </div>

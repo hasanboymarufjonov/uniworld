@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { HiOutlineLocationMarker } from "react-icons/hi";
 import api from "../../../app/api";
 import Filters from "./Filters.jsx";
 import Pagination from "../../shared/Pagination.jsx";
 import inboxIcon from "../../../assets/images/icons/inbox.png";
-import { useTranslation } from "react-i18next";
 
 const UniversityList = () => {
   const { t } = useTranslation();
@@ -53,9 +53,6 @@ const UniversityList = () => {
 
       params.append("limit", limit);
       params.append("offset", offset);
-      queryParams.forEach((value, key) => {
-        params.append(key, value);
-      });
 
       const response = await api.get(
         `/universities/list/?${params.toString()}`
@@ -63,9 +60,10 @@ const UniversityList = () => {
       const data = response.data;
       setUniversities(data.results);
       setCount(data.count);
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching universities: ", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -122,7 +120,7 @@ const UniversityList = () => {
           type="search"
           value={searchTerm}
           onChange={handleSearchChange}
-          placeholder="Search for a college or university..."
+          placeholder={t("universities_search_placeholder")}
           className="w-[768px] mx-4 my-8 px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:border-blue-500"
         />
       </div>
@@ -138,15 +136,15 @@ const UniversityList = () => {
 
         <div className="container mx-auto max-w-6xl bg-white py-0 md:py-4 md:rounded-lg lg:ml-5 lg:mt-0 h-fit">
           {loading ? (
-            <p>Loading...</p>
+            <p className="text-center p-10">{t("loading")}</p>
           ) : universities.length === 0 ? (
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center p-10">
               <img
                 src={inboxIcon}
-                alt="No results"
+                alt={t("no_results_alt")}
                 className="w-24 h-24 mb-4"
               />
-              <p>No universities found.</p>
+              <p>{t("universities_no_results")}</p>
             </div>
           ) : (
             <div className="lg:px-4">
@@ -172,16 +170,20 @@ const UniversityList = () => {
                           <div>
                             {university.is_featured && (
                               <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
-                                <span>•</span>{" "}
-                                <span className="ml-1">{t("Featured")}</span>
+                                <span>•</span>
+                                <span className="ml-1">
+                                  {t("universities_featured_badge")}
+                                </span>
                               </p>
                             )}
                           </div>
                           <div className="ml-2">
                             {university.full_scolarship && (
                               <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
-                                <span>•</span>{" "}
-                                <span className="ml-1">{t("Free")}</span>
+                                <span>•</span>
+                                <span className="ml-1">
+                                  {t("universities_free_badge")}
+                                </span>
                               </p>
                             )}
                           </div>
@@ -196,13 +198,14 @@ const UniversityList = () => {
                         to={`${university.slug}/overview`}
                         className="w-fit p-2 rounded-md bg-secondary text-white"
                       >
-                        {t("Learn more")}
+                        {t("universities_learn_more_button")}
                       </Link>
                       <Link
                         to={`${university.slug}/courses?qualification_level=${selectedQualification}&specialty=${selectedSpecialty}`}
                         className="border w-fit p-2 rounded-md border-secondary text-secondary ml-2"
                       >
-                        {university.course_count} {t("courses available ")}
+                        {university.course_count}{" "}
+                        {t("universities_courses_available")}
                       </Link>
                     </div>
                   </div>

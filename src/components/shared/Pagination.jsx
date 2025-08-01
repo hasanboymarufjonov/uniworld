@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import { useTranslation } from "react-i18next";
+import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 
 const Pagination = ({
   totalPages,
@@ -26,7 +26,7 @@ const Pagination = ({
               disabled={currentPage === 1}
               className="mx-1 px-2 flex items-center"
             >
-              <HiArrowLongLeft className="mr-2" /> {t("Previous")}
+              <HiArrowLongLeft className="mr-2" /> {t("pagination_previous")}
             </button>
           </li>
           {[...Array(totalPages).keys()].map((pageNumber) => (
@@ -52,7 +52,7 @@ const Pagination = ({
               disabled={currentPage === totalPages}
               className="mx-1 px-2 flex items-center"
             >
-              {t("Next")} <HiArrowLongRight className="ml-2" />
+              {t("pagination_next")} <HiArrowLongRight className="ml-2" />
             </button>
           </li>
         </ul>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "../../app/api.js";
 import { useTranslation } from "react-i18next";
+import axios from "../../app/api.js";
 
 const Specialties = ({ register }) => {
   const [specialties, setSpecialties] = useState([]);
@@ -14,22 +14,22 @@ const Specialties = ({ register }) => {
         const response = await axios.get(`/universities/filters/`);
         setSpecialties(response.data.specialties);
       } catch (err) {
-        setError("Failed to load specialties. Please try again.");
+        setError(t("specialties_error_loading"));
       } finally {
         setLoading(false);
       }
     };
 
     fetchSpecialties();
-  }, []);
+  }, [t]);
 
-  if (loading) return <p>Loading specialties...</p>;
+  if (loading) return <p>{t("loading_specialties")}</p>;
   if (error) return <p>{error}</p>;
 
   return (
     <div className="mb-4">
       <label className="block text-sm font-medium mb-1">
-        {t("Needed Specialty")}
+        {t("needed_specialty_label")}
       </label>
       <select
         {...register("needed_specialty", { required: true })}

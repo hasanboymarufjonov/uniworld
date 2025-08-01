@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import api from "../../../app/api";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 function ApplyModal({ isOpen, onClose, universityId, courseId }) {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     university: universityId,
     course: courseId,
@@ -28,12 +30,13 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
         setRegions(response.data.results);
       } catch (error) {
         console.error("Error fetching regions:", error);
-        setLoading(false);
       }
     };
 
-    fetchRegions();
-  }, []);
+    if (isOpen) {
+      fetchRegions();
+    }
+  }, [isOpen]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +56,6 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
         course: courseId,
       };
       await api.post("/applications/create/", updatedFormData);
-      setLoading(false);
       setFormData({
         university: "",
         course: "",
@@ -65,24 +67,27 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
         gender: "",
         region: null,
       });
-
       onClose();
-      toast.success("Application submitted!");
+      toast.success(t("apply_modal_success_message"));
     } catch (error) {
       console.error("Error submitting application:", error);
+      toast.error(t("apply_modal_error_message"));
+    } finally {
       setLoading(false);
     }
   };
 
-  return (
-    <div
-      className={`fixed top-0 left-0 w-full h-full flex items-center justify-center z-50 ${
-        isOpen ? "block" : "hidden"
-      }`}
-    >
-      <Toaster position="top-center" />
+  if (!isOpen) {
+    return null;
+  }
 
-      <div className="absolute w-full h-full bg-gray-900 opacity-50"></div>
+  return (
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
+      <Toaster position="top-center" />
+      <div
+        className="absolute w-full h-full bg-gray-900 opacity-50"
+        onClick={onClose}
+      ></div>
       <div className="bg-white w-96 mx-auto p-4 rounded-lg shadow-lg z-50 relative">
         <button className="absolute top-4 right-4" onClick={onClose}>
           <svg
@@ -97,7 +102,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
             <path d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
-        <h2 className="text-xl font-semibold mb-4">Apply to Course</h2>
+        <h2 className="text-xl font-semibold mb-4">{t("apply_modal_title")}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
@@ -105,7 +110,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               name="first_name"
               value={formData.first_name}
               onChange={handleChange}
-              placeholder="First Name"
+              placeholder={t("form_placeholder_first_name")}
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
@@ -116,7 +121,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               name="last_name"
               value={formData.last_name}
               onChange={handleChange}
-              placeholder="Last Name"
+              placeholder={t("form_placeholder_last_name")}
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
@@ -127,7 +132,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               name="age"
               value={formData.age}
               onChange={handleChange}
-              placeholder="Age"
+              placeholder={t("form_placeholder_age")}
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
@@ -138,7 +143,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              placeholder="Phone Number"
+              placeholder={t("form_placeholder_phone_number")}
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
@@ -149,7 +154,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Email"
+              placeholder={t("form_placeholder_email")}
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
             />
           </div>
@@ -161,9 +166,9 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             >
-              <option value="">Select Gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <option value="">{t("form_select_gender")}</option>
+              <option value="male">{t("form_option_male")}</option>
+              <option value="female">{t("form_option_female")}</option>
             </select>
           </div>
           <div className="mb-4">
@@ -174,7 +179,7 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
               className="w-full px-3 py-2 rounded border border-gray-400 focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             >
-              <option value="">Select Region</option>
+              <option value="">{t("form_select_region")}</option>
               {regions.map((region) => (
                 <option key={region.id} value={region.id}>
                   {region.name}
@@ -183,25 +188,29 @@ function ApplyModal({ isOpen, onClose, universityId, courseId }) {
             </select>
           </div>
           <div className="py-2">
-            <p>
-              By clicking the Submit Application button, you agree to our{" "}
+            <p className="text-xs">
+              {t("form_terms_agreement_part1")}
               <Link
                 to="/terms-and-conditions"
                 className="underline text-secondary"
               >
-                Terms & Conditions
-              </Link>{" "}
-              and{" "}
-              <Link to="/privacy-policy" className="underline text-secondary">
-                Privacy Policy
+                {t("form_terms_link")}
               </Link>
+              {t("form_terms_agreement_part2")}
+              <Link to="/privacy-policy" className="underline text-secondary">
+                {t("form_privacy_link")}
+              </Link>
+              {t("form_terms_agreement_part3")}
             </p>
           </div>
           <button
             type="submit"
             className="w-full bg-secondary text-white px-4 py-2 rounded hover:bg-blue-800 focus:outline-none focus:bg-indigo-600"
+            disabled={loading}
           >
-            {loading ? "Submitting..." : "Submit Application"}
+            {loading
+              ? t("form_button_submitting")
+              : t("form_button_submit_application")}
           </button>
         </form>
       </div>

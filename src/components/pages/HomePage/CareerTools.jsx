@@ -12,21 +12,20 @@ import compassImg from "../../../assets/images/illustrations/compas.png";
 const toolsData = [
   {
     id: "matcher",
-    nameKey: "Find Your Best Matches",
-    descriptionKey:
-      "See programs that best match your eligibility and aspirations.",
+    nameKey: "career_tools_matcher_title",
+    descriptionKey: "career_tools_matcher_desc",
     image: matcherImg,
   },
   {
     id: "advisor",
-    nameKey: "Speak to Advisor",
-    descriptionKey: "Get free consultation, just leave your contacts",
+    nameKey: "career_tools_advisor_title",
+    descriptionKey: "career_tools_advisor_desc",
     image: advisorImg,
   },
   {
     id: "compass",
-    nameKey: "Career Compass",
-    descriptionKey: "Pick your passion, we'll find the path",
+    nameKey: "career_tools_compass_title",
+    descriptionKey: "career_tools_compass_desc",
     image: compassImg,
   },
 ];
@@ -49,12 +48,10 @@ const CareerTools = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-tight text-gray-900">
-            {t("How our partner agencies can help you")}
+            {t("career_tools_section_title")}
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            {t(
-              "Our partner advisors are ready to support you every step of the way on your study abroad journey"
-            )}
+            {t("career_tools_section_subtitle")}
           </p>
         </div>
 
@@ -77,7 +74,7 @@ const CareerTools = () => {
                   {t(tool.nameKey)}
                 </h3>
                 <p className="font-sans text-gray-600 mt-2 flex-grow">
-                  {t(tool.descriptionKey)}{" "}
+                  {t(tool.descriptionKey)}
                 </p>
                 <div className="mt-4 text-right">
                   <HiArrowRight className="inline-block text-secondary opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 transition-all duration-300 ease-in-out h-6 w-6" />
@@ -90,20 +87,20 @@ const CareerTools = () => {
 
       <Modal isOpen={activeModal === "eligibility"} onClose={closeModal}>
         <h2 className="font-heading text-2xl font-bold mb-2">
-          {t("Find Your Best Matches")}
+          {t("career_tools_matcher_title")}
         </h2>
         <p className="font-sans mb-6 text-gray-600">
-          {t("See programs that best match your eligibility and aspirations.")}
+          {t("career_tools_matcher_desc")}
         </p>
         <EligibilityCheck onClose={closeModal} />
       </Modal>
 
       <Modal isOpen={activeModal === "advisor"} onClose={closeModal}>
         <h2 className="font-heading text-2xl font-bold mb-2">
-          {t("Speak to Advisor")}
+          {t("career_tools_advisor_title")}
         </h2>
         <p className="font-sans mb-6 text-gray-600">
-          {t("Get free consultation, just leave your contacts")}
+          {t("career_tools_advisor_desc")}
         </p>
         <AdvisorApplication onClose={closeModal} />
       </Modal>

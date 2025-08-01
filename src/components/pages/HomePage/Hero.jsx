@@ -23,40 +23,46 @@ const Hero = () => {
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
         <div className="text-center">
           <h1>
-            <span className={headingTextClasses}>{t("Find The")}</span>
+            <span className={headingTextClasses}>{t("hero_title_part1")}</span>
             <div className="flex justify-center items-center mt-3">
-              <span className={boldHeadingTextClasses}>{t("Right")}</span>
+              <span className={boldHeadingTextClasses}>
+                {t("hero_title_part2")}
+              </span>
               <img
                 src={graduationCapImg}
                 alt=""
                 aria-hidden="true"
                 className="w-12 md:w-16 lg:w-32 mx-4"
               />
-              <span className={boldHeadingTextClasses}>{t("University")}</span>
+              <span className={boldHeadingTextClasses}>
+                {t("hero_title_part3")}
+              </span>
             </div>
             <div className="flex flex-wrap justify-center items-center mt-3">
-              <span className={headingTextClasses}>{t("For You")}</span>
+              <span className={headingTextClasses}>
+                {t("hero_title_part4")}
+              </span>
 
               <div className="flex ml-4 space-x-[-16px]">
                 {personImages.map((person, index) => (
                   <img
                     key={index}
                     src={person.src}
-                    alt=""
+                    alt={person.alt}
                     aria-hidden="true"
                     className="w-12 md:w-16 lg:w-24"
                   />
                 ))}
               </div>
               <span className={`${headingTextClasses} ml-4`}>
-                {t("Worldwide")}
+                {t("hero_subtitle")}
               </span>
             </div>
           </h1>
 
           <Link to="/universities">
             <button className="bg-secondary text-white px-20 py-2 rounded-lg text-xl mt-10 hover:opacity-90 transition-opacity">
-              {t("Universities")}
+              {t("universities_link")}
             </button>
           </Link>
         </div>

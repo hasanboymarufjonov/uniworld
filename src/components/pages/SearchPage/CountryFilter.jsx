@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import api from "../../../app/api";
 import { useTranslation } from "react-i18next";
+import api from "../../../app/api";
 
 const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
   const [countries, setCountries] = useState([]);
-
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -30,14 +29,16 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
 
   return (
     <div className="mb-4">
-      <h2 className="text-xl font-semibold mb-2">{t("Country")}:</h2>
+      <h2 className="text-xl font-semibold mb-2">
+        {t("country_filter_title")}
+      </h2>
       <div className="flex flex-wrap">
         <select
           value={selectedCountry}
           onChange={handleChange}
           className="p-2 w-full mb-2 md:hidden rounded-lg"
         >
-          <option value="">All</option>
+          <option value="">{t("country_filter_all")}</option>
           {countries.map((country) => (
             <option key={country.id} value={country.id}>
               {country.name}
@@ -54,7 +55,7 @@ const CountryFilter = ({ selectedCountry, handleCountryChange }) => {
               onChange={() => handleCountryChange("")}
               className="form-radio h-4 w-4 text-primary"
             />
-            <span className="ml-2">{t("All")} </span>
+            <span className="ml-2">{t("country_filter_all")}</span>
           </label>
           {countries.map((country) => (
             <label

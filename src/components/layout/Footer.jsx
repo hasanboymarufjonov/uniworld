@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   FaInstagram,
   FaYoutube,
@@ -7,8 +9,6 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 import logoImg from "../../assets/images/logos/logo.png";
-import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 
 const socialLinks = [
   { href: "#", icon: <FaTelegram size={18} />, label: "Telegram" },
@@ -21,10 +21,10 @@ const socialLinks = [
 ];
 
 const footerLinks = [
-  { to: "/about-us", label: "About us" },
-  { to: "/universities", label: "Universities" },
-  { to: "/terms-and-conditions", label: "Terms & Conditions" },
-  { to: "/privacy-policy", label: "Privacy Policy" },
+  { to: "/about-us", labelKey: "footer_link_about_us" },
+  { to: "/universities", labelKey: "footer_link_universities" },
+  { to: "/terms-and-conditions", labelKey: "footer_link_terms" },
+  { to: "/privacy-policy", labelKey: "footer_link_privacy" },
 ];
 
 const contactInfo = [
@@ -42,7 +42,7 @@ const Footer = () => {
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
-    alert("Thank you for subscribing!");
+    alert(t("newsletter_subscribe_success"));
     e.target.reset();
   };
 
@@ -52,10 +52,14 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="space-y-5">
             <Link to="/" className="inline-block">
-              <img src={logoImg} alt="Uniworld logo" className="h-10 w-auto" />
+              <img
+                src={logoImg}
+                alt={t("uniworld_logo_alt")}
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-gray-700 text-sm">
-              {t("One Click to Your Dream University")}
+              {t("footer_dream_university_slogan")}
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((link) => (
@@ -75,16 +79,16 @@ const Footer = () => {
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
-              {t("Quick Links")}
+              {t("footer_quick_links_title")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.labelKey}>
                   <Link
                     to={link.to}
                     className="text-gray-800 hover:text-secondary transition-colors text-base"
                   >
-                    {t(link.label)}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -93,7 +97,7 @@ const Footer = () => {
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
-              {t("Contact Us")}
+              {t("footer_contact_us_title")}
             </h3>
             <ul className="space-y-4">
               {contactInfo.map((contact) => (
@@ -114,17 +118,17 @@ const Footer = () => {
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
-              {t("Stay Updated")}
+              {t("footer_stay_updated_title")}
             </h3>
             <p className="text-gray-700 text-base mb-4">
-              {t("Get the latest news on scholarships and universities.")}
+              {t("footer_newsletter_desc")}
             </p>
             <form
               onSubmit={handleNewsletterSubmit}
               className="flex flex-col sm:flex-row gap-2"
             >
               <label htmlFor="email-address" className="sr-only">
-                Email address
+                {t("email_address_label")}
               </label>
               <input
                 type="email"
@@ -133,12 +137,12 @@ const Footer = () => {
                 autoComplete="email"
                 required
                 className="w-full px-4 py-2 text-base text-gray-900 placeholder-gray-500 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
-                placeholder={t("Enter your email")}
+                placeholder={t("footer_newsletter_placeholder")}
               />
               <button
                 type="submit"
                 className="flex-shrink-0 inline-flex items-center justify-center px-4 py-2 text-base font-medium text-white bg-secondary border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
-                aria-label="Subscribe to newsletter"
+                aria-label={t("newsletter_subscribe_aria_label")}
               >
                 <FaPaperPlane />
               </button>
@@ -148,7 +152,7 @@ const Footer = () => {
 
         <div className="mt-12 pt-8 border-t border-gray-200 text-center">
           <p className="text-base text-gray-700">
-            © {currentYear} Uniworld. {t("All rights reserved.")}
+            © {currentYear} Uniworld. {t("footer_all_rights_reserved")}
           </p>
         </div>
       </div>
