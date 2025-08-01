@@ -11,10 +11,13 @@ import PrivacyPolicy from "./components/common/PrivacyPolicy.jsx";
 import AboutUs from "./components/pages/AboutPage/AboutUs.jsx";
 import PathwayAdvice from "./components/pages/PathwayPage/PathwayAdvice.jsx";
 import CareerCompass from "./components/pages/HomePage/CareerCompass.jsx";
+import EligibilityResultsPage from "./components/pages/HomePage/EligibilityResultsPage.jsx";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function App() {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary ">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -34,6 +37,10 @@ function App() {
         <Route
           path="/pathway-advice/:pathway/detail"
           element={<PathwayAdvice />}
+        />
+        <Route
+          path="/eligibility-results"
+          element={<EligibilityResultsPage />}
         />
       </Routes>
       <Footer />

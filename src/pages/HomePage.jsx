@@ -8,6 +8,7 @@ import FullScholarshipUniversitiesSlider from "../components/pages/HomePage/Full
 import CareerCompass from "../components/pages/HomePage/CareerCompass.jsx";
 import EligibilityCheck from "../components/pages/HomePage/EligibilityCheck.jsx";
 import CareerTools from "../components/pages/HomePage/CareerTools.jsx";
+import UniversitySlider from "../components/pages/HomePage/UniversitySlider.jsx";
 
 const HomePage = () => {
   return (
@@ -20,8 +21,18 @@ const HomePage = () => {
       {/* <AdvisorApplication /> */}
       {/* <CareerCompass /> */}
       {/* <EligibilityCheck /> */}
-      <FeaturedUniversitiesSlider />
-      <FullScholarshipUniversitiesSlider />
+
+      <UniversitySlider
+        title="Featured Universities"
+        fetchParams={{ is_featured: true }}
+      />
+
+      <UniversitySlider
+        title="Free Agency Service Universities"
+        fetchParams={{ full_scolarship: true }}
+      />
+      {/* <FeaturedUniversitiesSlider />
+      <FullScholarshipUniversitiesSlider /> */}
     </div>
   );
 };

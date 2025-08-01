@@ -1,60 +1,67 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import capImg from "../../../assets/images/illustrations/cap.webp";
+import graduationCapImg from "../../../assets/images/illustrations/cap.webp";
 import person1Img from "../../../assets/images/illustrations/person1.png";
 import person2Img from "../../../assets/images/illustrations/person2.png";
 import person3Img from "../../../assets/images/illustrations/person3.png";
+
+const personImages = [
+  { src: person1Img, alt: "A smiling student" },
+  { src: person2Img, alt: "A student with glasses" },
+  { src: person3Img, alt: "A student looking forward" },
+];
+
+const headingTextClasses = "text-4xl md:text-5xl lg:text-[88px]";
+const boldHeadingTextClasses = `${headingTextClasses} font-semibold`;
 
 const Hero = () => {
   const { t } = useTranslation();
 
   return (
-      <section className="bg-primary relative overflow-hidden">
-        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
-          <div className="text-center mx-auto">
-            <h2 className="text-4xl md:text-5xl lg:text-[88px] mt-5">
-              {t("Find The")}
-            </h2>
-
-            <div className="flex justify-center items-center mt-8">
-              <h2 className="font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                {t("Right")}
-              </h2>
+    <section className="bg-primary relative overflow-hidden">
+      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+        <div className="text-center">
+          <h1>
+            <span className={headingTextClasses}>{t("Find The")}</span>
+            <div className="flex justify-center items-center mt-3">
+              <span className={boldHeadingTextClasses}>{t("Right")}</span>
               <img
-                  src={capImg}
-                  alt="Cap"
-                  className="w-12 md:w-16 lg:w-32 ml-4"
+                src={graduationCapImg}
+                alt=""
+                aria-hidden="true"
+                className="w-12 md:w-16 lg:w-32 mx-4"
               />
-              <h2 className="font-semibold text-4xl md:text-5xl lg:text-[88px] ml-2">
-                {t("University")}
-              </h2>
+              <span className={boldHeadingTextClasses}>{t("University")}</span>
             </div>
+            <div className="flex flex-wrap justify-center items-center mt-3">
+              <span className={headingTextClasses}>{t("For You")}</span>
 
-            <div className="lg:flex lg:justify-center items-center mt-8">
-              <div className="flex items-center">
-                <h2 className="text-4xl md:text-5xl lg:text-[88px] md:ml-2 ml-10">
-                  {t("For You")}
-                </h2>
-                <div className="flex ml-4 space-x-[-16px]">
-                  <img src={person1Img} alt="Person 1" className="w-12 md:w-16 lg:w-24" />
-                  <img src={person2Img} alt="Person 2" className="w-12 md:w-16 lg:w-24" />
-                  <img src={person3Img} alt="Person 3" className="w-12 md:w-16 lg:w-24" />
-                </div>
+              <div className="flex ml-4 space-x-[-16px]">
+                {personImages.map((person, index) => (
+                  <img
+                    key={index}
+                    src={person.src}
+                    alt=""
+                    aria-hidden="true"
+                    className="w-12 md:w-16 lg:w-24"
+                  />
+                ))}
               </div>
-              <h2 className="text-4xl md:text-5xl lg:text-[88px] ml-2 md:mt-0 mt-8">
+              <span className={`${headingTextClasses} ml-4`}>
                 {t("Worldwide")}
-              </h2>
+              </span>
             </div>
+          </h1>
 
-            <Link to="/universities">
-              <button className="bg-secondary text-white px-20 py-2 rounded-md text-xl mt-10 hover:opacity-90">
-                {t("Universities")}
-              </button>
-            </Link>
-          </div>
+          <Link to="/universities">
+            <button className="bg-secondary text-white px-20 py-2 rounded-lg text-xl mt-10 hover:opacity-90 transition-opacity">
+              {t("Universities")}
+            </button>
+          </Link>
         </div>
-      </section>
+      </div>
+    </section>
   );
 };
 
