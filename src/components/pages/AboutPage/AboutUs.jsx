@@ -56,10 +56,10 @@ const AboutUs = () => {
                     {t("about_us_search_apply_banner")}
                   </p>
                 </Link>
-                <h2 className="text-4xl md:text-5xl font-semibold mb-2 mt-2">
+                <h2 className="text-4xl md:text-5xl font-semibold mb-2 mt-4">
                   {t("about_us_find_university_title")}
                 </h2>
-                <p className="text-base text-gray-700">
+                <p className="text-base text-gray-700 mt-4">
                   <HtmlContentRenderer
                     htmlContent={aboutUsContent.findUniversity}
                   />
@@ -108,7 +108,7 @@ const AboutUs = () => {
                 </div>
               </div>
             </div>
-            <div className="mb-4 p-8">
+            <div className="mb-4 p-8 md:-mt-20">
               <h2 className="text-4xl font-semibold ">
                 {t("about_us_our_services_title")}
               </h2>

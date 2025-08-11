@@ -24,36 +24,48 @@ const CareerCompass = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        {t("loading")}
+      <div className="flex justify-center items-center min-h-[450px]">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-secondary"></div>
       </div>
     );
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-      <h2 className="text-4xl">
-        <span className="font-bold">{t("career_compass_title")}:</span>{" "}
-        {t("career_compass_subtitle")}
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
-        {careers.map((career) => (
-          <Link
-            to={`pathway-advice/${career.article_slug}/detail`}
-            key={career.id}
-            className="flex items-center space-x-4 p-4 border rounded-lg shadow-md bg-white transition-transform hover:scale-105"
-          >
-            <img
-              src={career.icon}
-              alt={`${career.title} ${t("icon_alt_text")}`}
-              className="w-12 h-12"
-            />
-            <div>
-              <h3 className="text-lg font-semibold">{career.title}</h3>
-              <p className="text-sm text-gray-600">{career.description}</p>
-            </div>
-          </Link>
-        ))}
+    <div className="bg-gray-50">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="text-center">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight">
+            <span className="text-secondary">{t("career_compass_title")}:</span>{" "}
+            {t("career_compass_subtitle")}
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+          {careers.map((career) => (
+            <Link
+              to={`pathway-advice/${career.article_slug}/detail`}
+              key={career.id}
+              className="group flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-md transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2"
+            >
+              <div className="flex-shrink-0">
+                <div className="flex items-center justify-center h-20 w-20 rounded-full bg-secondary/10">
+                  <img
+                    src={career.icon}
+                    alt={`${career.title} ${t("icon_alt_text")}`}
+                    className="w-12 h-12"
+                  />
+                </div>
+              </div>
+              <div className="mt-6">
+                <h3 className="text-xl font-bold text-gray-900">
+                  {career.title}
+                </h3>
+                <p className="mt-2 text-base text-gray-500">
+                  {career.description}
+                </p>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

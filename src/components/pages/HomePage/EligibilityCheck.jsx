@@ -90,7 +90,8 @@ const EligibilityCheck = ({ onClose }) => {
           {t("form_label_phone_number")}
         </label>
         <PhoneInput
-          country={"us"}
+          country={"uz"}
+          onlyCountries={["kz", "kg", "tj", "tm", "uz"]}
           onChange={(phone) => setValue("phone_number", phone)}
           inputClass={inputClasses}
         />
