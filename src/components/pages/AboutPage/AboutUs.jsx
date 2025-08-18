@@ -139,9 +139,13 @@ const AboutUs = () => {
                   <HtmlContentRenderer htmlContent={aboutUsContent.cardBody} />
                 </p>
                 <div className="flex justify-center mt-6">
-                  <button className="bg-white text-[#111827] p-1 md:p-2 rounded text-base font-semibold mr-2">
+                  <a
+                    href="mailto:info@uniworld.uz"
+                    className="bg-white text-[#111827] p-1 md:p-2 rounded text-base font-semibold mr-2 inline-block"
+                  >
                     {t("about_us_contact_button")}
-                  </button>
+                  </a>
+
                   <Link to="/universities">
                     <button className="md:p-2 p-1 rounded text-base font-semibold ml-2 flex items-center">
                       {t("about_us_check_universities_button")}
