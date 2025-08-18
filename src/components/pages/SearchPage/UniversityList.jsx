@@ -121,10 +121,10 @@ const UniversityList = () => {
           value={searchTerm}
           onChange={handleSearchChange}
           placeholder={t("universities_search_placeholder")}
-          className="w-[768px] mx-4 my-8 px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:border-blue-500"
+          className="w-full max-w-3xl mx-4 my-8 px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      <div className="flex flex-wrap lg:flex-nowrap lg:px-32 px-4 py-4">
+      <div className="flex flex-col lg:flex-row lg:px-8 xl:px-32 px-4 py-4">
         <Filters
           selectedCountry={selectedCountry}
           handleCountryChange={handleCountryChange}
@@ -134,75 +134,73 @@ const UniversityList = () => {
           handleQualificationChange={handleQualificationChange}
         />
 
-        <div className="container mx-auto max-w-6xl bg-white py-0 md:py-4 md:rounded-lg lg:ml-5 lg:mt-0 h-fit">
+        <div className="w-full container mx-auto bg-white py-4 md:rounded-lg lg:ml-5 h-fit shadow-md">
           {loading ? (
             <p className="text-center p-10">{t("loading")}</p>
           ) : universities.length === 0 ? (
-            <div className="flex flex-col items-center justify-center p-10">
+            <div className="flex flex-col items-center justify-center p-10 text-center">
               <img
                 src={inboxIcon}
                 alt={t("no_results_alt")}
                 className="w-24 h-24 mb-4"
               />
-              <p>{t("universities_no_results")}</p>
+              <p className="text-gray-800">{t("universities_no_results")}</p>
             </div>
           ) : (
-            <div className="lg:px-4">
+            <div className="px-2 sm:px-4">
               {universities.map((university) => (
                 <div
                   key={university.id}
-                  className="bg-white flex flex-col sm:flex-row w-full mx-auto border-t-2 border-gray-200 px-5"
+                  className="bg-white flex flex-col md:flex-row w-full mx-auto border-t border-gray-100 p-4 md:p-5 items-center"
                 >
-                  <div className="sm:w-48 sm:h-36 sm:object-cover my-4">
+                  <div className="w-full md:w-48 flex-shrink-0 mb-4 md:mb-0">
                     <img
                       src={university.image}
                       alt={university.name}
-                      className="w-full h-full object-cover rounded-lg"
+                      className="w-full h-40 md:h-32 object-cover rounded-lg shadow-sm"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://placehold.co/400x300/e0e0e0/757575?text=Image+Error";
+                      }}
                     />
                   </div>
-                  <div className="p-4 flex flex-col justify-between sm:ml-4">
+                  <div className="w-full md:ml-6 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center justify-between lg:w-[640px]">
-                        <h2 className="text-4xl font-semibold mb-2">
+                      <div className="flex flex-col sm:flex-row justify-between items-start mb-2">
+                        <h2 className="text-2xl lg:text-3xl font-bold mb-2 sm:mb-0 pr-2">
                           {university.name}
                         </h2>
-                        <div className="flex">
-                          <div>
-                            {university.is_featured && (
-                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
-                                <span>•</span>
-                                <span className="ml-1">
-                                  {t("universities_featured_badge")}
-                                </span>
-                              </p>
-                            )}
-                          </div>
-                          <div className="ml-2">
-                            {university.full_scolarship && (
-                              <p className="bg-primary text-secondary px-2 py-1 rounded-lg flex items-center">
-                                <span>•</span>
-                                <span className="ml-1">
-                                  {t("universities_free_badge")}
-                                </span>
-                              </p>
-                            )}
-                          </div>
+                        <div className="flex flex-shrink-0 space-x-2 mt-2 sm:mt-0">
+                          {university.is_featured && (
+                            <p className="bg-primary text-secondary text-xs font-semibold px-2.5 py-1 rounded-full flex items-center whitespace-nowrap">
+                              <span className="w-2 h-2 bg-secondary rounded-full mr-1.5"></span>
+                              {t("universities_featured_badge")}
+                            </p>
+                          )}
+                          {university.full_scolarship && (
+                            <p className="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-1 rounded-full flex items-center whitespace-nowrap">
+                              <span className="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span>
+                              {t("universities_free_badge")}
+                            </p>
+                          )}
                         </div>
                       </div>
-                      <p className="text-black mb-2 flex items-center text-base">
-                        <HiOutlineLocationMarker /> {university.country.name}
+                      <p className="text-gray-800 mb-4 flex items-center text-base">
+                        <HiOutlineLocationMarker className="w-5 h-5 mr-1.5 text-gray-800" />{" "}
+                        {university.country.name}
                       </p>
                     </div>
-                    <div className="flex">
+                    <div className="flex flex-wrap gap-2">
                       <Link
                         to={`${university.slug}/overview`}
-                        className="w-fit p-2 rounded-md bg-secondary text-white"
+                        className="px-4 py-2 rounded-md bg-secondary text-white font-semibold hover:bg-blue-700 transition-colors text-sm"
                       >
                         {t("universities_learn_more_button")}
                       </Link>
                       <Link
                         to={`${university.slug}/courses?qualification_level=${selectedQualification}&specialty=${selectedSpecialty}`}
-                        className="border w-fit p-2 rounded-md border-secondary text-secondary ml-2"
+                        className="px-4 py-2 rounded-md border border-secondary text-secondary font-semibold hover:bg-blue-50 transition-colors text-sm"
                       >
                         {university.course_count}{" "}
                         {t("universities_courses_available")}
